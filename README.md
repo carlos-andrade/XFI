@@ -7,6 +7,10 @@ Este é o repositório oficial do projeto **XFI** e a fonte de verdade para a su
 - **Governança:** [GOVERNANCA/REGRAS_DO_PROJETO.md](GOVERNANCA/REGRAS_DO_PROJETO.md)
 - **Licença:** MIT (consulte [LICENSE](LICENSE))
 
+## Frentes de trabalho
+
+- **Segurança de routers com OpenWrt:** [OPENWRT_SEGURANCA/README.md](OPENWRT_SEGURANCA/README.md) — catálogo de fontes oficiais, arquitetura de segmentação, baseline de hardening, processo de ingestão, testes, rollback e roadmap.
+
 ## Regra operacional
 
 Todo o material substancial produzido neste projeto deve ser guardado neste repositório quando o formato e os meios disponíveis o permitirem. Não basta mostrar o resultado na conversa: é necessário confirmar a gravação e registar o commit.
