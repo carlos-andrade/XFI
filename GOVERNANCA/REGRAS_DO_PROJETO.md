@@ -5,9 +5,18 @@
 **Estado inicial validado em:** 2026-10-12  
 **Responsável pelo projeto:** Carlos Andrade
 
-## 1. Finalidade
+## 1. Hierarquia de governança e finalidade
 
-Este repositório é a fonte oficial de referência, governança e histórico dos materiais produzidos especificamente no âmbito do projeto XFI.
+A governança deste projeto deve seguir as premissas, modelos e orientações do repositório central [GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA). Esse repositório é a referência normativa principal para decisões de governança. As regras locais do XFI complementam essa referência e não podem contradizê-la. Em caso de divergência, consultar a governança central e alinhar este documento antes de prosseguir.
+
+Este repositório é a fonte oficial de referência, governança local e histórico dos materiais produzidos especificamente no âmbito do projeto XFI.
+
+### Regra obrigatória de conformidade
+
+- Consultar o repositório [carlos-andrade/GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA) antes de definir ou alterar processos de governança do XFI.
+- Aplicar as suas premissas a planeamento, documentação, dados, arquitetura, desenvolvimento, validação, publicação e manutenção, conforme forem pertinentes.
+- Registar no XFI decisões e procedimentos específicos necessários à execução local, mantendo a ligação explícita com a referência central.
+- Se a referência central estiver indisponível ou não esclarecer uma questão material, assinalar a pendência; não inventar uma regra e apresentá-la como se viesse da GOVERNANCA.
 
 ## 2. Regra de persistência
 
