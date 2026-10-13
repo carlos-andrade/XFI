@@ -260,3 +260,17 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - Os commits de fix foram identificados e os ficheiros alterados confirmados: CVE-2026-63810 `block/bdev.c`; CVE-2026-74665 `net/core/dev.c`; CVE-2026-89995 `kernel/dma/direct.c`; CVE-2026-90344 `net/mac80211/spectmgmt.c`; CVE-2026-98211 `drivers/mmc/host/mmci.c`.
 - O filtro por nome nos 414 patches genéricos não encontrou correspondência direta; isto não prova ausência de backport. Próxima etapa: comparar hunks/funções dos commits com os patches candidatos e com patches específicos dos targets homologados.
 - O CSV mantém os estados como pendentes/inconclusivos até haver comparação de conteúdo; mac80211 será validado pela versão do feed wireless.
+
+
+## Fecho da sequência documental — 2026-10-13
+
+**Estado da sequência:** `CONCLUIDO` para a triagem documental executada. Isto não significa que o firmware/router esteja homologado ou seguro em produção.
+
+- OpenSSL: CVE-2026-75803 mapeado corretamente; matriz expandida para advisories 3.5.8/3.5.9; aplicabilidade por feature/build ainda precisa de revisão.
+- musl: backport CVE-2026-40200 confirmado na fonte/tag; imagem não verificada.
+- Dropbear: CVE-2026-3706 triado como advisory não revisto; sem demonstração de impacto no protocolo SSH.
+- Kernel: cinco fixes upstream identificados; a comparação semântica completa dos patches continua explicitamente pendente. A busca por nomes não prova ausência de backport.
+- CSV: 51 registos, 13 campos por linha, sem linhas malformadas nem IDs duplicados.
+- Relatório de fecho: [FECHO_REVISAO_DOCUMENTAL_2026-10-13.md](FECHO_REVISAO_DOCUMENTAL_2026-10-13.md).
+
+**Próximo marco:** diff semântico dos cinco fixes do kernel contra patches genéricos e específicos por target; validação do feed mac80211; depois inventário de hardware real. Zabbix continua em pausa. Sem alterações em routers, sem builds e sem testes físicos.
