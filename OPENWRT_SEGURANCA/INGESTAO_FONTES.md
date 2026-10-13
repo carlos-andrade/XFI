@@ -26,7 +26,7 @@ Manter um catálogo rastreável de fontes públicas relevantes à segurança, co
 - Allowlist: HTTPS em `openwrt.org` e subdomínios, `git.openwrt.org` e, no GitHub, apenas caminhos sob `github.com/openwrt/`.
 - A primeira execução, anterior à expansão do catálogo, confirmou 20/20 URLs acessíveis. A execução posterior à migração confirmou 26/26 URLs acessíveis, sem erros HTTP, rate limits ou erros de rede. A execução anterior com HTTP 429 ficou registada como evidência histórica e foi resolvida ao usar o Git oficial OpenWrt.
 
-## Contrato do relatório JSON
+## Registo semântico inicial\n\nO ficheiro [REGISTO_ADVISORIES_RELEASES.csv](REGISTO_ADVISORIES_RELEASES.csv) contém exemplos normalizados de uma release e advisories citados no anúncio oficial. Os campos de versões afetadas continuam marcados para confirmação no advisory individual; não inferir aplicabilidade a equipamentos sem cruzar versão, pacote e configuração.\n\nA execução de 2026-10-13 após a expansão do catálogo verificou 30/30 URLs, sem erros HTTP, rate limits ou erros de rede: [workflow e artefacto](https://github.com/carlos-andrade/XFI/actions/runs/38385191297).\n\n## Contrato do relatório JSON
 
 Campos de topo: `generated_at_utc`, `catalog`, `schema_version`, `total_unique_urls`, `reachable`, `http_errors`, `network_errors`, `note` e `sources`.
 
