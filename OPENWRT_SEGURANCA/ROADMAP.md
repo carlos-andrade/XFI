@@ -136,3 +136,13 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - **Outros componentes a decompor:** aplicações LuCI, kernel Linux, OpenSSL, musl, Dropbear e componentes de rede listados no relatório.
 - **Limites:** nenhuma imagem binária ou router foi testado; não há conclusão de vulnerabilidade/correção para hardware XFI sem inventário e versão instalada. Zabbix continua em pausa.
 - **Próximo passo:** verificar advisories e pins de uhttpd, cgi-io, umdns e ead; depois LuCI e bibliotecas centrais.
+
+
+### Validação do pin uhttpd — atualização 2026-10-13
+
+- Makefile da tag v25.12.5: `package/network/services/uhttpd/Makefile`; blob SHA `915baa07ab9a0cb44f6819d9d09bc2c001ed2eb7`.
+- Pin: `PKG_SOURCE_DATE=2026-06-16`, `PKG_SOURCE_VERSION=7b1bec45826bd78c8afc993435bdc0f1df2fe399`.
+- Comparação upstream: o pin está três commits à frente do commit-limiar `1b624f8f814ed568608d756512892416e0431d77`; as notas de 25.12.5 listam as três CVEs uhttpd revistas como corrigidas.
+- Os registos CVE-2026-55612, CVE-2026-55614 e CVE-2026-55613 passaram a `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`.
+- **Limite:** o pin é da fonte usada pela tag; não comprova que qualquer router XFI execute a imagem/pacote correspondente.
+- Relatório e CSV atualizados; sem compilação, teste de imagem ou alteração de router. Zabbix permanece em pausa.
