@@ -1,6 +1,11 @@
 name: XFI — Verificar fontes oficiais OpenWrt
 
 on:
+  push:
+    paths:
+      - "OPENWRT_SEGURANCA/FONTES_OFICIAIS.md"
+      - "OPENWRT_SEGURANCA/scripts/check_openwrt_sources.py"
+      - ".github/workflows/openwrt-source-link-check.yml"
   workflow_dispatch:
   schedule:
     - cron: "23 7 * * 1"
