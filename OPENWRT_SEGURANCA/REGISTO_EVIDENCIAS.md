@@ -312,3 +312,14 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Estado:** EM_REVISAO. A filtragem anterior de nomes de patch não prova ausência de backport.
 - **Não realizado:** sem build, alteração de router ou teste físico/laboratório. Zabbix continua em pausa.
 - **Relatório:** OPENWRT_SEGURANCA/REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md.
+
+
+## 2026-10-13 — Subfase mac80211: inspeção dos patches subsystem
+- **Base:** OpenWrt v25.12.5; `package/kernel/mac80211/Makefile` fixa `PKG_VERSION:=6.18.26`.
+- **Inspecionado:** conteúdo dos 13 patches do diretório `package/kernel/mac80211/patches/subsys`.
+- **Resultado:** nenhum dos 13 altera `net/mac80211/spectmgmt.c` nem inclui os símbolos/funções do fix de CVE-2026-90344. O patch 350, apesar de mencionar contexto de canal/CSA, modifica outros ficheiros e não é equivalente ao fix.
+- **Classificação:** provável ausência de correção no overlay subsystem inspecionado; inconclusivo para o tarball completo e targets, ainda não verificados.
+- **Fontes:** Makefile da tag v25.12.5, commit upstream 099aadb2012d7490bc584cc5075ef11cbc33f2c3 e advisory CVE-2026-90344.
+- **Próximo passo:** verificar o tarball mac80211 exato e continuar a comparação semântica dos cinco fixes kernel.
+- **Sem build, sem alteração/teste físico de router. Zabbix continua em pausa.**
+- **Relatório:** `OPENWRT_SEGURANCA/REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md`.
