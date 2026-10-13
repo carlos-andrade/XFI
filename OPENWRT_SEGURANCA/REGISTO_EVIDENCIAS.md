@@ -255,3 +255,12 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - Fontes OpenSSL: https://github.com/openssl/openssl/releases/tag/openssl-3.5.8 ; https://github.com/advisories/GHSA-vr27-9w4v-hjw2
 - Fonte changelog: https://openwrt.org/releases/25.12/changelog-25.12.6
 - Fontes musl: https://github.com/openwrt/openwrt/tree/v25.12.5/toolchain/musl/patches
+
+
+## 2026-10-13 — primeira triagem de CVEs do kernel posteriores a 6.12.94
+
+- OpenWrt v25.12.5 fixa kernel 6.12.94. A changelog de desenvolvimento posterior menciona atualizações até 6.12.112 em alguns targets; a tag v25.12.6 não foi confirmada como tag Git nesta consulta.
+- Inventariados os diretórios genéricos `backport-6.12` (271 patches) e `pending-6.12` (143 patches). A primeira pesquisa de nomes não encontrou correspondência óbvia para cinco fixes CVE; isso não prova ausência de backport, pois a correspondência exige comparação do conteúdo e patches específicos por target.
+- Registados no CSV para revisão: CVE-2026-63810 (fix 6.12.95), CVE-2026-74665 (6.12.104), CVE-2026-89995 (6.12.110), CVE-2026-90344 (wireless/mac80211; 6.12.110/6.18.52) e CVE-2026-98211 (mmci; 6.12.112).
+- Relatório: [REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md](REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md).
+- Nenhuma imagem construída ou router alterado; Zabbix pausado.
