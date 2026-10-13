@@ -11,6 +11,15 @@
 
 **Referência consultada em 2026-10-13:** 7.4.15 era a versão estável da série 7.4 indicada no site oficial; 8.0.0rc1 era pré-lançamento. Verificar novamente no momento da execução.
 
+## Política de versão obrigatória
+- Consultar os downloads e notas oficiais imediatamente antes da mudança.
+- Usar a versão estável mais recente; não usar alpha, beta ou release candidate em produção.
+- Verificar compatibilidade de sistema operativo, base de dados, PHP, server, frontend, proxies, agentes e templates.
+- Fazer backup verificável, preparar rollback e testar em laboratório antes de atualizar produção.
+- Se a instância estiver atrás da versão-alvo, tratar a atualização como etapa própria antes de implementar os templates.
+
+Referência temporal: em 2026-10-13, o site oficial indicava 7.4.15 como release da série 7.4 e 8.0.0rc1 como pré-lançamento. Verificar novamente no momento da execução.
+
 ## Fase 1 — levantamento da infraestrutura
 - [ ] Confirmar versão exata do Zabbix Server/Frontend e sistema operativo.
 - [ ] Confirmar se há proxies, VPNs, segmentação, DNS e armazenamento de segredos disponíveis.
