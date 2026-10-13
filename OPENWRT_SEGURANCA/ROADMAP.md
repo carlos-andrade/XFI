@@ -342,3 +342,12 @@ Não atualizar a percentagem global apenas por contagem de commits ou documentos
 - Spot-check de patches genéricos: https://github.com/carlos-andrade/XFI/commit/51409f5016f5f518a77968e55a146d2c42a12d41
 - Revisão diferencial kernel/mac80211: [REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md](REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md)
 
+## Continuação operacional — inspeção dirigida de patches (2026-10-13)
+
+- Confirmado diretamente no Makefile de OpenWrt v25.12.5: mac80211 6.18.26, fonte backports-6.18.26.tar.zst, SHA-256 declarado 2ad578c6cae22f192fefd44e1449725228d4109ee781998b41dcbae872554968. O conteúdo binário não foi verificado nesta subfase.
+- Inspecionados 20 patches candidatos adicionais de backport-6.12 e pending-6.12. Nenhum diff dos candidatos consultados altera diretamente os quatro ficheiros-alvo de CVEs de kernel (block/bdev.c, net/core/dev.c, kernel/dma/direct.c, drivers/mmc/host/mmci.c). A amostra dirigida não prova ausência global de backport.
+- Criada a ficha [INVENTARIO_HARDWARE/FICHA_INVENTARIO_ROUTER.md](INVENTARIO_HARDWARE/FICHA_INVENTARIO_ROUTER.md), com campos por preencher e salvaguardas contra inferências/segredos. Não há equipamento identificado ainda.
+- **Estado da fase:** EM_REVISAO; os cinco CVEs continuam inconclusivos quanto a backports globais. A verificação do tarball mac80211, o diff integral dos 414 patches e o inventário real continuam pendentes.
+- Sem builds, sem alterações de router, sem testes físicos. Zabbix permanece em pausa.
+- Relatório atualizado: [REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md](REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md).
+
