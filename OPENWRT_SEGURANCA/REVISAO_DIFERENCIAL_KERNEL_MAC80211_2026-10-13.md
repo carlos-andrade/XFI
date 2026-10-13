@@ -59,3 +59,14 @@ O Makefile de `package/kernel/mac80211` fixa `PKG_VERSION:=6.18.26`. A correçã
 - Referências: [Makefile mac80211 v25.12.5](https://github.com/openwrt/openwrt/blob/v25.12.5/package/kernel/mac80211/Makefile); [commit upstream](https://github.com/gregkh/linux/commit/099aadb2012d7490bc584cc5075ef11cbc33f2c3); [advisory CVE-2026-90344](https://lists.openwall.net/linux-cve-announce/2026/09/17/99).
 
 **Próximo trabalho:** obter/verificar o conteúdo e hash do tarball mac80211 fixado, concluir diff semântico dos cinco fixes contra patches genéricos, e verificar patches por target depois de conhecido o hardware. A pesquisa por nomes, isoladamente, não prova ausência de backport.
+
+
+## 7. Subfase kernel — spot-check de patches genéricos por subsistema
+
+**Estado:** parcial; não fecha a análise diferencial dos cinco CVEs.
+
+Foram inspecionados os cabeçalhos `+++`/ficheiros alterados de 19 patches genéricos com nomes relacionados com block/MMC, core, DMA, skb e rede, incluindo os candidatos com maior probabilidade lexical de tocar nos caminhos afetados. Nenhum dos patches consultados altera diretamente `block/bdev.c`, `net/core/dev.c`, `kernel/dma/direct.c` ou `drivers/mmc/host/mmci.c`. Os 10 patches block/MMC consultados na subfase anterior também não alteram esses quatro caminhos exatos.
+
+**Limite:** este é um filtro dirigido de candidatos, não uma varredura de conteúdo de todos os 414 patches genéricos nem dos diretórios específicos de todos os targets. Não é suficiente para classificar qualquer CVE como corrigido ou não corrigido.
+
+**Próxima ação:** completar a varredura de cabeçalhos/diffs dos 414 patches genéricos para os quatro caminhos de kernel, depois revisar patches específicos do target escolhido. Sem target de hardware, a revisão target-specific fica sem escopo finito.
