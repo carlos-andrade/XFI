@@ -39,3 +39,15 @@ Fontes upstream:
 5. Não classificar um router como vulnerável sem inventário de modelo/revisão, target, imagem e configuração efetiva.
 
 Nenhuma imagem foi construída, nenhum router foi alterado e nenhum teste físico foi executado. Zabbix continua pausado.
+
+
+## Verificação por commit upstream — kernel (2026-10-13)
+
+Foram obtidos os commits upstream e os ficheiros exatos alterados para os cinco CVEs triados:
+- CVE-2026-63810: commit `197971e6ffc0a6356b2ba2b22beb42bc0f7e412d`, altera `block/bdev.c`.
+- CVE-2026-74665: commit `72468efcc089782fa047afddd10856b11a14ef5b`, altera `net/core/dev.c`.
+- CVE-2026-89995: commit `c3fdb94da43ff23287f85664174c45c45e881a3f`, altera `kernel/dma/direct.c`.
+- CVE-2026-90344: commit `099aadb2012d7490bc584cc5075ef11cbc33f2c3`, altera `net/mac80211/spectmgmt.c` (subsistema/feed wireless deve ser verificado separadamente).
+- CVE-2026-98211: commit `af6fbf72e899932f330c4e5d0b84d985c922c633`, altera `drivers/mmc/host/mmci.c`.
+
+A listagem dos 414 patches genéricos `backport-6.12` e `pending-6.12` não apresentou nomes que correspondam diretamente a estes cinco fixes. Isso é apenas um filtro por nome; ainda não equivale a diff de conteúdo, não exclui backport escondido em patch com nome genérico e não cobre diretórios específicos de target. Os cinco registos permanecem pendentes, com condições de aplicabilidade separadas.
