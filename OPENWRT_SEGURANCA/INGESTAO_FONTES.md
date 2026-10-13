@@ -23,8 +23,8 @@ Manter um catálogo rastreável de fontes públicas relevantes à segurança, co
 - Workflow: `.github/workflows/openwrt-source-link-check.yml`.
 - Artefacto produzido: `openwrt-source-check-report.json`, publicado como artefacto do workflow.
 - O verificador extrai os registos da tabela Markdown e normaliza categoria, URL, finalidade, linha de catálogo, estado HTTP, URL final e timestamp de verificação.
-- Allowlist: HTTPS em `openwrt.org` e subdomínios; no GitHub, apenas caminhos sob `github.com/openwrt/`.
-- A primeira execução, anterior à expansão do catálogo, confirmou 20/20 URLs acessíveis. A execução da nova versão do verificador tem de ser confirmada separadamente.
+- Allowlist: HTTPS em `openwrt.org` e subdomínios, `git.openwrt.org` e, no GitHub, apenas caminhos sob `github.com/openwrt/`.
+- A primeira execução, anterior à expansão do catálogo, confirmou 20/20 URLs acessíveis. A execução da versão ampliada confirmou 26 URLs, com uma resposta HTTP 429 do GitHub; a fonte de commits foi então migrada para `git.openwrt.org`, e a nova execução precisa de confirmação.
 
 ## Contrato do relatório JSON
 
