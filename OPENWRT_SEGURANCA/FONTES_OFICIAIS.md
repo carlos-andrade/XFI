@@ -32,6 +32,11 @@
 | Repositório Git upstream | https://git.openwrt.org/?p=openwrt/openwrt.git;a=summary | Repositório oficial de código OpenWrt e metadados do projeto |\n| Commits upstream | https://git.openwrt.org/?p=openwrt/openwrt.git;a=shortlog | Acompanhar alterações recentes; commits isolados não são, por si só, avisos de segurança |
 | Issues upstream | https://github.com/openwrt/openwrt/issues | Acompanhamento de problemas reportados; verificar estado e confirmação pelos mantenedores |
 
+| Notas da série estável 25.12 | https://openwrt.org/releases/25.12/notes-25.12.5 | Notas da release 25.12.5; verificar correções, alterações e requisitos |
+| Notas da série antiga 24.10 | https://openwrt.org/releases/24.10/notes-24.10.8 | Referência histórica e transição; confirmar estado de suporte antes de usar |
+| Segurança para developers | https://openwrt.org/docs/guide-developer/security | Índice de advisories e orientação de segurança do projeto |
+| Histórico de versões | https://openwrt.org/about/history | Verificar releases, revisões e histórico de suporte |
+
 ## Regras de uso das fontes
 - Para fontes GitHub, o verificador aceita apenas URLs HTTPS sob `github.com/openwrt/`. O host `git.openwrt.org` também é permitido para o repositório oficial upstream; não ampliar a allowlist sem revisão.
 - A Table of Hardware é um índice, não substitui a página individual do dispositivo.
