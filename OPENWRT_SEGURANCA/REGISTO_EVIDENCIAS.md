@@ -273,3 +273,14 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - Decisão: manter monitorização; não declarar exploração remota via SSH sem demonstração de impacto no protocolo. Não houve build, teste de protocolo nem teste físico.
 - Relatório: [REVISAO_DROPBEAR_CVE-2026-3706_2026-10-13.md](REVISAO_DROPBEAR_CVE-2026-3706_2026-10-13.md).
 - Fontes: https://github.com/advisories/GHSA-87g2-jprq-4cmc ; https://github.com/mkj/dropbear/commit/fdec3c90a15447bd538641d85e5a3e3ac981011d ; https://github.com/openwrt/openwrt/tree/v25.12.5/package/network/services/dropbear/patches
+
+
+## 2026-10-13 — kernel: commits de correção identificados
+
+- CVE-2026-63810: `197971e6ffc0a6356b2ba2b22beb42bc0f7e412d`, `block/bdev.c`.
+- CVE-2026-74665: `72468efcc089782fa047afddd10856b11a14ef5b`, `net/core/dev.c`.
+- CVE-2026-89995: `c3fdb94da43ff23287f85664174c45c45e881a3f`, `kernel/dma/direct.c`.
+- CVE-2026-90344: `099aadb2012d7490bc584cc5075ef11cbc33f2c3`, `net/mac80211/spectmgmt.c`.
+- CVE-2026-98211: `af6fbf72e899932f330c4e5d0b84d985c922c633`, `drivers/mmc/host/mmci.c`.
+- O filtro de nomes de 414 patches genéricos não encontrou correspondência direta. Não é prova de ausência; falta diff de conteúdo e análise por target.
+- Fontes CVE/commits estão documentadas em [REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md](REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md).
