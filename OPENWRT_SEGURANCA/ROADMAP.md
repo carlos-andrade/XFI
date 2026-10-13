@@ -216,3 +216,12 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - **Kernel 6.12.94:** pin de versão/hash confirmado; correlação de advisories por target ainda pendente.
 - Relatório: [REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md](REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md).
 - Não alterar routers; Zabbix continua em pausa.
+
+
+## Prioridade elevada — kernel estável atrás do upstream (2026-10-13)
+
+- OpenWrt `v25.12.5` fixa Linux `6.12.94`; a listagem oficial kernel.org já mostra `6.12.112` (2026-10-03).
+- Estado: `UPSTREAM_STABLE_LAG_REQUIRES_PATCH_DIFF`. Não declarar CVEs concretos sem mapear o changelog e as patches backportadas.
+- Comparar `6.12.95–6.12.112` com `target/linux/generic/backport-6.12`, `pending-6.12` e patches por target.
+- Manter OpenSSL 3.5.7-r1 como prioridade alta; confirmar correções locais e build features antes de declarar exposição por dispositivo.
+- Relatório: [REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md](REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md).
