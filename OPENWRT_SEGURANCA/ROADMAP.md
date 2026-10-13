@@ -99,3 +99,12 @@ A implementação do Zabbix — incluindo levantamento da instância, atualizaç
 
 ## Limitação de estado
 O percentual é apenas progresso documental e de planeamento. Nenhuma unidade física foi instalada, testada ou homologada. O Zabbix ainda não foi configurado para esta frota.
+
+## Revisão semântica dos advisories odhcpd — atualização 2026-10-13
+
+- **Ficheiro:** [REVISAO_ADVISORIES_ODHCPD_2026-10-13.md](REVISAO_ADVISORIES_ODHCPD_2026-10-13.md).
+- **Registo normalizado atualizado:** [REGISTO_ADVISORIES_RELEASES.csv](REGISTO_ADVISORIES_RELEASES.csv).
+- **Resultado:** as cinco páginas individuais foram consultadas; os commits de correção upstream e os commits do ramo 25.12 foram registados.
+- **Qualificação importante:** várias páginas apresentam “Patched versions: None” no cabeçalho, embora listem commits de correção no rodapé. O estado de inclusão dos commits em tags de release específicas permanece pendente e está marcado explicitamente no CSV.
+- **Não inferir:** não declarar 25.12.5 ou qualquer outra versão corrigida sem verificar tags/builds e pins do pacote odhcpd. A aplicabilidade a routers XFI continua indeterminada sem modelo/revisão, imagem, versão e configuração reais.
+- **Próximo passo técnico:** cruzar os commits com tags oficiais de release e `PKG_SOURCE_VERSION` de odhcpd; só depois relacionar advisories a uma versão de firmware. Zabbix continua em pausa.
