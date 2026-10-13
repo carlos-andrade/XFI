@@ -100,3 +100,20 @@ Alguns candidatos alteram outros ficheiros do mesmo subsistema, como block/parti
 
 Nenhuma imagem construída, nenhum router alterado/testado e Zabbix continua em pausa.
 
+
+
+## 9. Automatização reprodutível da varredura — 2026-10-13
+
+**Estado:** implementação persistida; execução real ainda não confirmada nesta revisão.
+
+Foram adicionados ao repositório:
+- `OPENWRT_SEGURANCA/scripts/audit_kernel_mac80211_patches.py`: varredura de patches genéricos, patches específicos encontrados para kernel 6.12 e overlays mac80211; regista correspondências por caminho, candidatos mac80211, pin da release, hash real/esperado e indicadores do fix CSA.
+- `.github/workflows/openwrt-kernel-mac80211-audit.yml`: workflow reproduzível que obtém a tag `v25.12.5`, descarrega o tarball indicado pelo Makefile, exige correspondência SHA-256 e publica os relatórios JSON/Markdown como artefacto.
+
+**Critérios de interpretação:**
+1. O workflow deve falhar se não conseguir obter o tarball ou se o SHA-256 diferir do pin oficial; uma falha de download não é evidência de vulnerabilidade.
+2. A varredura por caminho é um filtro de cobertura, não uma prova semântica de equivalência. Cada hit exige leitura do diff; zero hits num ficheiro não exclui correção implementada por outro caminho.
+3. A verificação dos marcadores `new_chan_no`, `new_op_class` e `ieee80211_parse_ch_switch_ie` ajuda a localizar a correção CSA, mas não substitui revisão do código completo.
+4. A execução do workflow e o artefacto ainda têm de ser verificados antes de incorporar resultados de cobertura nesta revisão ou alterar qualquer estado CVE.
+
+**Estado CVE:** os cinco casos mantêm-se inconclusivos quanto à presença global de backports. Não se altera o CSV nesta subfase. Sem hardware/target conhecido, a aplicabilidade por equipamento continua bloqueada. Não houve build, instalação, alteração de router ou teste físico; Zabbix continua em pausa.
