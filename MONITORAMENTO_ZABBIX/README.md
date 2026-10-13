@@ -14,6 +14,10 @@ Centralizar a gestão operacional da frota: disponibilidade, WAN, interfaces, ca
 - [Modelo de controlo operacional](CONTROLO_OPERACIONAL.md)
 - [Segurança, acessos e segredos](SEGURANCA_E_ACESSOS.md)
 - [Plano de implementação e aceitação](PLANO_IMPLEMENTACAO.md)
+- [Levantamento seguro da instância Zabbix](LEVANTAMENTO_DA_INSTANCIA.md)
+- [Especificação lógica do template XFI OpenWrt](ESPECIFICACAO_TEMPLATE_XFI_OPENWRT.md)
+- [Modelo CSV de inventário](MODELO_INVENTARIO.csv)
+- [Matriz de homologação por router/firmware/versão](MATRIZ_DE_HOMOLOGACAO.md)
 
 ## Requisitos obrigatórios
 1. Nenhum router entra em serviço sem host no Zabbix, grupo, tags, template aplicável e contacto/escala de alertas.
@@ -35,3 +39,7 @@ A versão de Zabbix instalada na infraestrutura XFI ainda tem de ser confirmada 
 
 ## Estado de aceitação
 A pasta é DOCUMENTADA, não implementada. Ainda não foram criados hosts, templates, proxies, credenciais, ações ou dashboards na instância Zabbix; não foi efetuado teste com routers físicos.
+
+
+## Próxima etapa operacional
+Executar o levantamento descrito em [LEVANTAMENTO_DA_INSTANCIA.md](LEVANTAMENTO_DA_INSTANCIA.md) e registar a versão/topologia confirmadas. Até essa evidência existir, não gerar nem importar templates específicos de versão, nem ativar ações de escrita. O modelo de inventário e a especificação lógica já podem ser revistos sem acesso à instância.
