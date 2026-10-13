@@ -53,4 +53,4 @@ A revisão identificou commits de correção nas cinco páginas. Em várias pág
 
 ## Registo de qualidade
 
-A revisão é baseada nas páginas públicas consultadas em 2026-10-13. As versões afetadas e commits acima refletem o texto das fontes upstream; o estado de inclusão em tags de release permanece explicitamente pendente. A verificação de URLs 30/30 é uma evidência separada de acessibilidade HTTP e não valida estes metadados semânticos.
+A revisão é baseada nas páginas públicas consultadas em 2026-10-13. As notas oficiais de v25.12.5 listam as cinco CVEs como corrigidas; o Makefile da tag fixa `PKG_SOURCE_VERSION=5d7be43f8b9dec0eb47e245cfab81108bb131273`. A aplicabilidade a routers XFI continua pendente de identificar a imagem, o alvo de hardware e o pacote efetivamente instalado. A verificação de URLs 30/30 é uma evidência separada de acessibilidade HTTP e não valida, por si só, estes metadados semânticos.
