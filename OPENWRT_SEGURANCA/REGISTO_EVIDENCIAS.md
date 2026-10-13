@@ -156,3 +156,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Registos atualizados:** CVE-2026-55612, CVE-2026-55614 e CVE-2026-55613 para `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`; commit CSV `c58a1154ae501d4e4ec92e29065244798352a38b`.
 - **Relatório atualizado:** `REVISAO_FIXES_ADICIONAIS_25.12.5_2026-10-13.md`; commit `870fa8e667dacb32e8bbf6a951a7a1787e9c2d80`.
 - **Limite:** validação da tag e pin de fonte, não do binário instalado; não houve teste de router nem alteração Zabbix.
+
+
+## 2026-10-13 — Fecho da validação documental do pin cgi-io
+
+- **Advisory:** GHSA-jw5r-xhf5-2xcq / CVE-2026-62947; baseline afetado até OpenWrt 25.12.4, cgi-io HEAD `658b14b`.
+- **Cadeia de pins verificada:** `feeds.conf.default` da tag OpenWrt `v25.12.5` (blob `23962703cf641edd8d4e2ec2eef6725ca9fca396`) aponta o feed packages para `5caa62e0bc9f7fb9b0c12a23267bceb7724214dd`; o Makefile `net/cgi-io/Makefile` nesse commit (blob `e8b6d2fc8ad127277e4cfba94c38bb3c1203a016`) fixa `PKG_SOURCE_VERSION=7314451cb99692c0862a70c3307ee08bd2fbd9c0` e `PKG_SOURCE_DATE=2026-06-28`.
+- **Código:** o `main.c` do pin (blob `09792fadfe381240a92c0a5e25f33a330ac926f7`) canonicaliza o caminho antes da autorização ACL. O baseline afetado (blob `806d7153cde28d99f1c4ab9801177adfa61d3d1b`) autorizava e abria o caminho sem canonicalização.
+- **Registo:** CSV normalizado para `CVE-2026-62947 / GHSA-jw5r-xhf5-2xcq`; estado `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`.
+- **Fontes:** https://github.com/openwrt/openwrt/blob/v25.12.5/feeds.conf.default ; https://github.com/openwrt/packages/blob/5caa62e0bc9f7fb9b0c12a23267bceb7724214dd/net/cgi-io/Makefile ; https://github.com/openwrt/cgi-io/blob/7314451cb99692c0862a70c3307ee08bd2fbd9c0/main.c ; https://github.com/openwrt/openwrt/security/advisories/GHSA-jw5r-xhf5-2xcq
+- **Limite:** confirmação de código-fonte na cadeia de feed, não de binários de todos os targets, builds personalizadas ou pacotes instalados em routers XFI. Sem teste físico ou alterações de routers; Zabbix permanece em pausa.
