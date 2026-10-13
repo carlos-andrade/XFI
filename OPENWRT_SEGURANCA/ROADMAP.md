@@ -9,7 +9,7 @@
 | 1. Fundação | Governança, arquitetura, baseline, fontes e teste | Documentação persistida e revista | DOCUMENTADO |
 | 2. Inventário | Modelo de ficha de router e requisitos de cliente | Templates criados; falta preencher com hardware real | EM PREPARAÇÃO |
 | 3. Ingestão inicial | Verificador agendado de URLs do catálogo | Workflow passa em execução real e relatório é revisto | **EXECUTADO COM SUCESSO — 20/20 URLs acessíveis** |
-| 4. Ingestão ampliada | Releases, advisories, commits e páginas de hardware | Dados normalizados, rastreáveis e revistos | **IMPLEMENTADO; execução validada de 26/26 URLs; catálogo expandido novamente e nova execução pendente** |
+| 4. Ingestão ampliada | Releases, advisories, commits e páginas de hardware | Dados normalizados, rastreáveis e revistos | **EXECUTADO COM SUCESSO — 30/30 URLs acessíveis; registo inicial de releases/advisories criado** |
 | 5. Perfis | Perfis por classe de cliente e matriz de fluxos | Requisitos e variáveis sem segredos | DOCUMENTADO PRELIMINARMENTE |
 | 6. Seleção de hardware | Fabricantes, modelos, critérios, preços públicos e plano de homologação | Shortlist técnica/comercial criada; fontes revistas; critérios testáveis definidos | DOCUMENTADO, NÃO HOMOLOGADO |
 | 7. Monitorização Zabbix | Templates, métricas, alertas, inventário, proxies e canal seguro | Todos os routers monitorizados; recolha e alertas testados por modelo | **EM PAUSA — especificação documentada; não implementada** |
@@ -52,7 +52,7 @@
 - **Artefacto:** [openwrt-source-check-report](https://github.com/carlos-andrade/XFI/actions/runs/38384643976/artifacts/11804753837).
 - **Interpretação:** a URL que falhou foi o histórico de commits do GitHub, com HTTP 429 (`Too Many Requests`), consistente com limitação de taxa e não necessariamente com link quebrado.
 - **Correção aplicada:** a fonte de commits foi migrada para o repositório Git oficial `git.openwrt.org`; o verificador passou a classificar HTTP 429 separadamente como `rate_limited` e a imprimir as URLs com falha no resumo.
-- **Validação após correção:** [execução](https://github.com/carlos-andrade/XFI/actions/runs/38384970277), com 26/26 URLs acessíveis, 0 erros HTTP, 0 rate limits e 0 erros de rede. O relatório foi publicado como artefacto. Esta execução ocorreu antes da adição posterior de quatro URLs específicas de release/segurança.
+- **Validação após correção:** [execução de 26 URLs](https://github.com/carlos-andrade/XFI/actions/runs/38384970277) com 26/26 acessíveis; a execução mais recente após acrescentar quatro URLs específicas de release/segurança confirmou 30/30 acessíveis, 0 erros HTTP, 0 rate limits e 0 erros de rede.
 
 ## Evidência da execução após correção do rate limit
 
@@ -74,12 +74,22 @@
 - Decisão: monitorizar advisories, anúncios de release e changelogs em paralelo; o índice de advisories não é fonte única.
 - A análise é documental e datada; verificar release e suporte de novo antes de comprar, instalar ou homologar.
 
+## Evidência da validação final do catálogo ampliado
+
+- **Workflow:** [execução com 30 URLs](https://github.com/carlos-andrade/XFI/actions/runs/38385191297).
+- **Commit verificado:** `96660eea0da69fb23bb82742bc38859b1acf7d3d`.
+- **URLs únicas:** 30.
+- **Acessíveis:** 30.
+- **Erros HTTP / rate limits / erros de rede:** 0 / 0 / 0.
+- **Artefacto:** [relatório JSON](https://github.com/carlos-andrade/XFI/actions/runs/38385191297/artifacts/11804862674).
+- **Resultado:** a lista de fontes é acessível no instante da verificação; conteúdo e aplicabilidade continuam sujeitos a revisão humana.
+
 ## Próximas ações — fora da frente Zabbix
 
-1. **Confirmar a execução da versão ampliada do verificador** e rever o relatório JSON; a evidência anterior de 20/20 refere-se à versão inicial do catálogo.
+1. **Validar os metadados de advisories e releases** e confirmar versões afetadas/corrigidas nas fontes upstream, sem inferir dados ausentes.
 2. **Continuar a diligência de hardware:** verificar SKU e revisão exata, disponibilidade e preço final, garantia, imagem OpenWrt suportada e método de recuperação.
 3. **Preparar o inventário inicial** de routers e requisitos por perfil de cliente, sem inventar dados de equipamentos ainda não adquiridos.
-4. **Reexecutar o verificador** após a inclusão das quatro URLs específicas de release/segurança e confirmar o relatório; depois estruturar registos semânticos de advisories/releases.
+4. **Ampliar o registo semântico** de advisories/releases e ligar os registos a modelos e firmware apenas quando houver evidência explícita.
 5. **Detalhar perfis de segurança e matriz de fluxos** para os diferentes perfis de cliente.
 6. Retomar laboratório, homologação e deployment apenas depois de haver hardware identificado e evidências técnicas adequadas.
 
