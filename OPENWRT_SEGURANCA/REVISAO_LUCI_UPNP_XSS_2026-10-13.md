@@ -25,3 +25,20 @@ O caminho principal de dados de leases/estado está escapado no pin analisado, m
 ## Limites
 
 Não foram enviados pacotes UPnP, executados PoCs, construídas imagens nem alterados routers. A imagem e a configuração efetivas de um router XFI não foram verificadas; Zabbix continua em pausa.
+
+
+## Resultado da análise de proveniência — 2026-10-13
+
+**O caminho de dados está agora identificado; o estado passa de contexto pendente para possível correção incompleta no código fixado.**
+
+1. O backend `luci.upnp` da mesma feed fixa lê o ficheiro de leases `upnp_lease_file` e extrai `record[5]` para `lease.description` (linhas 24–38; blob SHA `f72b57b7ba84188b9b78854bf7ad0711394a0045`).
+2. O backend associa essa descrição às regras ativas através de endereço/portas e devolve `{ rules }` via ubus (linhas 89–111). Logo, `rule.descr` não é necessariamente texto estático: pode vir da descrição de um mapeamento UPnP criada por cliente da LAN.
+3. Na vista principal, a tabela criada em `render()` passa `rule.descr` sem escaping na linha 118 para `cbi_update_table()`. O componente `L.ui.Table.update()` passa a string como filho de `E('td', ...)`; a função `E` atribui uma string não-Node a `innerHTML`. Portanto, este caminho inicial pode interpretar HTML controlado pelo cliente.
+4. A atualização periódica na mesma vista usa `'%h'.format(rule.descr)` (linha 68), mas isso não elimina a exposição no render inicial. A correção observada parece incompleta para este caminho.
+
+### Estado e ação
+
+- Estado atualizado para **`FIX_INCOMPLETE_SOURCE_PATH_REMAINS`**: o pin de código analisado mantém um caminho de renderização sem escaping para a descrição UPnP.
+- Tratar como possível vulnerabilidade persistente na vista LuCI principal, apesar da afirmação de correção nas notas da release. Antes de declarar um alvo vulnerável, confirmar se a versão binária instalada corresponde ao pin e se UPnP está ativo.
+- A mitigação de código a propor é aplicar `'%h'.format(rule.descr)` também à linha 118 (ou passar um nó de texto seguro), e testar ambos os caminhos: render inicial e atualização periódica. Nenhuma alteração foi feita no upstream nem em routers XFI.
+- Fontes do caminho: [backend ucode](https://github.com/openwrt/luci/blob/128a7812f4be233c5dd7f7466f534fd888785caf/applications/luci-app-upnp/root/usr/share/rpcd/ucode/luci.upnp), [vista UPnP](https://github.com/openwrt/luci/blob/128a7812f4be233c5dd7f7466f534fd888785caf/applications/luci-app-upnp/htdocs/luci-static/resources/view/upnp/upnp.js), [implementação de cbi_update_table](https://github.com/openwrt/luci/blob/128a7812f4be233c5dd7f7466f534fd888785caf/modules/luci-base/htdocs/luci-static/resources/cbi.js), [implementação da tabela](https://github.com/openwrt/luci/blob/128a7812f4be233c5dd7f7466f534fd888785caf/modules/luci-base/htdocs/luci-static/resources/ui.js), [primitiva DOM E](https://github.com/openwrt/luci/blob/128a7812f4be233c5dd7f7466f534fd888785caf/modules/luci-base/htdocs/luci-static/resources/luci.js).
