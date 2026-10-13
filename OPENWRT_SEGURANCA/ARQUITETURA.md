@@ -13,19 +13,23 @@
 | IoT | Equipamentos de confiança reduzida | Bloquear movimento lateral; exceções individualizadas para destinos necessários |
 | SERVICES (opcional) | Serviços internos publicados | Fluxos explícitos, logs e publicação mínima |
 | VPN (opcional) | Gestão remota ou site-to-site | Autenticação forte, autorização por rede/identidade e rotas mínimas |
+| ZABBIX/MONITORING | Plano de monitorização e operações XFI | Canal privado, origens autorizadas, acesso mínimo e auditoria; nunca expor gestão do router à WAN |
 
-Não implementar todas as zonas por defeito; adequar ao hardware e caso de uso.
+Não implementar todas as zonas por defeito; adequar ao hardware e caso de uso. O desenho de gestão Zabbix está detalhado em [MONITORAMENTO_ZABBIX](../MONITORAMENTO_ZABBIX/README.md).
 
 ## Plano de gestão
 - Preferir administração por rede de gestão confiável ou VPN.
 - Não publicar LuCI, SSH, RPC/ubus nem outros planos administrativos diretamente na WAN.
+- Usar o Zabbix como consola operacional central obrigatória para monitorização, alertas, inventário e acionamento de operações predefinidas.
+- Usar Zabbix Proxy ou canal privado para redes remotas quando apropriado; nunca abrir portas administrativas na Internet apenas para permitir a monitorização.
+- Para alterações complexas, o Zabbix deve acionar um runner de automação restrito, com validação de alvo/modelo/versão, aprovação, auditoria e rollback.
 - Desativar serviços não necessários e remover credenciais padrão.
 - Usar passwords únicas, robustas, guardadas em gestor de segredos; preferir chaves SSH individuais quando compatíveis.
 - Usar HTTPS/TLS para a interface web quando o desenho o exigir, com confiança de certificados corretamente gerida.
 - Restringir origens e serviços administrativos quando suportado; manter acesso de emergência testado.
 
 ## Firewall e encaminhamento
-- Nas versões com firewall4, gerir regras via UCI em `/etc/config/firewall`; `fw4` gera regras nftables.
+- Nas versões com firewall4, gerir regras via UCI em /etc/config/firewall; fw4 gera regras nftables.
 - Não adicionar regras nftables avulsas sem entender integração com fw4 e testar reload/reboot.
 - Aplicar negação por omissão entre zonas e permitir fluxos documentados.
 - Validar IPv4 e IPv6: regras incompletas num protocolo podem criar bypass.
@@ -53,4 +57,4 @@ Não implementar todas as zonas por defeito; adequar ao hardware e caso de uso.
 - Acompanhar advisories/releases e definir SLA interno baseado em gravidade e exposição.
 
 ## Observabilidade
-Recolher o mínimo necessário: versão/uptime, WAN, interfaces, carga, memória, flash, Wi-Fi, estado de serviço e eventos relevantes. Definir métricas, alertas, retenção, acesso e mascaramento antes de ativar a recolha.
+A observabilidade obrigatória deve ser centralizada no Zabbix, conforme [MONITORAMENTO_ZABBIX/METRICAS_E_ALERTAS.md](../MONITORAMENTO_ZABBIX/METRICAS_E_ALERTAS.md). Recolher o mínimo necessário: versão/uptime, WAN, interfaces, carga, memória, flash, Wi-Fi, estado de serviço e eventos relevantes. Definir métricas, alertas, retenção, acesso e mascaramento antes de ativar a recolha.
