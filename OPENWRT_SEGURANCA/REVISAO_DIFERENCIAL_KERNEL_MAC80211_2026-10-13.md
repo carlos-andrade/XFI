@@ -70,3 +70,33 @@ Foram inspecionados 18 patches genéricos distintos (19 leituras, com um candida
 **Limite:** este é um filtro dirigido de candidatos, não uma varredura de conteúdo de todos os 414 patches genéricos nem dos diretórios específicos de todos os targets. Não é suficiente para classificar qualquer CVE como corrigido ou não corrigido.
 
 **Próxima ação:** completar a varredura de cabeçalhos/diffs dos 414 patches genéricos para os quatro caminhos de kernel, depois revisar patches específicos do target escolhido. Sem target de hardware, a revisão target-specific fica sem escopo finito.
+
+## 8. Continuação — inspeção dirigida de candidatos genéricos e pin mac80211
+
+**Data:** 2026-10-13  
+**Estado:** progresso parcial; não fecha o diff integral.
+
+### Pin mac80211 confirmado na fonte da release
+
+O Makefile de package/kernel/mac80211 na tag v25.12.5 declara versão 6.18.26, release 1, fonte https://github.com/openwrt/backports/releases/download/backports-v6.18.26, artefacto backports-6.18.26.tar.zst e SHA-256 declarado 2ad578c6cae22f192fefd44e1449725228d4109ee781998b41dcbae872554968.
+
+O hash foi lido do Makefile oficial, mas o conteúdo binário do tarball não foi descarregado nem verificado nesta subfase. Portanto, não declarar ausência do fix dentro do tarball. A inspeção anterior dos 13 patches package/kernel/mac80211/patches/subsys continua limitada ao overlay.
+
+### Inspeção dirigida adicional
+
+Foram lidos 20 patches candidatos dos diretórios genéricos backport-6.12 e pending-6.12, selecionados por nomes relacionados com block/MMC, DMA, skb, rede e drivers. Os diffs consultados não alteram diretamente os quatro ficheiros-alvo dos fixes de kernel: block/bdev.c, net/core/dev.c, kernel/dma/direct.c e drivers/mmc/host/mmci.c.
+
+Alguns candidatos alteram outros ficheiros do mesmo subsistema, como block/partitions/*, drivers/mmc/core/block.c, drivers Ethernet Mediatek ou include/linux/skbuff.h, mas isso não equivale aos hunks dos cinco commits upstream.
+
+**Conclusão permitida:** os candidatos dirigidos inspecionados não mostram equivalência direta nos caminhos exatos. **Conclusão não permitida:** ausência global de backport. O universo genérico contém 414 patches; a leitura integral de todos os patches e a inspeção target-specific continuam pendentes.
+
+### Próxima ação
+
+1. Completar a comparação de conteúdo dos patches genéricos, mantendo registo de cobertura por ficheiro/função e exceções.
+2. Obter e verificar o tarball mac80211 esperado pelo pin (SHA-256 acima) e procurar equivalência funcional do fix de CVE-2026-90344.
+3. Não alterar estados CVE no CSV até existir evidência suficiente para classificar cada caso.
+4. Usar a ficha INVENTARIO_HARDWARE/FICHA_INVENTARIO_ROUTER.md; os dados físicos permanecem não fornecidos.
+5. Revisão target-specific bloqueada até existir hardware/target identificado.
+
+Nenhuma imagem construída, nenhum router alterado/testado e Zabbix continua em pausa.
+
