@@ -226,3 +226,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Estado:** `FIX_INCOMPLETE_SOURCE_PATH_REMAINS`; source pin parece deixar um caminho de XSS residual apesar da nota de release.
 - **Correção proposta:** aplicar escaping à linha 118 ou passar nó de texto; adicionar teste de regressão para ambos os caminhos. Não foi alterado código upstream nem router.
 - **Relatório:** [REVISAO_LUCI_UPNP_XSS_2026-10-13.md](REVISAO_LUCI_UPNP_XSS_2026-10-13.md).
+
+
+## 2026-10-13 — Revisão inicial de bibliotecas centrais
+
+- **OpenSSL:** OpenWrt `v25.12.5` fixa `3.5.7-r1`; upstream 3.5.8 e 3.5.9, posteriores, incluem correções de segurança. Não foram identificados patches locais específicos para os CVEs desses releases na árvore de patches do tag. Nove CVEs foram registados como exigindo revisão de backport e de funcionalidades ativas.
+- **musl:** versão `1.2.5`; patches 004–006 sobre qsort/heap Leonardo estão presentes. CVE-2026-40200 marcado `BACKPORT_PATCH_PRESENT_NEEDS_DIFF_VALIDATION`, não fechado ainda.
+- **Dropbear:** versão `2025.89-r3`; CVE-2025-14282 corrigido nessa versão. CVE-2026-3706 permanece como advisory não revisto/impacto contestado; commit upstream diz que a maleabilidade de assinatura não afeta o uso SSH.
+- **Kernel:** `6.12.94`, hash `e998a232b9418db3301cb58468e291a4f41d6ab8306029b30d991f56251dc8d2`; pin confirmado, análise de CVEs por target pendente.
+- **Relatório:** [REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md](REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md).
+- Sem build, testes físicos ou alterações em routers; Zabbix em pausa.
