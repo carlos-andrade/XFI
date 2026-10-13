@@ -35,13 +35,21 @@ A revisão identificou commits de correção nas cinco páginas. Em várias pág
 - Não foi executado qualquer PoC contra router de produção, nem é necessário fazê-lo para este trabalho documental.
 - Não se deve concluir que todos os routers OpenWrt estão vulneráveis, nem que um firmware está corrigido, sem a correspondência entre advisory, pacote, tag de release, imagem e configuração real.
 
+## Verificação direta da tag e do pin do pacote
+
+- Tag consultada: [`v25.12.5`](https://github.com/openwrt/openwrt/releases).
+- Makefile do pacote: [`package/network/services/odhcpd/Makefile` na tag v25.12.5](https://github.com/openwrt/openwrt/blob/v25.12.5/package/network/services/odhcpd/Makefile).
+- Blob SHA do Makefile consultado: `9353be754fefee82f08dff522258d9131c56f3ce`.
+- `PKG_SOURCE_DATE`: `2026-06-29`.
+- `PKG_SOURCE_VERSION`: `5d7be43f8b9dec0eb47e245cfab81108bb131273`.
+- A página oficial da release lista as cinco CVEs analisadas como corrigidas. O Makefile identifica a revisão de odhcpd usada pela tag; isto não comprova, por si só, a versão efetivamente instalada num router.
+
 ## Próximas ações
 
-1. Confirmar, nas tags de release oficiais, se cada commit de correção está incluído na versão de OpenWrt considerada para implantação.
-2. Verificar o `PKG_SOURCE_VERSION` do pacote `odhcpd` nas tags relevantes e registar evidência por release.
-3. Repetir o mesmo método para outros fixes citados nas notas da release 25.12.5, sem assumir que o índice de advisories é completo.
-4. Só após definir modelos/revisões de hardware, cruzar a evidência com a imagem suportada e a configuração DHCPv6 do equipamento.
-5. Manter Zabbix em pausa; esta revisão não exige nem autoriza alterações na instância Zabbix.
+1. Repetir a verificação para outros fixes de segurança citados nas notas da release 25.12.5, sem assumir que o índice de advisories é completo.
+2. Quando houver inventário real, recolher modelo/revisão, versão da imagem e versão do pacote odhcpd para cada router e cruzar com a evidência oficial.
+3. Preparar testes em laboratório para firmware e hardware selecionados antes de qualquer rollout.
+4. Manter Zabbix em pausa; esta revisão não exige nem autoriza alterações na instância Zabbix.
 
 ## Registo de qualidade
 
