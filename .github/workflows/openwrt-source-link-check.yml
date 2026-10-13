@@ -1,0 +1,38 @@
+name: XFI — Verificar fontes oficiais OpenWrt
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 7 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: openwrt-source-link-check
+  cancel-in-progress: false
+
+jobs:
+  check-catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Obter repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validar catálogo e verificar URLs oficiais
+        run: python OPENWRT_SEGURANCA/scripts/check_openwrt_sources.py
+
+      - name: Publicar relatório como artefacto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: openwrt-source-check-report
+          path: openwrt-source-check-report.json
+          if-no-files-found: warn
+          retention-days: 30
