@@ -9,7 +9,7 @@
 | 1. Fundação | Governança, arquitetura, baseline, fontes e teste | Documentação persistida e revista | DOCUMENTADO |
 | 2. Inventário | Modelo de ficha de router e requisitos de cliente | Templates criados; falta preencher com hardware real | EM PREPARAÇÃO |
 | 3. Ingestão inicial | Verificador agendado de URLs do catálogo | Workflow passa em execução real e relatório é revisto | **EXECUTADO COM SUCESSO — 20/20 URLs acessíveis** |
-| 4. Ingestão ampliada | Releases, advisories, commits e páginas de hardware | Dados normalizados, rastreáveis e revistos | **EM IMPLEMENTAÇÃO — catálogo e esquema JSON preparados; nova execução pendente de confirmação** |
+| 4. Ingestão ampliada | Releases, advisories, commits e páginas de hardware | Dados normalizados, rastreáveis e revistos | **EM IMPLEMENTAÇÃO — 26 URLs verificadas (25 acessíveis, 1 erro HTTP); diagnosticar a falha** |
 | 5. Perfis | Perfis por classe de cliente e matriz de fluxos | Requisitos e variáveis sem segredos | DOCUMENTADO PRELIMINARMENTE |
 | 6. Seleção de hardware | Fabricantes, modelos, critérios, preços públicos e plano de homologação | Shortlist técnica/comercial criada; fontes revistas; critérios testáveis definidos | DOCUMENTADO, NÃO HOMOLOGADO |
 | 7. Monitorização Zabbix | Templates, métricas, alertas, inventário, proxies e canal seguro | Todos os routers monitorizados; recolha e alertas testados por modelo | **EM PAUSA — especificação documentada; não implementada** |
@@ -39,6 +39,19 @@
 - Esquema e limitações documentados em [INGESTAO_FONTES.md](INGESTAO_FONTES.md).
 - README atualizado para distinguir o sucesso da versão inicial da validação ainda pendente da versão ampliada.
 - **Estado de validação:** a primeira versão comprovou 20/20 URLs acessíveis. A nova execução deve ser confirmada antes de marcar a fase ampliada como validada. O conteúdo técnico ainda requer revisão humana.
+
+## Evidência da execução do catálogo ampliado
+
+- **Workflow:** [execução ampliada do verificador](https://github.com/carlos-andrade/XFI/actions/runs/38384643976).
+- **Commit verificado:** `19470db2e473a7d517d0d41fcceac285c503cc8d`.
+- **Resultado do job:** sucesso técnico; relatório gerado e artefacto publicado.
+- **URLs únicas:** 26.
+- **Acessíveis:** 25.
+- **Erros HTTP:** 1.
+- **Erros de rede:** 0.
+- **Artefacto:** [openwrt-source-check-report](https://github.com/carlos-andrade/XFI/actions/runs/38384643976/artifacts/11804753837).
+- **Interpretação:** o workflow terminou corretamente, mas existe uma fonte a investigar. O sucesso do job não significa que todas as URLs passaram.
+- **Melhoria adicional:** o verificador foi alterado para imprimir a lista das URLs com falhas no resumo da execução. A execução dessa melhoria ainda precisa de confirmação.
 
 ## Próximas ações — fora da frente Zabbix
 
