@@ -166,3 +166,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Registo:** CSV normalizado para `CVE-2026-62947 / GHSA-jw5r-xhf5-2xcq`; estado `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`.
 - **Fontes:** https://github.com/openwrt/openwrt/blob/v25.12.5/feeds.conf.default ; https://github.com/openwrt/packages/blob/5caa62e0bc9f7fb9b0c12a23267bceb7724214dd/net/cgi-io/Makefile ; https://github.com/openwrt/cgi-io/blob/7314451cb99692c0862a70c3307ee08bd2fbd9c0/main.c ; https://github.com/openwrt/openwrt/security/advisories/GHSA-jw5r-xhf5-2xcq
 - **Limite:** confirmação de código-fonte na cadeia de feed, não de binários de todos os targets, builds personalizadas ou pacotes instalados em routers XFI. Sem teste físico ou alterações de routers; Zabbix permanece em pausa.
+
+
+## 2026-10-13 — Revisão de LuCI Tailscale Community (Critical)
+
+- **Advisory:** GHSA-xwc5-mx58-rh35, severidade Critical, CVSS 9.9; vetor de injeção de comandos root via `tailscale.do_login` com conta ACL delegada, aplicação instalada e Tailscale em estado de logout/NeedsLogin.
+- **Pin da feed:** OpenWrt `v25.12.5` fixa LuCI em `128a7812f4be233c5dd7f7466f534fd888785caf`.
+- **Código inspecionado:** `applications/luci-app-tailscale-community/root/usr/share/rpcd/ucode/tailscale.uc`, blob SHA `2a30bdbfbadc285133c25b3d50dd6ae4b5317bf4`; a construção do comando usa `shell_quote(login_cmd + ' &')` no shell exterior.
+- **Estado:** `RELEASE_NOTES_AND_FEED_PIN_CONFIRMED` no nível das notas e fonte da feed; não prova presença da aplicação nem conteúdo binário num router específico.
+- **Relatório:** [VALIDACAO_LUCI_TAILSCALE_2026-10-13.md](VALIDACAO_LUCI_TAILSCALE_2026-10-13.md).
+- **Não realizado:** nenhum PoC, build ou teste físico; nenhum router alterado; Zabbix continua em pausa.
