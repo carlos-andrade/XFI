@@ -302,3 +302,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - Kernel: commits upstream e ficheiros alterados identificados para cinco CVEs; diff semântico com os 414 patches genéricos e patches por target continua pendente. Filtro de nomes não prova ausência de backport.
 - CSV validado: 51 registos, 13 campos por registo, zero linhas malformadas e zero IDs duplicados.
 - Não houve alteração de router, build, teste físico ou implementação Zabbix. Zabbix permanece pausado.
+
+
+## 2026-10-13 — Fase técnica: revisão diferencial inicial de kernel e mac80211
+- **Fonte-base:** OpenWrt v25.12.5; kernel pin 6.12.94; mac80211 pin 6.18.26.
+- **Verificado:** metadados/diffs upstream dos cinco commits CVE em triagem; Makefile OpenWrt mac80211 consultado; correção upstream de CVE-2026-90344 identificada em Linux 6.12.110/6.18.52.
+- **Conclusão limitada:** mac80211 6.18.26 é anterior à versão upstream corrigida 6.18.52; não se conclui ausência de patch equivalente até comparação do conteúdo dos patches.
+- **Pendente:** diff integral de conteúdo dos cinco fixes contra patches genéricos e específicos por target; diff do conteúdo do backports mac80211; applicability check por target após inventário de hardware.
+- **Estado:** EM_REVISAO. A filtragem anterior de nomes de patch não prova ausência de backport.
+- **Não realizado:** sem build, alteração de router ou teste físico/laboratório. Zabbix continua em pausa.
+- **Relatório:** OPENWRT_SEGURANCA/REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md.
