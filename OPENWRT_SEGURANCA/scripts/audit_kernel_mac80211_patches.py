@@ -29,6 +29,7 @@ MAC_MARKERS = [
 patch_roots = [
     ROOT / "target/linux/generic/backport-6.12",
     ROOT / "target/linux/generic/pending-6.12",
+    ROOT / "package/kernel/mac80211/patches",
 ]
 # Include target-specific 6.12 patch directories available in the pinned tree.
 for p in (ROOT / "target/linux").glob("*/patches-6.12"):
