@@ -284,3 +284,10 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - CVE-2026-98211: `af6fbf72e899932f330c4e5d0b84d985c922c633`, `drivers/mmc/host/mmci.c`.
 - O filtro de nomes de 414 patches genéricos não encontrou correspondência direta. Não é prova de ausência; falta diff de conteúdo e análise por target.
 - Fontes CVE/commits estão documentadas em [REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md](REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md).
+
+
+## 2026-10-13 — validação estrutural do registo CSV
+
+- Após as atualizações de OpenSSL, musl, Dropbear e kernel, o ficheiro `REGISTO_ADVISORIES_RELEASES.csv` foi relido através da API do GitHub e validado estruturalmente: 51 registos de dados, 13 campos por linha, zero linhas malformadas e zero IDs duplicados.
+- Commit de normalização/validação CSV: `e53f69bd019268be9fd7921a443897fca8139dfb`.
+- A validação é estrutural; não substitui o diff de patches, build ou validação de imagem.
