@@ -124,3 +124,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Alterações:** CSV, relatório de advisories e roadmap atualizados para distinguir as quatro correções explicitamente listadas da quinta pendente.
 - **Limitação:** ainda falta verificar a tag/build concreta e o pin `PKG_SOURCE_VERSION` de odhcpd para fechar a CVE-2026-55606; nenhuma conclusão sobre router XFI sem inventário real.
 - **Estado:** quatro CVEs confirmadas nas notas da release; uma pendente de validação por tag/pacote. Zabbix continua em pausa.
+
+## 2026-10-13 — Correção e confirmação do pacote odhcpd em v25.12.5
+
+- **Correção de revisão:** a conclusão anterior de que CVE-2026-55606 não aparecia nas notas de v25.12.5 estava errada. A entrada oficial da release v25.12.5 lista explicitamente CVE-2026-53921, CVE-2026-53918, CVE-2026-53920, CVE-2026-53922 e CVE-2026-55606 como corrigidas.
+- **Fonte da release:** https://github.com/openwrt/openwrt/releases.
+- **Makefile consultado diretamente na tag:** https://github.com/openwrt/openwrt/blob/v25.12.5/package/network/services/odhcpd/Makefile.
+- **Blob SHA do Makefile:** `9353be754fefee82f08dff522258d9131c56f3ce`.
+- **Pin observado:** `PKG_SOURCE_DATE=2026-06-29`; `PKG_SOURCE_VERSION=5d7be43f8b9dec0eb47e245cfab81108bb131273`.
+- **Interpretação:** as notas da release declaram as cinco correções; o Makefile fornece a revisão do pacote usada pela tag. Não equivale a comprovar o pacote instalado em qualquer router XFI nem a certificar a imagem de cada alvo.
+- **Estado:** evidência da release e do pin do pacote registada; validação por modelo/revisão/imagem instalada continua pendente. Zabbix permanece em pausa.
