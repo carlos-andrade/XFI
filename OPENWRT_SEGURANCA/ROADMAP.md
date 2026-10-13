@@ -9,7 +9,7 @@
 | 1. Fundação | Governança, arquitetura, baseline, fontes e teste | Documentação persistida e revista | DOCUMENTADO |
 | 2. Inventário | Modelo de ficha de router e requisitos de cliente | Templates criados; falta preencher com hardware real | EM PREPARAÇÃO |
 | 3. Ingestão inicial | Verificador agendado de URLs do catálogo | Workflow passa em execução real e relatório é revisto | **EXECUTADO COM SUCESSO — 20/20 URLs acessíveis** |
-| 4. Ingestão ampliada | Releases, advisories, commits e páginas de hardware | Dados normalizados, rastreáveis e revistos | PLANEADO |
+| 4. Ingestão ampliada | Releases, advisories, commits e páginas de hardware | Dados normalizados, rastreáveis e revistos | **EM IMPLEMENTAÇÃO — catálogo e esquema JSON preparados; nova execução pendente de confirmação** |
 | 5. Perfis | Perfis por classe de cliente e matriz de fluxos | Requisitos e variáveis sem segredos | DOCUMENTADO PRELIMINARMENTE |
 | 6. Seleção de hardware | Fabricantes, modelos, critérios, preços públicos e plano de homologação | Shortlist técnica/comercial criada; fontes revistas; critérios testáveis definidos | DOCUMENTADO, NÃO HOMOLOGADO |
 | 7. Monitorização Zabbix | Templates, métricas, alertas, inventário, proxies e canal seguro | Todos os routers monitorizados; recolha e alertas testados por modelo | **EM PAUSA — especificação documentada; não implementada** |
@@ -32,12 +32,20 @@
 - **Interpretação:** o teste confirma acessibilidade HTTP no momento da execução, não valida conteúdo, segurança, atualidade nem adequação técnica das páginas.
 - **Aviso não bloqueante:** o runner reportou aviso de depreciação de Node.js 20 em actions usadas pelo workflow; rever as versões dessas actions antes de futura incompatibilidade do runner.
 
+## Evolução da ingestão ampliada — 2026-10-13
+
+- Catálogo expandido com índices de advisories, releases, downloads oficiais, repositório upstream, commits e issues do projeto OpenWrt.
+- Verificador atualizado para extrair metadados da tabela do catálogo, deduplicar URLs, aplicar allowlist explícita e produzir relatório JSON por fonte.
+- Esquema e limitações documentados em [INGESTAO_FONTES.md](INGESTAO_FONTES.md).
+- README atualizado para distinguir o sucesso da versão inicial da validação ainda pendente da versão ampliada.
+- **Estado de validação:** a primeira versão comprovou 20/20 URLs acessíveis. A nova execução deve ser confirmada antes de marcar a fase ampliada como validada. O conteúdo técnico ainda requer revisão humana.
+
 ## Próximas ações — fora da frente Zabbix
 
-1. **Executar e validar o workflow de verificação de URLs** já preparado para o catálogo de fontes oficiais; rever o relatório da primeira execução.
+1. **Confirmar a execução da versão ampliada do verificador** e rever o relatório JSON; a evidência anterior de 20/20 refere-se à versão inicial do catálogo.
 2. **Continuar a diligência de hardware:** verificar SKU e revisão exata, disponibilidade e preço final, garantia, imagem OpenWrt suportada e método de recuperação.
 3. **Preparar o inventário inicial** de routers e requisitos por perfil de cliente, sem inventar dados de equipamentos ainda não adquiridos.
-4. **Ampliar a ingestão de fontes oficiais** (releases, avisos de segurança, commits e páginas de hardware), com dados normalizados e rastreáveis.
+4. **Concluir a ingestão ampliada** com validação do relatório normalizado, seguida de revisão semântica das fontes de releases, avisos de segurança e commits.
 5. **Detalhar perfis de segurança e matriz de fluxos** para os diferentes perfis de cliente.
 6. Retomar laboratório, homologação e deployment apenas depois de haver hardware identificado e evidências técnicas adequadas.
 
