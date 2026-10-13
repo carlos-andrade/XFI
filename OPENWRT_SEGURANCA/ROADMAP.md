@@ -164,3 +164,11 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - Registo documental atualizado para `RELEASE_NOTES_AND_FEED_PIN_CONFIRMED`; relatório: [VALIDACAO_LUCI_TAILSCALE_2026-10-13.md](VALIDACAO_LUCI_TAILSCALE_2026-10-13.md).
 - A aplicabilidade depende da aplicação instalada, estado do Tailscale e ACLs delegadas. A imagem/dispositivo XFI não foi verificada.
 - Próximo: rever as restantes aplicações LuCI listadas nas notas 25.12.5, começando por avançadas/reboot, adblock-fast, samba4 e travelmate.
+
+
+## Atualização — validação de mais duas correções LuCI (2026-10-13)
+
+- **CVE-2026-55897 / GHSA-vj96-f37g-37f6 — advanced-reboot, High:** a ACL de leitura no feed fixado por `v25.12.5` já não concede `/bin/sh` nem `file.exec`.
+- **CVE-2026-55159 / GHSA-ggpf-xrph-wg5v — adblock-fast, High:** o backend no feed fixado usa `syncCron` em vez de `setCronEntry` e valida os campos de agenda antes de escrever o crontab root.
+- CSV atualizado com ambos os advisories; relatório: [VALIDACAO_LUCI_ADVANCED_REBOOT_ADBLOCK_FAST_2026-10-13.md](VALIDACAO_LUCI_ADVANCED_REBOOT_ADBLOCK_FAST_2026-10-13.md).
+- Confirmação documental/source-pin, não validação de binário ou equipamento. Continuar com Samba4, Travelmate e XSS no estado DHCPv6 do LuCI.
