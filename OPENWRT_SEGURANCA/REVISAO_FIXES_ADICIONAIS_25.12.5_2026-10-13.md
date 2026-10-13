@@ -51,3 +51,16 @@ As notas 25.12.5 também enumeram correções em módulos/aplicações LuCI e de
 3. Rever os pins de kernel, OpenSSL, musl e Dropbear e documentar os CVEs agregados sem os confundir com CVEs individuais.
 4. Quando existir inventário de hardware, cruzar os resultados com imagem e pacote realmente instalados.
 
+
+
+## Validação adicional do pin uhttpd na tag v25.12.5
+
+Foi consultado o Makefile oficial [uhttpd na tag v25.12.5](https://github.com/openwrt/openwrt/blob/v25.12.5/package/network/services/uhttpd/Makefile):
+
+- Blob SHA do Makefile: `915baa07ab9a0cb44f6819d9d09bc2c001ed2eb7`.
+- `PKG_SOURCE_DATE=2026-06-16`.
+- `PKG_SOURCE_VERSION=7b1bec45826bd78c8afc993435bdc0f1df2fe399`.
+- O commit pinado é três commits à frente do commit `1b624f8f814ed568608d756512892416e0431d77` citado como limiar corrigido nas páginas dos advisories; a comparação upstream confirmou relação de ancestralidade e três commits adicionais.
+- As notas da release enumeram CVE-2026-55612, CVE-2026-55614 e CVE-2026-55613 como corrigidas. Para estes três registos, o estado passou a `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`.
+- **Limite:** isto confirma a declaração da release e o pin do pacote-fonte na tag, não que um router XFI específico esteja a executar essa imagem/pacote.
+- Makefile e commits consultados são evidência upstream; não foi compilada nem testada uma imagem.
