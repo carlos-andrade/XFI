@@ -11,6 +11,13 @@
 
 **Saída:** inventário da plataforma e desenho de conectividade aprovado.
 
+## Fase 1A — evidência técnica de versão
+- [ ] Executar o procedimento em LEVANTAMENTO_DA_INSTANCIA.md no servidor/Frontend real.
+- [ ] Registar apenas versões e dados de arquitetura não secretos.
+- [ ] Confirmar o método de instalação antes de escolher comandos e artefactos.
+
+**Gate:** não produzir XML/YAML importável nem alterar a instância antes de confirmar versão e método de instalação.
+
 ## Fase 2 — modelo de inventário
 - [ ] Definir nomenclatura sem dados pessoais.
 - [ ] Criar grupos e tags.
