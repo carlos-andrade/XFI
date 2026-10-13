@@ -9,7 +9,8 @@ Este é o repositório oficial do projeto **XFI** e a fonte de verdade para a su
 
 ## Frentes de trabalho
 
-- **Segurança de routers com OpenWrt:** [OPENWRT_SEGURANCA/README.md](OPENWRT_SEGURANCA/README.md) — catálogo de fontes oficiais, arquitetura de segmentação, baseline de hardening, processo de ingestão, testes, rollback e roadmap.
+- **Segurança de routers com OpenWrt:** [OPENWRT_SEGURANCA/README.md](OPENWRT_SEGURANCA/README.md) — catálogo de fontes oficiais, arquitetura de segmentação, baseline de hardening, processo de ingestão, testes, rollback, seleção de hardware e roadmap.
+- **Monitorização e controlo central via Zabbix:** [MONITORAMENTO_ZABBIX/README.md](MONITORAMENTO_ZABBIX/README.md) — requisito obrigatório para a frota OpenWrt, com arquitetura, métricas, alertas, operações autorizadas, segurança de acessos e plano de implementação.
 
 ## Regra operacional
 
