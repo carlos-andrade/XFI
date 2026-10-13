@@ -3,6 +3,16 @@
 ## Autoridade normativa
 A governança transversal segue o repositório [GOVERNANCA](https://github.com/carlos-andrade/GOVERNANCA). Este diretório contém procedimentos específicos de segurança de roteadores no XFI e não substitui as normas centrais.
 
+## Regra obrigatória — Zabbix
+Todos os routers OpenWrt fornecidos, instalados ou geridos pela XFI têm de estar inventariados e monitorizados no Zabbix. O Zabbix é o ponto central de observabilidade, alertas e acionamento de operações autorizadas.
+
+- Nenhum router deve ser considerado aceite para operação sem host, inventário, template, alertas e caminho de gestão seguro no Zabbix.
+- Não expor LuCI, SSH, SNMP ou outros serviços administrativos na WAN pública para permitir a monitorização.
+- Preferir SNMPv3 authPriv ou um método alternativo cifrado e suportado pelo modelo.
+- Alterações complexas devem ser executadas por automação restrita e auditada, com validação, aprovação e rollback.
+- A especificação de execução é mantida em [MONITORAMENTO_ZABBIX](../MONITORAMENTO_ZABBIX/README.md).
+- Esta regra está DOCUMENTADA; não significa que a instância Zabbix já esteja configurada.
+
 ## Regra de fontes e recolha
 - Usar a documentação pública OpenWrt como fonte primária para comportamento, configuração e compatibilidade.
 - Preferir URLs e metadados de origem a cópias extensas do wiki. Registar URL, título, data de consulta e relevância.
