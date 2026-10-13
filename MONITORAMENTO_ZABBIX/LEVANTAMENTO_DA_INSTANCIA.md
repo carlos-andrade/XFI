@@ -4,6 +4,11 @@
 **Objetivo:** recolher apenas os dados técnicos necessários para escolher os templates e a arquitetura.  
 **Segurança:** não enviar palavras-passe, tokens, chaves, ficheiros de configuração completos, endereços públicos sensíveis ou dados pessoais de clientes.
 
+## Política de versão-alvo
+A XFI utiliza sempre a versão mais recente **estável de produção**, não versões alpha, beta ou release candidate. Antes de qualquer instalação/atualização, verificar o estado atual em [downloads oficiais](https://www.zabbix.com/download_sources) e [notas de lançamento](https://www.zabbix.com/release_notes), confirmar compatibilidade e preparar backup/rollback. A versão efetivamente instalada tem de ser recolhida para decidir o caminho de atualização.
+
+Na consulta de 2026-10-13, o site oficial listava Zabbix 7.4.15 como versão 7.4 disponível e 8.0.0rc1 como pré-lançamento. Este registo é uma fotografia temporal, não uma autorização para ignorar versões estáveis publicadas depois.
+
 ## 1. Dados a registar
 - Versão exata do Zabbix Server e Frontend.
 - Sistema operativo e método de instalação: pacotes, Docker/Compose ou outro.
