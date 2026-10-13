@@ -50,3 +50,15 @@ Inclui levantamento documental, desenho de controlos, ficha de inventário, shor
 
 ## Gate mínimo para produção
 Nenhum perfil pode ser chamado de homologado sem modelos/revisões suportados identificados, versão OpenWrt fixada, revisão por pares, backup protegido, teste de firewall e isolamento, verificação de administração remota, teste DNS/conectividade, atualização/recuperação ensaiadas, monitorização Zabbix funcional, alertas testados e aprovação documentada.
+
+
+## Estado da revisão documental — 2026-10-13
+
+A sequência de triagem documental foi encerrada com as limitações e pendências registadas. Este estado não equivale a homologação de firmware ou segurança de routers em produção.
+
+- [Relatório de fecho da revisão documental](FECHO_REVISAO_DOCUMENTAL_2026-10-13.md)
+- [Matriz de advisories/releases](REGISTO_ADVISORIES_RELEASES.csv)
+- [Revisão do kernel 6.12.94 vs atualizações posteriores](REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md)
+- [Roadmap](ROADMAP.md)
+
+**Pendente para a próxima fase:** diff semântico dos cinco fixes do kernel com patches genéricos/específicos por target; revisão do feed mac80211; inventário de hardware real. Zabbix permanece pausado.
