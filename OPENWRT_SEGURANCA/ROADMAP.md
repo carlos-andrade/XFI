@@ -189,3 +189,11 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - O backend passa a impor a allowlist, mesmo que a ACL LuCI permita escrita UCI na configuração `travelmate`.
 - CSV e relatório atualizados: [VALIDACAO_TRAVELMATE_2026-10-13.md](VALIDACAO_TRAVELMATE_2026-10-13.md).
 - Limite: não confirma pacote/configuração real em routers XFI.
+
+
+## Revisão pendente — UPnP stored XSS (2026-10-13)
+
+- **GHSA-8v49-6387-7f89 — High:** as vistas de mapas ativos e estado UPnP na feed LuCI pinada escapam a descrição com `%h`.
+- **Pendente de fecho:** `luci-app-upnp/htdocs/.../view/upnp/upnp.js` mantém uma segunda utilização de `rule.descr` sem escaping na linha 118. É necessário confirmar a origem de `data[0].rules` e se o valor é controlável por cliente LAN.
+- CSV marcado `SOURCE_PIN_REVIEW_PARTIAL_PENDING_CONTEXT`; relatório: [REVISAO_LUCI_UPNP_XSS_2026-10-13.md](REVISAO_LUCI_UPNP_XSS_2026-10-13.md).
+- Não classificar como totalmente corrigido até fechar a análise de proveniência. Sem PoC/teste físico.
