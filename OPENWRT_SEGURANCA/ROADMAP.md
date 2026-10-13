@@ -181,3 +181,11 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - CSV atualizado; relatório: [VALIDACAO_LUCI_SAMBA4_DHCPV6_XSS_2026-10-13.md](VALIDACAO_LUCI_SAMBA4_DHCPV6_XSS_2026-10-13.md).
 - **Limite:** feed de código-fonte confirmada, mas imagem, pacotes, ACLs e exposição reais não verificados.
 - Próximo: Travelmate e restantes correções de aplicação; depois bibliotecas centrais (kernel, OpenSSL, musl, Dropbear).
+
+
+## Atualização — Travelmate (2026-10-13)
+
+- **GHSA-p35r-3323-6g7g — High:** o pacote `travelmate` na feed packages pinada por OpenWrt `v25.12.5` é `2.4.6-r2`; a função de auto-login canonicaliza o caminho e permite apenas scripts sob `/etc/travelmate/*.login` antes de executar.
+- O backend passa a impor a allowlist, mesmo que a ACL LuCI permita escrita UCI na configuração `travelmate`.
+- CSV e relatório atualizados: [VALIDACAO_TRAVELMATE_2026-10-13.md](VALIDACAO_TRAVELMATE_2026-10-13.md).
+- Limite: não confirma pacote/configuração real em routers XFI.
