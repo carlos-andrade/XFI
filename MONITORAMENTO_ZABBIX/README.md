@@ -19,6 +19,12 @@ Centralizar a gestão operacional da frota: disponibilidade, WAN, interfaces, ca
 - [Modelo CSV de inventário](MODELO_INVENTARIO.csv)
 - [Matriz de homologação por router/firmware/versão](MATRIZ_DE_HOMOLOGACAO.md)
 
+## Política de versão Zabbix
+
+**Regra XFI:** utilizar sempre a versão mais recente **estável e de produção** do Zabbix, confirmada na página oficial de downloads/notas de lançamento imediatamente antes da instalação ou atualização. Não adotar versões alpha, beta ou release candidate em produção. A atualização deve seguir as notas oficiais, compatibilidade de sistema operativo/base de dados/PHP, backup verificado e testes de regressão.
+
+**Referência consultada em 2026-10-13:** a página oficial de downloads indica Zabbix 7.4.15 como versão 7.4 disponível e Zabbix 8.0.0rc1 como pré-lançamento; portanto, para produção nesta data, a referência é a linha estável 7.4.15, salvo nova versão estável publicada antes da implementação. Confirmar novamente no momento da instalação. Fontes: [downloads oficiais](https://www.zabbix.com/download_sources), [notas oficiais de lançamento](https://www.zabbix.com/release_notes), [roadmap oficial](https://www.zabbix.com/roadmap).
+
 ## Requisitos obrigatórios
 1. Nenhum router entra em serviço sem host no Zabbix, grupo, tags, template aplicável e contacto/escala de alertas.
 2. Todos os routers devem reportar, no mínimo, disponibilidade, estado WAN, tráfego das interfaces, uptime, recursos básicos, versão de firmware e sinais de degradação suportados pelo hardware.
@@ -35,7 +41,7 @@ Centralizar a gestão operacional da frota: disponibilidade, WAN, interfaces, ca
 - [Wiki OpenWrt — Zabbix network monitoring](https://openwrt.org/docs/guide-user/services/network_monitoring/zabbix)
 - [OpenWrt — segurança e hardening](https://openwrt.org/docs/guide-user/security/openwrt_security)
 
-A versão de Zabbix instalada na infraestrutura XFI ainda tem de ser confirmada antes de selecionar templates, funções e formato de importação definitivos.
+A política de versão-alvo é a mais recente estável; a versão efetivamente instalada na infraestrutura XFI ainda tem de ser confirmada para decidir se é necessária atualização e para escolher templates, funções e formato de importação definitivos.
 
 ## Estado de aceitação
 A pasta é DOCUMENTADA, não implementada. Ainda não foram criados hosts, templates, proxies, credenciais, ações ou dashboards na instância Zabbix; não foi efetuado teste com routers físicos.
