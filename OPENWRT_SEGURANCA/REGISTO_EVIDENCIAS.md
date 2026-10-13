@@ -186,3 +186,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Estado CSV:** ambos `RELEASE_NOTES_AND_FEED_PIN_CONFIRMED`; os riscos por equipamento continuam condicionados a presença do pacote, ACLs e imagem real.
 - **Relatório:** [VALIDACAO_LUCI_ADVANCED_REBOOT_ADBLOCK_FAST_2026-10-13.md](VALIDACAO_LUCI_ADVANCED_REBOOT_ADBLOCK_FAST_2026-10-13.md).
 - **Não realizado:** PoC, build ou teste físico; nenhum router alterado; Zabbix permanece em pausa.
+
+
+## 2026-10-13 — Validação LuCI Samba4 e XSS de leases DHCPv6
+
+- **Feed LuCI pinada:** `128a7812f4be233c5dd7f7466f534fd888785caf`.
+- **GHSA-vx64-mmp7-h36c:** a ACL Samba4 (blob `e911e60e07d3a1e6360b68246dc4ec2a5e4e5ce5`) concede `exec` apenas ao objeto `/usr/sbin/smbd -V`, evitando o grant genérico `/usr/sbin/smbd` descrito no advisory.
+- **GHSA-686p-p8p9-x6fh:** a vista de leases DHCP no LuCI (blob `7be0eb9046c919230f5f8f99773fc567eef91979`) usa `%h` para escaping HTML do hostname. A correção do odhcpd continua parte da cadeia de mitigação.
+- **Estado CSV:** ambos `RELEASE_NOTES_AND_FEED_PIN_CONFIRMED`; a confirmação por dispositivo permanece pendente.
+- **Relatório:** [VALIDACAO_LUCI_SAMBA4_DHCPV6_XSS_2026-10-13.md](VALIDACAO_LUCI_SAMBA4_DHCPV6_XSS_2026-10-13.md).
+- Nenhum PoC, build ou teste físico; nenhum router alterado; Zabbix em pausa.
