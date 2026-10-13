@@ -244,3 +244,12 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - Relatório: [REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md](REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md).
 - Próximo: verificar os fixes upstream individualmente contra backport/pending e target-specific patches; depois completar Dropbear CVE-2026-3706.
 - Sem alterações em routers; Zabbix continua pausado.
+
+
+## Dropbear — triagem CVE-2026-3706 concluída documentalmente (2026-10-13)
+
+- O advisory permanece não revisto. A lista de patches do OpenWrt v25.12.5 não contém o patch upstream `S < L` em `curve25519.c`.
+- O commit do mantenedor Dropbear afirma que a maleabilidade Ed25519 corrigida não tem impacto de segurança na forma como é usada no protocolo SSH. Não há evidência suficiente para classificar o caso como explorável via SSH.
+- Estado CSV: `ADVISORY_UNREVIEWED_UPSTREAM_SAYS_NO_SSH_PROTOCOL_IMPACT`. Monitorizar por clarificação upstream; sem ação emergencial em routers com base apenas neste advisory.
+- Relatório: [REVISAO_DROPBEAR_CVE-2026-3706_2026-10-13.md](REVISAO_DROPBEAR_CVE-2026-3706_2026-10-13.md).
+- Nenhuma alteração de router/build/teste físico; Zabbix continua pausado.
