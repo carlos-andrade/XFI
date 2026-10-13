@@ -3,6 +3,9 @@
 **Estado:** especificação lógica; não é um ficheiro XML/YAML de importação e não foi testada numa instância.  
 **Bloqueio de implementação:** confirmar a versão do Zabbix e homologar o método no modelo, revisão e firmware reais.
 
+## Política de compatibilidade
+A versão-alvo é sempre a versão estável mais recente disponível na data da implementação. O template deve ser testado nessa versão e não deve declarar compatibilidade com versões não testadas. Versões pré-lançamento não são alvo de produção.
+
 ## 1. Objetivo
 Definir um conjunto mínimo consistente de itens, triggers, tags e macros para cada router OpenWrt gerido pela XFI.
 
