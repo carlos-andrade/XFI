@@ -64,3 +64,32 @@ Foi consultado o Makefile oficial [uhttpd na tag v25.12.5](https://github.com/op
 - As notas da release enumeram CVE-2026-55612, CVE-2026-55614 e CVE-2026-55613 como corrigidas. Para estes três registos, o estado passou a `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`.
 - **Limite:** isto confirma a declaração da release e o pin do pacote-fonte na tag, não que um router XFI específico esteja a executar essa imagem/pacote.
 - Makefile e commits consultados são evidência upstream; não foi compilada nem testada uma imagem.
+
+
+## Validação de pins adicionais — 2026-10-13
+
+### umdns — pin confirmado
+
+- Makefile na tag `v25.12.5`: [package/network/services/umdns/Makefile](https://github.com/openwrt/openwrt/blob/v25.12.5/package/network/services/umdns/Makefile).
+- Blob SHA: `40ee5ed4922e14b72a90100ac43994f20288574e`.
+- `PKG_SOURCE_DATE=2026-06-16`.
+- `PKG_SOURCE_VERSION=1b5e7bf1cec775b89f1a6068dc0b9df3593b5986`.
+- O commit upstream `5b2c8f4ff94ef7c339586c8a59a684009f1b7194` associa explicitamente este pin à correção GHSA-jg8f-fhfw-jg46: limite da cache e limitação de TTLs hostis.
+- Estado documental: `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`; pacote instalado no router ainda não verificado.
+
+### ead — correção presente no código da tag
+
+- A release 25.12.5 inclui CVE-2026-55490 nas notas oficiais.
+- O ficheiro [ead.c na tag v25.12.5](https://github.com/openwrt/openwrt/blob/v25.12.5/package/network/services/ead/src/ead.c) valida o comprimento da mensagem em aritmética sem sinal antes da subtração, evitando o underflow descrito no advisory.
+- O advisory continua a apresentar “Patched versions: None”, pelo que o relatório distingue o metadado do advisory da evidência do código/tag.
+- Estado documental: `RELEASE_NOTES_AND_TAGGED_SOURCE_CONFIRMED`; aplicabilidade depende de EAD estar presente/ativo e do estado real da imagem.
+
+### cgi-io — identificação a corrigir no CSV
+
+- A página oficial [GHSA-jw5r-xhf5-2xcq](https://github.com/openwrt/openwrt/security/advisories/GHSA-jw5r-xhf5-2xcq) identifica a vulnerabilidade como **CVE-2026-62947** e indica versões afetadas até OpenWrt 25.12.4.
+- O registo CSV continua com o identificador GHSA como chave primária e mantém o estado `RELEASE_NOTE_RECORDED_PIN_PENDING`; a atualização automática do campo identificador foi bloqueada pelo controlo de escrita, pelo que a correção de normalização fica explicitamente pendente.
+- A release note não substitui a verificação do pin do pacote cgi-io no feed congelado para v25.12.5. Não declarar o pin confirmado até encontrar e inspecionar o Makefile/feed correspondente.
+
+## Limites
+
+As confirmações acima são de notas oficiais e código-fonte/tag. Não foram construídas imagens nem inspecionados routers XFI. Zabbix continua em pausa.
