@@ -351,3 +351,15 @@ Não atualizar a percentagem global apenas por contagem de commits ou documentos
 - Sem builds, sem alterações de router, sem testes físicos. Zabbix permanece em pausa.
 - Relatório atualizado: [REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md](REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md).
 
+
+
+## Continuação técnica — automatização da auditoria diferencial (2026-10-13)
+
+- Criado `OPENWRT_SEGURANCA/scripts/audit_kernel_mac80211_patches.py` para percorrer os patches genéricos 6.12, os diretórios específicos 6.12 encontrados e os overlays mac80211; regista os ficheiros-alvo tocados, candidatos e metadados do pin.
+- Criado `.github/workflows/openwrt-kernel-mac80211-audit.yml` para checkout da tag OpenWrt `v25.12.5`, download do tarball fixado pelo Makefile, validação SHA-256 e publicação de artefacto de auditoria.
+- A automação foi persistida, mas **a execução e o artefacto ainda não foram confirmados**. Não contabilizar a varredura como concluída até confirmar o run e rever o resultado.
+- Os estados dos cinco CVEs permanecem inconclusivos quanto a backports globais; não alterar o CSV sem evidência. O scanner é triagem por caminhos e marcadores, não prova semântica isolada.
+- **Próximo passo imediato:** confirmar o run do workflow; corrigir erros de checkout/download/parser; validar o hash do tarball e ler os hits relevantes. Em seguida, documentar a cobertura integral dos patches genéricos e overlay.
+- **Bloqueios mantidos:** inventário físico e target OpenWrt por preencher; análise por target, build, laboratório e homologação não iniciados. Nenhum router alterado. Zabbix em pausa.
+- **Percentual global:** mantém-se em 32% até haver execução confirmada e evidência revista; criação de automação, por si só, não fecha a fase técnica.
+
