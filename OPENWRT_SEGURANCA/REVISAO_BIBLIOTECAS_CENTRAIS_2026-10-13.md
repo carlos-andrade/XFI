@@ -84,3 +84,12 @@ Fonte: https://github.com/openwrt/openwrt/blob/v25.12.5/target/linux/generic/ker
 ## Nota de precisão — patch local OpenSSL 010 (2026-10-13)
 
 A árvore OpenWrt contém `package/libs/openssl/patches/010-fix-aes-gcm-siv-cipher.patch` (blob `deca8f1e569f19508f6121cd543aefef75d0a316`). O patch corrige tratamento de mensagens de comprimento zero em AES-GCM-SIV/AES-SIV. Por isso, o CVE-2026-75803 foi separado do grupo de CVEs sem backport identificado e classificado no CSV como `LOCAL_PATCH_RELEVANT_REQUIRES_CVE_MAPPING`. A correspondência exata entre este patch downstream e o advisory upstream continua pendente; não contar esse CVE como definitivamente não corrigido nem como fechado.
+
+
+## Atualização do kernel upstream — 2026-10-13
+
+A listagem oficial do kernel.org já apresenta **Linux 6.12.112**, publicado em 2026-10-03, enquanto o pin da tag OpenWrt `v25.12.5` é **6.12.94**, de 2026-06-19. São 18 incrementos de manutenção estável entre o pin e o release upstream listado. Isto não prova automaticamente que cada correção em falta seja aplicável ou não esteja backportada pela árvore OpenWrt, mas aumenta a prioridade da revisão de patches.
+
+**Ação:** comparar os changelogs `6.12.95` a `6.12.112` com `target/linux/generic/backport-6.12`, `pending-6.12` e patches específicos por target. Até essa comparação, classificar o kernel como **`UPSTREAM_STABLE_LAG_REQUIRES_PATCH_DIFF`**, não como vulnerável por CVE específico.
+
+Fonte upstream: https://www.kernel.org/pub/linux/kernel/v6.x/ (listagem oficial com ChangeLog-6.12.112 de 2026-10-03).
