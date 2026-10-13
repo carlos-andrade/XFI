@@ -1,6 +1,6 @@
 # Catálogo de fontes oficiais OpenWrt
 
-**Revisão do catálogo:** 2026-10-13. Este inventário é inicial, não exaustivo. Os resultados do verificador automático indicam apenas acessibilidade HTTP; não substituem revisão humana de conteúdo, versão ou aplicabilidade.
+**Revisão do catálogo:** 2026-10-13. Inventário inicial, agora incluindo índices de advisories, releases, downloads e repositório upstream; não exaustivo. Os resultados do verificador automático indicam apenas acessibilidade HTTP; não substituem revisão humana de conteúdo, versão ou aplicabilidade.
 
 | Tema | Fonte oficial | Utilização |
 |---|---|---|
@@ -24,6 +24,13 @@
 | Table of Hardware | https://openwrt.org/toh/start | Índice oficial de hardware; confirmar a página do dispositivo e revisão |
 | Vista de hardware | https://openwrt.org/toh/views/toh_standard_all | Campos técnicos e limitações de hardware |
 | Firmware Selector | https://firmware-selector.openwrt.org/ | Identificar imagens; validar cuidadosamente modelo/revisão e tipo de imagem |
+
+| Advisories de segurança | https://openwrt.org/advisory/start | Índice de avisos de segurança; confirmar CVE, versões afetadas e correções na fonte do aviso |
+| Releases OpenWrt | https://openwrt.org/releases/start | Índice de releases e documentação associada |
+| Downloads oficiais | https://downloads.openwrt.org/ | Diretório oficial de imagens, checksums e artefactos; confirmar target e revisão |
+| Repositório upstream | https://github.com/openwrt/openwrt | Código-fonte upstream e histórico do projeto |
+| Commits upstream | https://github.com/openwrt/openwrt/commits/main/ | Acompanhar alterações recentes; commits isolados não são, por si só, avisos de segurança |
+| Issues upstream | https://github.com/openwrt/openwrt/issues | Acompanhamento de problemas reportados; verificar estado e confirmação pelos mantenedores |
 
 ## Regras de uso das fontes
 - A Table of Hardware é um índice, não substitui a página individual do dispositivo.
