@@ -363,3 +363,12 @@ Não atualizar a percentagem global apenas por contagem de commits ou documentos
 - **Bloqueios mantidos:** inventário físico e target OpenWrt por preencher; análise por target, build, laboratório e homologação não iniciados. Nenhum router alterado. Zabbix em pausa.
 - **Percentual global:** mantém-se em 32% até haver execução confirmada e evidência revista; criação de automação, por si só, não fecha a fase técnica.
 
+
+
+### Continuação — qualidade do scanner e verificação de execução (2026-10-13)
+
+- Corrigido o parser para reconhecer tanto cabeçalhos `diff --git` como caminhos `--- a/...` dos patches.
+- A revisão confirmou os ficheiros do script, workflow, relatório e roadmap no GitHub. **Ainda não foi possível confirmar um run e artefacto executados** através das ferramentas disponíveis nesta sessão.
+- Não marcar o workflow como aprovado, não alterar o estado dos CVEs e não contar a varredura como concluída até confirmar logs e artefacto.
+- Ação imediata: verificar [Actions — auditoria kernel/mac80211](https://github.com/carlos-andrade/XFI/actions/workflows/openwrt-kernel-mac80211-audit.yml); se não houver execução automática, selecionar **Run workflow** e validar hash, cobertura e artefactos.
+- Percentual global permanece em **32%**; hardware real e target continuam por identificar; laboratório e homologação não iniciados; Zabbix continua em pausa.
