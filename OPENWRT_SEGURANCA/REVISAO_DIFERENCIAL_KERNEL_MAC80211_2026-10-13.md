@@ -65,7 +65,7 @@ O Makefile de `package/kernel/mac80211` fixa `PKG_VERSION:=6.18.26`. A correçã
 
 **Estado:** parcial; não fecha a análise diferencial dos cinco CVEs.
 
-Foram inspecionados os cabeçalhos `+++`/ficheiros alterados de 19 patches genéricos com nomes relacionados com block/MMC, core, DMA, skb e rede, incluindo os candidatos com maior probabilidade lexical de tocar nos caminhos afetados. Nenhum dos patches consultados altera diretamente `block/bdev.c`, `net/core/dev.c`, `kernel/dma/direct.c` ou `drivers/mmc/host/mmci.c`. Os 10 patches block/MMC consultados na subfase anterior também não alteram esses quatro caminhos exatos.
+Foram inspecionados 18 patches genéricos distintos (19 leituras, com um candidato repetido) relacionados com block/MMC, core, DMA, skb e rede, incluindo os candidatos com maior probabilidade lexical de tocar nos caminhos afetados. Nenhum dos patches consultados altera diretamente `block/bdev.c`, `net/core/dev.c`, `kernel/dma/direct.c` ou `drivers/mmc/host/mmci.c`. Os 10 patches block/MMC consultados na subfase anterior também não alteram esses quatro caminhos exatos.
 
 **Limite:** este é um filtro dirigido de candidatos, não uma varredura de conteúdo de todos os 414 patches genéricos nem dos diretórios específicos de todos os targets. Não é suficiente para classificar qualquer CVE como corrigido ou não corrigido.
 
