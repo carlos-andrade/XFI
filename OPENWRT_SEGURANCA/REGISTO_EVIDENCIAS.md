@@ -57,3 +57,11 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - Risco residual:
 - Aprovação:
 - Commit/artefactos:
+
+
+## 2026-10-13 — Validação da pasta Zabbix e integração documental
+- **Validação realizada:** leitura posterior confirmou os seis documentos em MONITORAMENTO_ZABBIX/ e as atualizações do README raiz, README OpenWrt, arquitetura, governança, baseline e roadmap.
+- **Commits da pasta:** README bebe012173d38c04c2d020c29d8c970cc32606f2; arquitetura 1fe6c0d926f1e1870c5d8b7846a05f4900491472; métricas ea1e81386843015176ac2566ed8c6d318a8161a1; controlo operacional 54c8d43e6b6b0fff6650ef12af161ea9d0329cd8; segurança 0bb618d052f0866c4c95309861f6061752f0b960; plano c0579f481cf39c54151f3cfe8be9a41ed8aaced2.
+- **Integração documental:** README raiz 0ba2f13bb84dc2524a0813db7d8eb70efb52e86d; README OpenWrt b42aef154338e29fccfa1150bb298ef7532ee9ab; arquitetura OpenWrt e4c1a8b8a3b6b2bbb06e6b3d270b91d23999d2ed; roadmap 85d9bf5c34cf6e72db07f91093e095cd7473e160; governança b37406974c6cf7ee74966c5dd9f4e09d79cd8809; baseline d61d873a1fafb0749bb3e543c2d16a2482b184a8.
+- **Estado final:** DOCUMENTADO. A instância Zabbix não foi alterada; não existem ainda templates, hosts, proxies, ações ou testes de routers implementados.
+- **Próximo gate:** confirmar a versão/topologia da instância Zabbix XFI e testar monitorização segura num equipamento de laboratório antes de declarar qualquer modelo homologado.
