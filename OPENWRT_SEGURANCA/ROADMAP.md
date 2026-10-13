@@ -114,3 +114,14 @@ O percentual é apenas progresso documental e de planeamento. Nenhuma unidade f�
 - As notas oficiais da release 25.12.5 listam explicitamente quatro das cinco CVEs revistas: **CVE-2026-53921, CVE-2026-53918, CVE-2026-53920 e CVE-2026-53922**.
 - **CVE-2026-55606** não aparece na lista de correções de odhcpd consultada; embora o advisory indique um commit de correção no ramo 25.12 (`6907f28`), a inclusão na tag 25.12.5 não está confirmada neste momento.
 - CSV e relatório foram corrigidos para refletir essa distinção. Não inferir que 25.12.5 resolve a quinta CVE sem verificar a tag e o pin do pacote.
+
+### Correção da conclusão anterior — validação da tag v25.12.5
+
+A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 estava incorreta. A revisão direta da entrada **v25.12.5** na página oficial de releases lista explicitamente as cinco CVEs desta revisão, incluindo CVE-2026-55606, como corrigidas.
+
+- Fonte da release: https://github.com/openwrt/openwrt/releases
+- Makefile do pacote na tag v25.12.5: https://github.com/openwrt/openwrt/blob/v25.12.5/package/network/services/odhcpd/Makefile
+- `PKG_SOURCE_DATE`: `2026-06-29`
+- `PKG_SOURCE_VERSION`: `5d7be43f8b9dec0eb47e245cfab81108bb131273`
+- Blob SHA do Makefile consultado: `9353be754fefee82f08dff522258d9131c56f3ce`
+- **Estado:** as cinco CVEs estão declaradas como corrigidas nas notas oficiais de v25.12.5, e o pin do pacote nessa tag foi identificado. Continua necessário confirmar o modelo/revisão de router, a imagem exata e o pacote efetivamente instalado antes de declarar um equipamento XFI corrigido.
