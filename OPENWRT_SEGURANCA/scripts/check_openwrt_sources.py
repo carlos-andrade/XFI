@@ -33,6 +33,8 @@ def official_url(url: str) -> bool:
     if host == "openwrt.org" or host.endswith(".openwrt.org"):
         return True
     # Limit GitHub checks to the upstream OpenWrt organization/repository.
+    if host == "git.openwrt.org":
+        return True
     return host == "github.com" and parsed.path.lower().startswith("/openwrt/")
 
 
