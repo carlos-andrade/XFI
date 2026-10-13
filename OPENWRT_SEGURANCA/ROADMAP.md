@@ -306,3 +306,39 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - **Próxima ação:** completar a varredura de conteúdo dos 414 patches genéricos e só depois determinar o escopo de patches target-specific com base no inventário de hardware.
 - Relatório: [REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md](REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md).
 - Zabbix permanece em pausa; nenhum build ou teste físico realizado.
+
+## Continuação operacional — estado reconciliado com os commits de 2026-10-13
+
+**Registado em:** 2026-10-13  
+**Fonte de verdade:** branch `main` e artefactos atualmente presentes no repositório XFI.  
+**Governança:** `GOVERNANCA/REGRAS_DO_PROJETO.md` e repositório central GOVERNANCA.
+
+### Estado confirmado nesta reconciliação
+
+- A sequência de triagem documental está concluída, mas a fase diferencial de kernel/mac80211 continua `EM_REVISAO`.
+- O pin OpenWrt `v25.12.5` fixa Linux `6.12.94` e mac80211 `6.18.26`.
+- A inspeção dos 13 patches do overlay `package/kernel/mac80211/patches/subsys` não encontrou o fix equivalente a CVE-2026-90344. A conclusão permitida é **provável ausência no overlay inspecionado**, não ausência global confirmada.
+- O spot-check recente cobriu 18 patches genéricos distintos (19 leituras, uma repetida) e não encontrou alteração direta nos quatro caminhos de kernel analisados. O universo de 414 patches genéricos não foi revisto integralmente.
+- Os cinco CVEs de kernel continuam inconclusivos quanto à presença/ausência de backport: CVE-2026-63810, CVE-2026-74665, CVE-2026-89995, CVE-2026-90344 e CVE-2026-98211.
+- Não há modelo/revisão de hardware nem target selecionado no inventário. Por isso, não é possível concluir a análise de patches específicos por target, aplicar uma matriz de risco por equipamento ou homologar firmware.
+- Nenhum firmware foi compilado; nenhum router foi alterado ou testado fisicamente.
+- Zabbix continua explicitamente em pausa; esta atualização não inicia essa frente.
+
+### Próxima execução — ordem obrigatória
+
+1. Concluir o diff semântico dos cinco fixes contra patches genéricos; registar evidência por CVE e manter estados inconclusivos onde não houver prova.
+2. Fechar a verificação de CVE-2026-90344 no pacote mac80211, distinguindo a árvore overlay já inspecionada do tarball completo fixado.
+3. Preparar a ficha de inventário com campos obrigatórios e marcar os dados do equipamento como **não fornecidos**, sem inventar modelo ou revisão.
+4. Só após existir hardware/target identificado, limitar e executar a revisão target-specific.
+5. Depois de fechar a análise documental, passar à configuração reproduzível, laboratório e homologação apenas com hardware real, backup e plano de recuperação.
+
+### Critério de progresso
+
+Não atualizar a percentagem global apenas por contagem de commits ou documentos. A percentagem deverá refletir entregáveis e critérios de saída; fases dependentes de hardware permanecem bloqueadas até existir inventário real. Acessibilidade de URLs, pin de fonte e correção declarada em release não equivalem a imagem instalada validada.
+
+### Evidências recentes
+
+- Commit de correção da contagem de patches distintos: https://github.com/carlos-andrade/XFI/commit/f864e4c6cedc008962ee796e9f65c7c2a86bf8a2
+- Spot-check de patches genéricos: https://github.com/carlos-andrade/XFI/commit/51409f5016f5f518a77968e55a146d2c42a12d41
+- Revisão diferencial kernel/mac80211: [REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md](REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md)
+
