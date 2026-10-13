@@ -146,3 +146,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Outros grupos identificados:** apps LuCI, kernel, OpenSSL, musl, Dropbear e serviços de rede/hardening. O relatório separa estes itens e condiciona a aplicabilidade à presença do pacote, configuração e versão da imagem.
 - **Validação:** leitura posterior do CSV e do relatório confirmou a persistência dos oito registos e do documento. Esta validação é documental; não houve teste físico, alteração de router, PoC contra produção ou mudança no Zabbix.
 - **Estado:** revisão ampliada iniciada e documentada; validação por advisory/pin e mapeamento para hardware real continuam pendentes. Zabbix permanece em pausa.
+
+
+## 2026-10-13 — Pin uhttpd verificado para três CVEs
+
+- **Fonte:** Makefile de uhttpd na tag oficial OpenWrt `v25.12.5`, blob SHA `915baa07ab9a0cb44f6819d9d09bc2c001ed2eb7`.
+- **Pin:** `PKG_SOURCE_DATE=2026-06-16`; `PKG_SOURCE_VERSION=7b1bec45826bd78c8afc993435bdc0f1df2fe399`.
+- **Comparação upstream:** `1b624f8f814ed568608d756512892416e0431d77...7b1bec45826bd78c8afc993435bdc0f1df2fe399` confirmou três commits à frente do limiar citado nas páginas dos advisories.
+- **Registos atualizados:** CVE-2026-55612, CVE-2026-55614 e CVE-2026-55613 para `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`; commit CSV `c58a1154ae501d4e4ec92e29065244798352a38b`.
+- **Relatório atualizado:** `REVISAO_FIXES_ADICIONAIS_25.12.5_2026-10-13.md`; commit `870fa8e667dacb32e8bbf6a951a7a1787e9c2d80`.
+- **Limite:** validação da tag e pin de fonte, não do binário instalado; não houve teste de router nem alteração Zabbix.
