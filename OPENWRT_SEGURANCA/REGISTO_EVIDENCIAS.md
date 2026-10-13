@@ -291,3 +291,14 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - Após as atualizações de OpenSSL, musl, Dropbear e kernel, o ficheiro `REGISTO_ADVISORIES_RELEASES.csv` foi relido através da API do GitHub e validado estruturalmente: 51 registos de dados, 13 campos por linha, zero linhas malformadas e zero IDs duplicados.
 - Commit de normalização/validação CSV: `e53f69bd019268be9fd7921a443897fca8139dfb`.
 - A validação é estrutural; não substitui o diff de patches, build ou validação de imagem.
+
+
+## 2026-10-13 — fecho da sequência de revisão documental
+
+- Criado o relatório [FECHO_REVISAO_DOCUMENTAL_2026-10-13.md](FECHO_REVISAO_DOCUMENTAL_2026-10-13.md), que separa a conclusão da triagem documental dos itens técnicos ainda pendentes.
+- OpenSSL: CVE-2026-75803 não mitigado pelo patch local AES-GCM-SIV/SIV; OpenSSL 3.5.8 é a correção upstream identificada. Matriz ampliada para CVEs 3.5.8/3.5.9 sem inferir severidades não verificadas.
+- musl: presença de patches 004–006 confirmada na fonte do tag, não numa imagem construída.
+- Dropbear: triagem documental concluída; advisory não revisto, sem impacto SSH demonstrado segundo o commit do mantenedor.
+- Kernel: commits upstream e ficheiros alterados identificados para cinco CVEs; diff semântico com os 414 patches genéricos e patches por target continua pendente. Filtro de nomes não prova ausência de backport.
+- CSV validado: 51 registos, 13 campos por registo, zero linhas malformadas e zero IDs duplicados.
+- Não houve alteração de router, build, teste físico ou implementação Zabbix. Zabbix permanece pausado.
