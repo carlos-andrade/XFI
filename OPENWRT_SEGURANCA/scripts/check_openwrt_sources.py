@@ -20,7 +20,7 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / "OPENWRT_SEGURANCA" / "FONTES_OFICIAIS.md"
 REPORT = ROOT / "openwrt-source-check-report.json"
-URL_RE = re.compile(r"https://openwrt\.org[^\s|)]+", re.IGNORECASE)
+URL_RE = re.compile(r"https://(?:[a-z0-9-]+\.)*openwrt\.org[^\s|)]+", re.IGNORECASE)
 USER_AGENT = "XFI-OpenWrt-SourceCatalogCheck/1.0 (+https://github.com/carlos-andrade/XFI)"
 TIMEOUT_SECONDS = 15
 PAUSE_SECONDS = 0.5
