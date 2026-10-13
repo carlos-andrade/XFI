@@ -225,3 +225,13 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - Comparar `6.12.95–6.12.112` com `target/linux/generic/backport-6.12`, `pending-6.12` e patches por target.
 - Manter OpenSSL 3.5.7-r1 como prioridade alta; confirmar correções locais e build features antes de declarar exposição por dispositivo.
 - Relatório: [REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md](REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md).
+
+
+## Continuação da revisão de bibliotecas — 2026-10-13
+
+- **OpenSSL CVE-2026-75803 corrigido no registo:** o patch local AES-GCM-SIV/SIV não é equivalente à correção para ChaCha20-Poly1305/AES-OCB no caminho `EVP_Cipher()`. O pin v25.12.5 (3.5.7-r1) precede a correção 3.5.8. Prioridade alta; confirmar build features e consumidores.
+- Matriz CSV ampliada com CVEs adicionais publicados nas releases OpenSSL 3.5.8 e 3.5.9; aplicabilidade individual condicionada a feature/build/uso.
+- **musl CVE-2026-40200:** inspeção direta dos patches 004–006 confirma backport da correção qsort e reforços de limites/shift. Fechado ao nível da fonte/tag, não ao nível de imagem instalada.
+- Changelog de desenvolvimento posterior lista OpenSSL 3.5.9 e kernel 6.12.112, mas tag `v25.12.6` não foi resolvida como tag oficial no GitHub nesta verificação. Não substituir a release-base estável até existir release/tag verificável.
+- Próxima ação: análise diferencial de changelogs Linux 6.12.95–6.12.112 contra patches OpenWrt genéricos e específicos por target; depois concluir triagem Dropbear CVE-2026-3706.
+- Sem alterações em routers; Zabbix permanece pausado.
