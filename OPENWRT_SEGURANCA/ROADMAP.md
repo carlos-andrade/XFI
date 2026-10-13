@@ -253,3 +253,10 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - Estado CSV: `ADVISORY_UNREVIEWED_UPSTREAM_SAYS_NO_SSH_PROTOCOL_IMPACT`. Monitorizar por clarificação upstream; sem ação emergencial em routers com base apenas neste advisory.
 - Relatório: [REVISAO_DROPBEAR_CVE-2026-3706_2026-10-13.md](REVISAO_DROPBEAR_CVE-2026-3706_2026-10-13.md).
 - Nenhuma alteração de router/build/teste físico; Zabbix continua pausado.
+
+
+## Kernel — commits upstream localizados (2026-10-13)
+
+- Os commits de fix foram identificados e os ficheiros alterados confirmados: CVE-2026-63810 `block/bdev.c`; CVE-2026-74665 `net/core/dev.c`; CVE-2026-89995 `kernel/dma/direct.c`; CVE-2026-90344 `net/mac80211/spectmgmt.c`; CVE-2026-98211 `drivers/mmc/host/mmci.c`.
+- O filtro por nome nos 414 patches genéricos não encontrou correspondência direta; isto não prova ausência de backport. Próxima etapa: comparar hunks/funções dos commits com os patches candidatos e com patches específicos dos targets homologados.
+- O CSV mantém os estados como pendentes/inconclusivos até haver comparação de conteúdo; mac80211 será validado pela versão do feed wireless.
