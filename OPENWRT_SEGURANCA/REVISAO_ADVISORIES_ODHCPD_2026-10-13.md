@@ -6,7 +6,7 @@
 
 ## Resultado executivo
 
-A revisão identificou commits de correção nas cinco páginas. Em várias páginas, porém, o cabeçalho estruturado ainda mostra **“Patched versions: None”**, enquanto o rodapé lista commits de correção. Por isso, este registo separa explicitamente **commit de correção**, **commit de ramo OpenWrt 25.12** e **tag de release publicada**. A página oficial das releases 25.12.5 lista explicitamente CVE-2026-53921, CVE-2026-53918, CVE-2026-53920 e CVE-2026-53922 como corrigidas. Não lista CVE-2026-55606; a correção deste quinto advisory na tag 25.12.5 permanece por confirmar.
+A revisão identificou commits de correção nas cinco páginas. Em várias páginas, porém, o cabeçalho estruturado ainda mostra **“Patched versions: None”**, enquanto o rodapé lista commits de correção. Por isso, este registo separa explicitamente **commit de correção**, **commit de ramo OpenWrt 25.12** e **tag de release publicada**. A página oficial da release v25.12.5 lista explicitamente as cinco CVEs revistas — CVE-2026-53921, CVE-2026-53918, CVE-2026-53920, CVE-2026-53922 e CVE-2026-55606 — como corrigidas. Assim, o anúncio oficial da release confirma a inclusão da quinta correção, embora a correspondência ao pacote instalado num router específico continue a exigir validação.
 
 | CVE | Severidade publicada | Escopo afetado indicado pela fonte | Correção upstream / ramo 25.12 indicada pela fonte | Estado XFI |
 |---|---|---|---|---|
@@ -14,7 +14,7 @@ A revisão identificou commits de correção nas cinco páginas. Em várias pág
 | CVE-2026-53918 | High | Pins de OpenWrt 18.06 a 25.12 e master que contêm `a2ffc59`; LEDE 17.01/pré-`a2ffc` não é esperado como afetado por este UAF específico | upstream `26b1220`; 25.12 `5b28383` | Release 25.12.5 lista explicitamente a CVE como corrigida |
 | CVE-2026-53920 | High | Releases OpenWrt 17.01.0 a 25.12.3 segundo o mapeamento da fonte | upstream `f2275ef`; 25.12 `719fc3a` | Release 25.12.5 lista explicitamente a CVE como corrigida |
 | CVE-2026-53922 | Moderate | `<= cfddd56`; releases que contêm o ramo vulnerável de `build_ia`; master e 25.12.x identificados | upstream `c6792ba`, `d329a15`; 25.12 `d08dbcc`, `d168c27` | Release 25.12.5 lista explicitamente a CVE como corrigida |
-| CVE-2026-55606 | Moderate | `<= master (e432dd6)`; advisory descreve targets OpenWrt little-endian | upstream `ed38cff`; 25.12 `6907f28` | Correção no ramo 25.12 identificada; a página de release 25.12.5 não lista esta CVE, logo inclusão na tag permanece por confirmar |
+| CVE-2026-55606 | Moderate | `<= master (e432dd6)`; advisory descreve targets OpenWrt little-endian | upstream `ed38cff`; 25.12 `6907f28` | Release oficial v25.12.5 lista explicitamente a CVE como corrigida |
 
 ## Fontes primárias consultadas
 
@@ -23,13 +23,13 @@ A revisão identificou commits de correção nas cinco páginas. Em várias pág
 3. [CVE-2026-53920 — DHCPv6 IA stack memory disclosure](https://github.com/openwrt/odhcpd/security/advisories/GHSA-p769-5v73-pc4f) — severidade High; indica releases afetadas até 25.12.3 e commits de correção, mas refere que não identificou tag fixa.
 4. [CVE-2026-53922 — DHCPv6 IA pre-auth denial of service](https://github.com/openwrt/odhcpd/security/advisories/GHSA-7hcw-g2jh-pqv5) — severidade Moderate; descreve os commits de correção upstream e do ramo 25.12.
 5. [CVE-2026-55606 — DUID length endianness mismatch](https://github.com/openwrt/odhcpd/security/advisories/GHSA-x8x4-7gvf-gp45) — severidade Moderate; descreve os commits de correção upstream e do ramo 25.12.
-6. [Anúncio oficial OpenWrt 25.12.5](https://lists.openwrt.org/pipermail/openwrt-announce/2026-June/000088.html) e [notas da release no repositório oficial](https://github.com/openwrt/openwrt/releases) — as notas listam CVE-2026-53921, CVE-2026-53918, CVE-2026-53920 e CVE-2026-53922 entre as correções de 25.12.5; CVE-2026-55606 não aparece na lista consultada.
+6. [Notas oficiais das releases OpenWrt](https://github.com/openwrt/openwrt/releases) — a entrada v25.12.5 lista as cinco CVEs desta revisão entre as correções de odhcpd. O anúncio por email serve como fonte complementar da release.
 
 ## Interpretação técnica e limites
 
 - Os advisories tratam vulnerabilidades no componente **odhcpd**, principalmente em caminhos DHCPv6. A aplicabilidade operacional depende de o pacote existir na imagem, da versão/commit do pacote, da configuração do serviço e da interface alcançável.
 - “Commit de correção no ramo 25.12” não é, isoladamente, prova de que uma imagem específica instalada contém a correção.
-- A release 25.12.5 lista explicitamente quatro das cinco CVEs revistas (53921, 53918, 53920, 53922). A CVE-2026-55606 não consta nessa lista; não afirmar que está corrigida em 25.12.5 sem verificar a tag e o pin do pacote.
+- A release v25.12.5 lista explicitamente as cinco CVEs revistas, incluindo CVE-2026-55606. Isto confirma a correção declarada pela release; não prova, por si só, que uma imagem instalada num router XFI contenha esse pacote corrigido.
 - Os campos “Patched versions: None” no topo de várias páginas parecem coexistir com referências a commits fixos no rodapé. O registo conserva essa discrepância em vez de a ocultar.
 - Não foi feita correspondência a routers XFI: não há inventário confirmado com modelo, revisão de hardware, imagem, versão de firmware, pacote odhcpd e configuração efetiva.
 - Não foi executado qualquer PoC contra router de produção, nem é necessário fazê-lo para este trabalho documental.
