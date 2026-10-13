@@ -301,7 +301,7 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 ### Subfase kernel — spot-check de patches genéricos (2026-10-13)
 
 - **Estado:** EM_REVISAO; spot-check concluído, análise integral pendente.
-- Foram inspecionados 19 patches genéricos relacionados por nome com block/MMC, core, DMA, skb e rede, além de 10 candidatos block/MMC verificados anteriormente. Nenhum dos ficheiros inspecionados altera diretamente os quatro caminhos dos fixes em revisão: `block/bdev.c`, `net/core/dev.c`, `kernel/dma/direct.c`, `drivers/mmc/host/mmci.c`.
+- Foram inspecionados 18 patches genéricos distintos relacionados por nome com block/MMC, core, DMA, skb e rede (19 leituras, com um candidato repetido), incluindo os candidatos block/MMC. Nenhum dos ficheiros inspecionados altera diretamente os quatro caminhos dos fixes em revisão: `block/bdev.c`, `net/core/dev.c`, `kernel/dma/direct.c`, `drivers/mmc/host/mmci.c`.
 - A amostra não cobre todos os 414 patches genéricos nem patches específicos de target; não prova ausência de backports.
 - **Próxima ação:** completar a varredura de conteúdo dos 414 patches genéricos e só depois determinar o escopo de patches target-specific com base no inventário de hardware.
 - Relatório: [REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md](REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md).
