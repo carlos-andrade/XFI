@@ -93,3 +93,37 @@ A listagem oficial do kernel.org já apresenta **Linux 6.12.112**, publicado em 
 **Ação:** comparar os changelogs `6.12.95` a `6.12.112` com `target/linux/generic/backport-6.12`, `pending-6.12` e patches específicos por target. Até essa comparação, classificar o kernel como **`UPSTREAM_STABLE_LAG_REQUIRES_PATCH_DIFF`**, não como vulnerável por CVE específico.
 
 Fonte upstream: https://www.kernel.org/pub/linux/kernel/v6.x/ (listagem oficial com ChangeLog-6.12.112 de 2026-10-03).
+
+
+## Continuação — correção do mapeamento OpenSSL e confirmação musl (2026-10-13)
+
+### OpenSSL: o patch local 010 NÃO corrige CVE-2026-75803
+
+CVE-2026-75803 diz respeito à verificação de tag AEAD omitida em operações de decifragem com ciphertext vazio para **ChaCha20-Poly1305 e AES-OCB** quando a aplicação usa `EVP_Cipher()`. O patch OpenWrt `010-fix-aes-gcm-siv-cipher.patch` trata mensagens de comprimento zero em **AES-GCM-SIV e AES-SIV**. São algoritmos/caminhos distintos; o patch local não é mitigação equivalente para CVE-2026-75803.
+
+- OpenSSL 3.5.8: https://github.com/openssl/openssl/releases/tag/openssl-3.5.8
+- Advisory: https://github.com/advisories/GHSA-vr27-9w4v-hjw2
+- Patch local v25.12.5: https://github.com/openwrt/openwrt/blob/v25.12.5/package/libs/openssl/patches/010-fix-aes-gcm-siv-cipher.patch
+
+**Estado no release estável v25.12.5:** OpenSSL 3.5.7-r1, anterior à correção de 3.5.8; não foi encontrado backport específico da correção EVP AEAD na árvore do tag. Prioridade alta para atualização/backport. Aplicabilidade depende de algoritmos compilados e consumidores que usem `EVP_Cipher()` com ciphertext vazio; não declarar exposição por router sem verificar imagem/configuração.
+
+### Desenvolvimento posterior não equivale a release estável
+
+O changelog público de 25.12.6 lista alterações posteriores à tag v25.12.5, incluindo OpenSSL 3.5.8/3.5.9, remoção da parte AES-GCM-SIV do patch local e atualizações do kernel até 6.12.112 em alguns targets. Contudo, a referência Git `v25.12.6` não foi resolvida como tag no GitHub nesta consulta. Estes commits são evidência de desenvolvimento posterior, não prova de release estável publicada. A base desta revisão permanece v25.12.5 até uma tag/release verificável.
+
+Fontes: https://openwrt.org/releases/25.12/changelog-25.12.6 ; https://openwrt.org/releases/25.12/notes-25.12.5 ; https://github.com/openwrt/openwrt/commit/e594c1d ; https://github.com/openwrt/openwrt/commit/c9e33c7 ; https://github.com/openwrt/openwrt/commit/12d27e8
+
+### musl: CVE-2026-40200 — backport confirmado na fonte
+
+Inspeção direta dos patches no tag v25.12.5:
+- `004`: corrige `pntz()`, causa raiz da corrupção de stack; a mensagem referencia explicitamente CVE-2026-40200.
+- `005`: amplia o array de trabalho para tamanho potência de dois e mascara índices para evitar escritas fora dos limites.
+- `006`: evita comportamento indefinido em shifts quando o deslocamento é igual à largura de `size_t`.
+
+**Estado documental:** `BACKPORT_CONFIRMED_IN_TAG_SOURCE`. Isto confirma presença dos patches na fonte do tag, não prova que uma imagem específica os inclua. Fontes: https://github.com/openwrt/openwrt/blob/v25.12.5/toolchain/musl/patches/004-qsort-fix-leonardo-heap-corruption-from-bug-in-doubl.patch ; https://github.com/openwrt/openwrt/blob/v25.12.5/toolchain/musl/patches/005-qsort-hard-preclude-oob-array-writes-independent-of-.patch ; https://github.com/openwrt/openwrt/blob/v25.12.5/toolchain/musl/patches/006-qsort-fix-shift-UB-in-shl-and-shr.patch
+
+### Próximas ações
+
+1. Completar a matriz OpenSSL com todos os CVEs listados nas releases 3.5.8/3.5.9, condicionando a aplicabilidade a feature/build/uso.
+2. Comparar changelogs Linux 6.12.95–6.12.112 com backport/pending e patches específicos por target.
+3. Concluir a triagem Dropbear CVE-2026-3706 sem classificar o advisory como explorável enquanto o impacto SSH não estiver demonstrado.
