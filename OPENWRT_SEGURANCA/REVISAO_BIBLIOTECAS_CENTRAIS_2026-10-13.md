@@ -79,3 +79,8 @@ Fonte: https://github.com/openwrt/openwrt/blob/v25.12.5/target/linux/generic/ker
 3. Validar a natureza e impacto de CVE-2026-3706 contra o código/protocolo SSH, sem elevar advisory não revisto a facto confirmado.
 4. Fazer triagem completa do kernel 6.12.94 por target, mantendo o estado de risco dependente de imagem.
 5. Só depois, gerar matriz por equipamento quando o inventário real de routers estiver disponível.
+
+
+## Nota de precisão — patch local OpenSSL 010 (2026-10-13)
+
+A árvore OpenWrt contém `package/libs/openssl/patches/010-fix-aes-gcm-siv-cipher.patch` (blob `deca8f1e569f19508f6121cd543aefef75d0a316`). O patch corrige tratamento de mensagens de comprimento zero em AES-GCM-SIV/AES-SIV. Por isso, o CVE-2026-75803 foi separado do grupo de CVEs sem backport identificado e classificado no CSV como `LOCAL_PATCH_RELEVANT_REQUIRES_CVE_MAPPING`. A correspondência exata entre este patch downstream e o advisory upstream continua pendente; não contar esse CVE como definitivamente não corrigido nem como fechado.
