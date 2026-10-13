@@ -8,7 +8,7 @@
 |---|---|---|---|
 | 1. Fundação | Governança, arquitetura, baseline, fontes e teste | Documentação persistida e revista | DOCUMENTADO |
 | 2. Inventário | Modelo de ficha de router e requisitos de cliente | Templates criados; falta preencher com hardware real | EM PREPARAÇÃO |
-| 3. Ingestão inicial | Verificador agendado de URLs do catálogo | Workflow passa em execução real e relatório é revisto | IMPLEMENTADO, primeira execução pendente |
+| 3. Ingestão inicial | Verificador agendado de URLs do catálogo | Workflow passa em execução real e relatório é revisto | **EXECUTADO COM SUCESSO — 20/20 URLs acessíveis** |
 | 4. Ingestão ampliada | Releases, advisories, commits e páginas de hardware | Dados normalizados, rastreáveis e revistos | PLANEADO |
 | 5. Perfis | Perfis por classe de cliente e matriz de fluxos | Requisitos e variáveis sem segredos | DOCUMENTADO PRELIMINARMENTE |
 | 6. Seleção de hardware | Fabricantes, modelos, critérios, preços públicos e plano de homologação | Shortlist técnica/comercial criada; fontes revistas; critérios testáveis definidos | DOCUMENTADO, NÃO HOMOLOGADO |
@@ -18,6 +18,19 @@
 | 10. Laboratório | Ambiente isolado e testes automatizados | Matriz IPv4/IPv6, firewall, DNS, Wi-Fi, acesso e desempenho aprovada | PLANEADO |
 | 11. Homologação | Fichas de hardware/perfil e evidências | Revisão por pares e risco residual aprovado | PLANEADO |
 | 12. Operação, piloto e escala | Telemetria, alertas, inventário, mudanças, incidentes e rollout | Runbooks, rollback, revisão periódica e responsabilidades aprovados | PLANEADO |
+
+## Evidência da primeira execução do verificador
+
+- **Data/hora UTC:** 2026-10-13 10:20:45 (execução GitHub Actions).
+- **Workflow:** [XFI — Verificar fontes oficiais OpenWrt](https://github.com/carlos-andrade/XFI/actions/runs/38382664530).
+- **Resultado:** sucesso.
+- **URLs únicas detetadas:** 20.
+- **Acessíveis:** 20.
+- **Erros HTTP:** 0.
+- **Erros de rede:** 0.
+- **Artefacto do relatório:** [openwrt-source-check-report](https://github.com/carlos-andrade/XFI/actions/runs/38382664530/artifacts/11804441572) (retenção de 30 dias, conforme workflow).
+- **Interpretação:** o teste confirma acessibilidade HTTP no momento da execução, não valida conteúdo, segurança, atualidade nem adequação técnica das páginas.
+- **Aviso não bloqueante:** o runner reportou aviso de depreciação de Node.js 20 em actions usadas pelo workflow; rever as versões dessas actions antes de futura incompatibilidade do runner.
 
 ## Próximas ações — fora da frente Zabbix
 
