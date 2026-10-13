@@ -33,6 +33,7 @@
 | Issues upstream | https://github.com/openwrt/openwrt/issues | Acompanhamento de problemas reportados; verificar estado e confirmação pelos mantenedores |
 
 ## Regras de uso das fontes
+- Para fontes GitHub, o verificador aceita apenas URLs HTTPS sob `github.com/openwrt/`; a allowlist não deve ser ampliada para outros repositórios sem revisão.
 - A Table of Hardware é um índice, não substitui a página individual do dispositivo.
 - Não selecionar firmware apenas pelo nome comercial: confirmar revisão física, target/subtarget e tipo de imagem.
 - Em OpenWrt 22.03 e posteriores, fw4 gera regras nftables por omissão; não misturar configurações manuais avulsas sem compreender a interação.
