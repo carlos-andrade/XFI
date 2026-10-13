@@ -146,3 +146,12 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - Os registos CVE-2026-55612, CVE-2026-55614 e CVE-2026-55613 passaram a `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`.
 - **Limite:** o pin é da fonte usada pela tag; não comprova que qualquer router XFI execute a imagem/pacote correspondente.
 - Relatório e CSV atualizados; sem compilação, teste de imagem ou alteração de router. Zabbix permanece em pausa.
+
+
+## Atualização — fecho do pin cgi-io (2026-10-13)
+
+- **Fechado ao nível documental/source pin:** a tag `v25.12.5` fixa o feed packages no commit `5caa62e0bc9f7fb9b0c12a23267bceb7724214dd`; o Makefile de `cgi-io` nesse feed fixa o código-fonte `7314451cb99692c0862a70c3307ee08bd2fbd9c0` (`PKG_SOURCE_DATE=2026-06-28`).
+- O `main.c` desse pin canonicaliza o caminho antes da verificação ACL; o baseline afetado `658b14b` fazia a autorização e abertura sobre o caminho não canonicalizado.
+- O CSV foi normalizado para **CVE-2026-62947 / GHSA-jw5r-xhf5-2xcq** e estado `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`.
+- **Limite:** ainda não existe verificação da imagem binária nem do pacote instalado num router XFI. Não declarar hardware corrigido sem recolher evidência do equipamento.
+- **Próxima prioridade:** continuar a revisão por pacote das restantes correções de LuCI e bibliotecas centrais, preservando a separação entre evidência de release, pin de fonte e evidência de dispositivo.
