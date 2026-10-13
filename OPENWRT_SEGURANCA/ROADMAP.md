@@ -125,3 +125,14 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - `PKG_SOURCE_VERSION`: `5d7be43f8b9dec0eb47e245cfab81108bb131273`
 - Blob SHA do Makefile consultado: `9353be754fefee82f08dff522258d9131c56f3ce`
 - **Estado:** as cinco CVEs estão declaradas como corrigidas nas notas oficiais de v25.12.5, e o pin do pacote nessa tag foi identificado. Continua necessário confirmar o modelo/revisão de router, a imagem exata e o pacote efetivamente instalado antes de declarar um equipamento XFI corrigido.
+
+
+## Revisão complementar de fixes — OpenWrt 25.12.5 (2026-10-13)
+
+- **Fonte primária:** [notas oficiais 25.12.5](https://openwrt.org/releases/25.12/notes-25.12.5).
+- **Relatório:** [REVISAO_FIXES_ADICIONAIS_25.12.5_2026-10-13.md](REVISAO_FIXES_ADICIONAIS_25.12.5_2026-10-13.md).
+- **Registo normalizado:** oito entradas adicionais foram acrescentadas a `REGISTO_ADVISORIES_RELEASES.csv`: NDP relay/odhcpd, XSS DHCPv6/LuCI, três problemas uhttpd, cgi-io, ead e umdns.
+- **Estado de cada entrada:** `RELEASE_NOTE_RECORDED_PIN_PENDING`. A release declara as correções, mas os pins individuais e os intervalos afetados ainda precisam de ser confirmados nos advisories e Makefiles da tag.
+- **Outros componentes a decompor:** aplicações LuCI, kernel Linux, OpenSSL, musl, Dropbear e componentes de rede listados no relatório.
+- **Limites:** nenhuma imagem binária ou router foi testado; não há conclusão de vulnerabilidade/correção para hardware XFI sem inventário e versão instalada. Zabbix continua em pausa.
+- **Próximo passo:** verificar advisories e pins de uhttpd, cgi-io, umdns e ead; depois LuCI e bibliotecas centrais.
