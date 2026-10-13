@@ -108,3 +108,9 @@ O percentual é apenas progresso documental e de planeamento. Nenhuma unidade f�
 - **Qualificação importante:** várias páginas apresentam “Patched versions: None” no cabeçalho, embora listem commits de correção no rodapé. O estado de inclusão dos commits em tags de release específicas permanece pendente e está marcado explicitamente no CSV.
 - **Não inferir:** não declarar 25.12.5 ou qualquer outra versão corrigida sem verificar tags/builds e pins do pacote odhcpd. A aplicabilidade a routers XFI continua indeterminada sem modelo/revisão, imagem, versão e configuração reais.
 - **Próximo passo técnico:** cruzar os commits com tags oficiais de release e `PKG_SOURCE_VERSION` de odhcpd; só depois relacionar advisories a uma versão de firmware. Zabbix continua em pausa.
+
+### Resultado adicional — cruzamento com notas oficiais de 25.12.5
+
+- As notas oficiais da release 25.12.5 listam explicitamente quatro das cinco CVEs revistas: **CVE-2026-53921, CVE-2026-53918, CVE-2026-53920 e CVE-2026-53922**.
+- **CVE-2026-55606** não aparece na lista de correções de odhcpd consultada; embora o advisory indique um commit de correção no ramo 25.12 (`6907f28`), a inclusão na tag 25.12.5 não está confirmada neste momento.
+- CSV e relatório foram corrigidos para refletir essa distinção. Não inferir que 25.12.5 resolve a quinta CVE sem verificar a tag e o pin do pacote.
