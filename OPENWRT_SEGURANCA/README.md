@@ -10,6 +10,11 @@ Criar uma base rastreável para recolher, classificar, versionar e aplicar conhe
 
 **Não existe configuração que garanta segurança absoluta.** A postura final depende do modelo e revisão de hardware, suporte upstream, versão e pacotes, desenho da rede, ameaças, operação e validação real.
 
+## Regra obrigatória de monitorização e controlo
+Todos os routers OpenWrt fornecidos ou geridos pela XFI devem ser monitorizados e inventariados no Zabbix. O Zabbix será a consola operacional central para métricas, alertas, inventário e acionamento de operações autorizadas. A implementação deve seguir a especificação em [MONITORAMENTO_ZABBIX](../MONITORAMENTO_ZABBIX/README.md).
+
+Não expor LuCI, SSH, SNMP ou outros serviços de gestão à Internet pública para permitir a monitorização. Usar canal privado/proxy, credenciais de menor privilégio e automação restrita com auditoria e rollback para mudanças de configuração.
+
 ## Princípios
 1. Preferir documentação oficial OpenWrt, páginas do dispositivo, notas de versão, avisos de segurança e repositórios oficiais de código.
 2. Nunca aplicar um comando genérico sem validar versão, alvo, arquitetura, driver Wi-Fi e topologia.
@@ -18,6 +23,7 @@ Criar uma base rastreável para recolher, classificar, versionar e aplicar conhe
 5. Antes de firmware/firewall: backup, validação de imagem, janela de manutenção, acesso alternativo e recuperação.
 6. Distinguir planeado, implementado, testado, homologado e implantado.
 7. Nunca versionar credenciais, chaves privadas ou backups de cliente.
+8. Não considerar um router operacionalmente aceite se não estiver registado e monitorizado no Zabbix, com alertas e caminho de gestão seguros validados.
 
 ## Navegação
 - [Governança e escopo](GOVERNANCA.md)
@@ -27,6 +33,7 @@ Criar uma base rastreável para recolher, classificar, versionar e aplicar conhe
 - [Inventário de routers](INVENTARIO_ROUTERS.md)
 - [Requisitos por perfil de cliente](PERFIL_CLIENTE.md)
 - [Seleção de hardware — fabricantes, modelos, critérios e homologação](SELECAO_HARDWARE/README.md)
+- [Monitorização e controlo obrigatório via Zabbix](../MONITORAMENTO_ZABBIX/README.md)
 - [Ingestão de fontes](INGESTAO_FONTES.md)
 - [Verificador de links e workflow agendado](scripts/check_openwrt_sources.py)
 - [Validação, testes e rollback](VALIDACAO_E_ROLLBACK.md)
@@ -37,7 +44,7 @@ Criar uma base rastreável para recolher, classificar, versionar e aplicar conhe
 O workflow [XFI — Verificar fontes oficiais OpenWrt](../.github/workflows/openwrt-source-link-check.yml) pode ser executado manualmente ou semanalmente. Verifica se o catálogo contém URLs HTTPS dentro do domínio oficial OpenWrt e produz um relatório de acessibilidade como artefacto. A acessibilidade HTTP **não** comprova que o conteúdo está correto, atualizado ou seguro. A primeira execução do workflow ainda precisa ser observada.
 
 ## Escopo da primeira versão
-Inclui levantamento documental, desenho de controlos, ficha de inventário, shortlist preliminar de hardware e uma rotina inicial de verificação de links. Ainda não inclui crawler abrangente de releases/advisories, perfil UCI pronto para produção, deployment automático, teste em equipamento físico, varredura externa nem homologação de modelos específicos.
+Inclui levantamento documental, desenho de controlos, ficha de inventário, shortlist preliminar de hardware e uma rotina inicial de verificação de links. Ainda não inclui crawler abrangente de releases/advisories, perfil UCI pronto para produção, deployment automático, teste em equipamento físico, varredura externa nem homologação de modelos específicos. A monitorização Zabbix está especificada documentalmente, mas ainda não implementada na instância.
 
 ## Gate mínimo para produção
-Nenhum perfil pode ser chamado de homologado sem modelos/revisões suportados identificados, versão OpenWrt fixada, revisão por pares, backup protegido, teste de firewall e isolamento, verificação de administração remota, teste DNS/conectividade, atualização/recuperação ensaiadas, monitorização e aprovação documentada.
+Nenhum perfil pode ser chamado de homologado sem modelos/revisões suportados identificados, versão OpenWrt fixada, revisão por pares, backup protegido, teste de firewall e isolamento, verificação de administração remota, teste DNS/conectividade, atualização/recuperação ensaiadas, monitorização Zabbix funcional, alertas testados e aprovação documentada.
