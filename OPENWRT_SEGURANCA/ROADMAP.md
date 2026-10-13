@@ -197,3 +197,12 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - **Pendente de fecho:** `luci-app-upnp/htdocs/.../view/upnp/upnp.js` mantém uma segunda utilização de `rule.descr` sem escaping na linha 118. É necessário confirmar a origem de `data[0].rules` e se o valor é controlável por cliente LAN.
 - CSV marcado `SOURCE_PIN_REVIEW_PARTIAL_PENDING_CONTEXT`; relatório: [REVISAO_LUCI_UPNP_XSS_2026-10-13.md](REVISAO_LUCI_UPNP_XSS_2026-10-13.md).
 - Não classificar como totalmente corrigido até fechar a análise de proveniência. Sem PoC/teste físico.
+
+
+## Atualização crítica — UPnP XSS: caminho inicial sem escaping identificado (2026-10-13)
+
+- O backend LuCI UPnP lê a descrição do ficheiro de leases e associa-a às regras ativas; portanto, o valor pode ter origem num cliente da LAN.
+- A vista de estado periódico escapa a descrição com `%h`, mas o render inicial em `upnp.js:118` ainda passa `rule.descr` sem escaping. A implementação da tabela acaba por colocar strings não-Node em `innerHTML`.
+- O estado do CSV foi elevado para **`FIX_INCOMPLETE_SOURCE_PATH_REMAINS`**. As notas de release dizem que a correção existe, mas o pin de fonte revisto parece manter um caminho vulnerável.
+- Relatório atualizado: [REVISAO_LUCI_UPNP_XSS_2026-10-13.md](REVISAO_LUCI_UPNP_XSS_2026-10-13.md).
+- Ação proposta: corrigir a vista inicial com escaping HTML ou nó de texto e criar teste de regressão para render inicial e atualização periódica. Não alterar upstream nem router sem processo de aprovação e teste.
