@@ -65,3 +65,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Integração documental:** README raiz 0ba2f13bb84dc2524a0813db7d8eb70efb52e86d; README OpenWrt b42aef154338e29fccfa1150bb298ef7532ee9ab; arquitetura OpenWrt e4c1a8b8a3b6b2bbb06e6b3d270b91d23999d2ed; roadmap 85d9bf5c34cf6e72db07f91093e095cd7473e160; governança b37406974c6cf7ee74966c5dd9f4e09d79cd8809; baseline d61d873a1fafb0749bb3e543c2d16a2482b184a8.
 - **Estado final:** DOCUMENTADO. A instância Zabbix não foi alterada; não existem ainda templates, hosts, proxies, ações ou testes de routers implementados.
 - **Próximo gate:** confirmar a versão/topologia da instância Zabbix XFI e testar monitorização segura num equipamento de laboratório antes de declarar qualquer modelo homologado.
+
+
+## 2026-10-13 — Preparação do levantamento e especificação de templates Zabbix
+- **Objetivo:** avançar o trabalho sem presumir a versão instalada nem alterar a instância em produção.
+- **Ficheiros criados:** MONITORAMENTO_ZABBIX/LEVANTAMENTO_DA_INSTANCIA.md; ESPECIFICACAO_TEMPLATE_XFI_OPENWRT.md; MODELO_INVENTARIO.csv; MATRIZ_DE_HOMOLOGACAO.md.
+- **Alterações adicionais:** README Zabbix atualizado com os novos artefactos e plano atualizado com gate de confirmação da versão.
+- **Commits de criação:** levantamento 03ae7cf34d31b2c0006fa75126417b7a08454d64; especificação 96b67db381c7a86012f21d010e176145161b8a3e; inventário 9d36d44c015a0175e6089c74391596f50b8562ed; matriz 991aa7985653585366d69d762eb2131ad49b2020.
+- **Validação realizada:** commits de criação confirmados pelo GitHub. A validação de conteúdo por leitura posterior ainda será efetuada.
+- **Não realizado:** comandos de levantamento não executados; instância Zabbix não acedida; templates, hosts, proxies e ações não foram criados ou alterados.
+- **Estado:** DOCUMENTAÇÃO PREPARADA; IMPLEMENTAÇÃO BLOQUEADA ATÉ CONFIRMAR A VERSÃO E A TOPOLOGIA.
