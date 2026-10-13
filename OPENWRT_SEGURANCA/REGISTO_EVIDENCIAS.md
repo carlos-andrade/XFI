@@ -176,3 +176,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Estado:** `RELEASE_NOTES_AND_FEED_PIN_CONFIRMED` no nível das notas e fonte da feed; não prova presença da aplicação nem conteúdo binário num router específico.
 - **Relatório:** [VALIDACAO_LUCI_TAILSCALE_2026-10-13.md](VALIDACAO_LUCI_TAILSCALE_2026-10-13.md).
 - **Não realizado:** nenhum PoC, build ou teste físico; nenhum router alterado; Zabbix continua em pausa.
+
+
+## 2026-10-13 — Validação LuCI advanced-reboot e adblock-fast
+
+- **Feed analisada:** LuCI commit `128a7812f4be233c5dd7f7466f534fd888785caf`, fixado por OpenWrt `v25.12.5`.
+- **CVE-2026-55897 / GHSA-vj96-f37g-37f6:** a ACL de leitura de `luci-app-advanced-reboot` (blob `281d59c8d24996c4c880c4baf99ce2c3a0f8c089`) não contém grant de `/bin/sh` nem `file.exec`; o vetor específico do advisory não aparece nessa ACL.
+- **CVE-2026-55159 / GHSA-ggpf-xrph-wg5v:** o backend `luci-app-adblock-fast` (blob `f7062814454328a5dd0bdbe7d7e724c410c95ae3`) substitui o antigo `setCronEntry` por `syncCron`, valida os campos da agenda e monta uma linha de cron controlada antes de gravar o crontab.
+- **Estado CSV:** ambos `RELEASE_NOTES_AND_FEED_PIN_CONFIRMED`; os riscos por equipamento continuam condicionados a presença do pacote, ACLs e imagem real.
+- **Relatório:** [VALIDACAO_LUCI_ADVANCED_REBOOT_ADBLOCK_FAST_2026-10-13.md](VALIDACAO_LUCI_ADVANCED_REBOOT_ADBLOCK_FAST_2026-10-13.md).
+- **Não realizado:** PoC, build ou teste físico; nenhum router alterado; Zabbix permanece em pausa.
