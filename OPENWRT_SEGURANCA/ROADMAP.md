@@ -155,3 +155,12 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - O CSV foi normalizado para **CVE-2026-62947 / GHSA-jw5r-xhf5-2xcq** e estado `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`.
 - **Limite:** ainda não existe verificação da imagem binária nem do pacote instalado num router XFI. Não declarar hardware corrigido sem recolher evidência do equipamento.
 - **Próxima prioridade:** continuar a revisão por pacote das restantes correções de LuCI e bibliotecas centrais, preservando a separação entre evidência de release, pin de fonte e evidência de dispositivo.
+
+
+## Atualização — LuCI Tailscale Community (2026-10-13)
+
+- **Prioridade crítica revista:** GHSA-xwc5-mx58-rh35, CVSS 9.9, injeção de comandos como root através de `tailscale.do_login`.
+- A tag OpenWrt `v25.12.5` fixa o feed LuCI no commit `128a7812f4be233c5dd7f7466f534fd888785caf`; o `tailscale.uc` nesse commit usa `shell_quote(login_cmd + ' &')` para o comando completo passado ao shell exterior.
+- Registo documental atualizado para `RELEASE_NOTES_AND_FEED_PIN_CONFIRMED`; relatório: [VALIDACAO_LUCI_TAILSCALE_2026-10-13.md](VALIDACAO_LUCI_TAILSCALE_2026-10-13.md).
+- A aplicabilidade depende da aplicação instalada, estado do Tailscale e ACLs delegadas. A imagem/dispositivo XFI não foi verificada.
+- Próximo: rever as restantes aplicações LuCI listadas nas notas 25.12.5, começando por avançadas/reboot, adblock-fast, samba4 e travelmate.
