@@ -25,6 +25,14 @@ Centralizar a gestão operacional da frota: disponibilidade, WAN, interfaces, ca
 
 **Referência consultada em 2026-10-13:** a página oficial de downloads indica Zabbix 7.4.15 como versão 7.4 disponível e Zabbix 8.0.0rc1 como pré-lançamento; portanto, para produção nesta data, a referência é a linha estável 7.4.15, salvo nova versão estável publicada antes da implementação. Confirmar novamente no momento da instalação. Fontes: [downloads oficiais](https://www.zabbix.com/download_sources), [notas oficiais de lançamento](https://www.zabbix.com/release_notes), [roadmap oficial](https://www.zabbix.com/roadmap).
 
+## Política de versão Zabbix
+
+A XFI utilizará sempre a versão mais recente **estável de produção** do Zabbix. Não usar alpha, beta ou release candidate em produção. Antes de instalar ou atualizar, consultar os downloads e notas oficiais, validar compatibilidade, realizar backup verificável e preparar rollback.
+
+Na consulta de 2026-10-13, a página oficial indicava Zabbix 7.4.15 como release da série 7.4 e Zabbix 8.0.0rc1 como pré-lançamento. Assim, a referência para produção nessa data é 7.4.15, mas deve ser novamente confirmada imediatamente antes da mudança.
+
+Fontes oficiais: https://www.zabbix.com/download_sources · https://www.zabbix.com/release_notes · https://www.zabbix.com/roadmap
+
 ## Requisitos obrigatórios
 1. Nenhum router entra em serviço sem host no Zabbix, grupo, tags, template aplicável e contacto/escala de alertas.
 2. Todos os routers devem reportar, no mínimo, disponibilidade, estado WAN, tráfego das interfaces, uptime, recursos básicos, versão de firmware e sinais de degradação suportados pelo hardware.
