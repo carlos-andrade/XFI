@@ -76,11 +76,12 @@ def check_url(url: str) -> dict[str, object]:
                 "detail": "",
             }
     except HTTPError as exc:
+        result = "rate_limited" if exc.code == 429 else "http_error"
         return {
             "url": url,
             "status": int(exc.code),
             "final_url": exc.geturl(),
-            "result": "http_error",
+            "result": result,
             "detail": str(exc.reason),
         }
     except (URLError, TimeoutError, OSError) as exc:
@@ -133,6 +134,7 @@ def main() -> int:
         "total_unique_urls": len(results),
         "reachable": reachable,
         "http_errors": sum(1 for item in results if item["result"] == "http_error"),
+        "rate_limited": sum(1 for item in results if item["result"] == "rate_limited"),
         "network_errors": sum(1 for item in results if item["result"] == "network_error"),
         "note": "HTTP reachability is not content/security validation. Review each source for freshness, relevance, affected versions, and remediation.",
         "sources": results,
@@ -140,7 +142,7 @@ def main() -> int:
     REPORT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     summary = {key: report[key] for key in (
         "generated_at_utc", "catalog", "schema_version", "total_unique_urls",
-        "reachable", "http_errors", "network_errors"
+        "reachable", "http_errors", "rate_limited", "network_errors"
     )}
     summary["failures"] = [
         {"url": item["url"], "status": item["status"], "result": item["result"], "detail": item["detail"]}
