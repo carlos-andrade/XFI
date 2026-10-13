@@ -104,3 +104,14 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Fonte primária:** https://lists.openwrt.org/pipermail/openwrt-announce/2026-June/000088.html
 - **Limite:** a validação de links não confirma conteúdo, aplicabilidade, exposição ou homologação.
 - **Estado:** catálogo automatizado validado; registo semântico inicial criado; correspondência de CVEs a modelos/firmware ainda não realizada.
+
+## 2026-10-13 — Revisão individual dos cinco advisories odhcpd
+
+- **Escopo:** CVE-2026-53921, CVE-2026-53918, CVE-2026-53920, CVE-2026-53922 e CVE-2026-55606.
+- **Fontes primárias:** páginas individuais de security advisory em `github.com/openwrt/odhcpd`; links e detalhes consolidados em `REVISAO_ADVISORIES_ODHCPD_2026-10-13.md`.
+- **Alterações:** atualizada a matriz `REGISTO_ADVISORIES_RELEASES.csv` com os intervalos afetados e commits de correção declarados pelas fontes; criado relatório de revisão semântica; roadmap atualizado.
+- **Achado de qualidade:** várias páginas apresentam “Patched versions: None” no cabeçalho, mas listam commits de correção no rodapé. O registo mantém a discrepância explícita e não converte commits de ramo em afirmação de release corrigida.
+- **Limitação:** inclusão em tags/builds publicadas ainda por confirmar; sem correspondência a modelo/revisão, firmware e pacote odhcpd de router XFI.
+- **Não realizado:** não houve testes em routers, PoC contra produção, alteração de configuração nem modificação da instância Zabbix.
+- **Estado:** revisão documental dos advisories concluída; validação por tag de release e aplicabilidade a hardware real pendentes.
+- **Próxima ação:** inspecionar tags oficiais e `PKG_SOURCE_VERSION` do pacote odhcpd nas releases relevantes, com evidência por release. Zabbix permanece em pausa.
