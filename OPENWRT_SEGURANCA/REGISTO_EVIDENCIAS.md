@@ -264,3 +264,12 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - Registados no CSV para revisão: CVE-2026-63810 (fix 6.12.95), CVE-2026-74665 (6.12.104), CVE-2026-89995 (6.12.110), CVE-2026-90344 (wireless/mac80211; 6.12.110/6.18.52) e CVE-2026-98211 (mmci; 6.12.112).
 - Relatório: [REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md](REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md).
 - Nenhuma imagem construída ou router alterado; Zabbix pausado.
+
+
+## 2026-10-13 — Dropbear CVE-2026-3706: triagem documental concluída
+
+- OpenWrt v25.12.5 fixa Dropbear 2025.89-r3. A listagem de patches do pacote não contém o patch upstream `S < L` para `curve25519.c`.
+- O advisory GHSA-87g2-jprq-4cmc/CVE-2026-3706 está marcado Unreviewed e sem versões corrigidas estruturadas. O commit do mantenedor upstream adiciona o check exigido pelo RFC 8032, mas afirma que a maleabilidade da assinatura não tem impacto de segurança no uso pelo protocolo SSH.
+- Decisão: manter monitorização; não declarar exploração remota via SSH sem demonstração de impacto no protocolo. Não houve build, teste de protocolo nem teste físico.
+- Relatório: [REVISAO_DROPBEAR_CVE-2026-3706_2026-10-13.md](REVISAO_DROPBEAR_CVE-2026-3706_2026-10-13.md).
+- Fontes: https://github.com/advisories/GHSA-87g2-jprq-4cmc ; https://github.com/mkj/dropbear/commit/fdec3c90a15447bd538641d85e5a3e3ac981011d ; https://github.com/openwrt/openwrt/tree/v25.12.5/package/network/services/dropbear/patches
