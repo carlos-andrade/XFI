@@ -235,3 +235,12 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - Changelog de desenvolvimento posterior lista OpenSSL 3.5.9 e kernel 6.12.112, mas tag `v25.12.6` não foi resolvida como tag oficial no GitHub nesta verificação. Não substituir a release-base estável até existir release/tag verificável.
 - Próxima ação: análise diferencial de changelogs Linux 6.12.95–6.12.112 contra patches OpenWrt genéricos e específicos por target; depois concluir triagem Dropbear CVE-2026-3706.
 - Sem alterações em routers; Zabbix permanece pausado.
+
+
+## Kernel — primeira triagem CVE posterior ao pin (2026-10-13)
+
+- Base OpenWrt v25.12.5 fixa Linux 6.12.94; changelog de desenvolvimento mostra bumps até 6.12.112 em alguns targets, mas a tag v25.12.6 não foi confirmada nesta consulta.
+- Primeiro cruzamento identificou CVE-2026-63810 (6.12.95), CVE-2026-74665 (6.12.104), CVE-2026-89995 e CVE-2026-90344 (6.12.110), e CVE-2026-98211 (6.12.112). A presença de correção equivalente nos patches OpenWrt ainda precisa de diff de conteúdo; busca por nomes de ficheiro não é conclusiva.
+- Relatório: [REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md](REVISAO_KERNEL_6.12.94_VS_6.12.112_2026-10-13.md).
+- Próximo: verificar os fixes upstream individualmente contra backport/pending e target-specific patches; depois completar Dropbear CVE-2026-3706.
+- Sem alterações em routers; Zabbix continua pausado.
