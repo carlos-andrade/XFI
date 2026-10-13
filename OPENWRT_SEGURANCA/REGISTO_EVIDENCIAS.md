@@ -245,3 +245,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Estado:** `UPSTREAM_STABLE_LAG_REQUIRES_PATCH_DIFF`; não é prova de CVE específico, pois ainda é necessário mapear patches backportadas no OpenWrt e configuração por target.
 - Próximo: comparar changelogs 6.12.95–6.12.112 com backport/pending e patches de target.
 - Fonte: https://www.kernel.org/pub/linux/kernel/v6.x/
+
+
+## 2026-10-13 — OpenSSL CVE-2026-75803 e musl CVE-2026-40200: validação direta
+
+- OpenSSL v25.12.5 fixa 3.5.7-r1. OpenSSL 3.5.8 documenta CVE-2026-75803: falha de verificação de tag AEAD em ciphertext vazio usando `EVP_Cipher()` para ChaCha20-Poly1305/AES-OCB. O patch OpenWrt 010 é para AES-GCM-SIV/AES-SIV e não é mitigação equivalente. CSV corrigido para `NOT_FIXED_BY_LOCAL_PATCH_OPENSSL_3_5_8_REQUIRED`; aplicação real depende do build e uso do caminho afetado.
+- Changelog de desenvolvimento 25.12.6 menciona bump para OpenSSL 3.5.8/3.5.9, remoção da parte AES-GCM-SIV do patch e kernel 6.12.112 em targets. A referência Git `v25.12.6` não foi resolvida como tag; não tratar como release estável confirmada.
+- musl: patches 004/005/006 inspecionados diretamente. 004 corrige `pntz()` na causa raiz CVE-2026-40200; 005 protege os limites do array de trabalho; 006 corrige shift UB. CSV atualizado para `BACKPORT_CONFIRMED_IN_TAG_SOURCE`; imagem construída continua por verificar.
+- Fontes OpenSSL: https://github.com/openssl/openssl/releases/tag/openssl-3.5.8 ; https://github.com/advisories/GHSA-vr27-9w4v-hjw2
+- Fonte changelog: https://openwrt.org/releases/25.12/changelog-25.12.6
+- Fontes musl: https://github.com/openwrt/openwrt/tree/v25.12.5/toolchain/musl/patches
