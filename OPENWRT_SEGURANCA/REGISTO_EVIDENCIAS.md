@@ -75,3 +75,11 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Validação realizada:** commits de criação confirmados pelo GitHub. A validação de conteúdo por leitura posterior ainda será efetuada.
 - **Não realizado:** comandos de levantamento não executados; instância Zabbix não acedida; templates, hosts, proxies e ações não foram criados ou alterados.
 - **Estado:** DOCUMENTAÇÃO PREPARADA; IMPLEMENTAÇÃO BLOQUEADA ATÉ CONFIRMAR A VERSÃO E A TOPOLOGIA.
+
+
+## 2026-10-13 — Política de versão Zabbix mais recente estável
+- **Decisão do projeto:** a XFI utilizará sempre a versão estável mais recente do Zabbix para produção; alpha, beta e release candidate ficam excluídos de produção.
+- **Verificação oficial nesta data:** a página de downloads indicava Zabbix 7.4.15 como release da série 7.4 e Zabbix 8.0.0rc1 como pré-lançamento. A referência para produção nesta data é 7.4.15, sujeita a nova verificação imediatamente antes da instalação/atualização.
+- **Fontes oficiais:** https://www.zabbix.com/download_sources ; https://www.zabbix.com/release_notes ; https://www.zabbix.com/roadmap.
+- **Controlos:** verificar compatibilidade e notas de atualização, realizar backup verificável, preparar rollback e testar antes de alterar produção.
+- **Estado:** política documental registada. A versão atualmente instalada na infraestrutura XFI continua por confirmar; nenhuma atualização ou alteração da instância foi executada.
