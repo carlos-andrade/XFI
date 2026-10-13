@@ -45,3 +45,17 @@ O Makefile de `package/kernel/mac80211` fixa `PKG_VERSION:=6.18.26`. A correçã
 2. Verificar os diretórios de patch específicos dos targets relevantes, depois de o hardware/target ser definido.
 3. Registar resultado por CVE como backport confirmado, ausência confirmada, não aplicável ao target ou inconclusivo.
 4. Relê-los no GitHub e atualizar o CSV, evidências e roadmap após cada subfase.
+
+
+## 6. Subfase mac80211 — inspeção de patches overlay
+
+**Estado da subfase:** `CONCLUIDO` para a inspeção do diretório `package/kernel/mac80211/patches/subsys`; avaliação do pacote completo e homologação por target continuam pendentes.
+
+- Confirmado no Makefile da tag que o pacote fixa `PKG_VERSION:=6.18.26`.
+- Inspecionados os 13 patches existentes em `package/kernel/mac80211/patches/subsys`, incluindo os patches de 2026 numerados 301–371.
+- Nenhum dos 13 patches altera `net/mac80211/spectmgmt.c` ou contém os símbolos `ieee80211_parse_ch_switch_ie`, `new_chan_no` ou `new_op_class` associados ao fix de CVE-2026-90344.
+- O patch 350 refere-se a varredura em canal radar e altera `cfg.c`, `chan.c`, `ieee80211_i.h`, `offchannel.c`, `scan.c` e `util.c`; a correspondência lexical com “CSA” foi tratada como falso positivo, não como correção do CVE.
+- Como o fix upstream é posterior à versão pinada 6.18.26 e não foi encontrado um overlay equivalente no diretório `subsys`, o estado de risco deve ser elevado para **provável ausência de correção na árvore examinada**, sem o converter ainda em ausência global confirmada: o conteúdo exato do tarball `backports-6.18.26.tar.zst` e a configuração/target de destino não foram inspecionados.
+- Referências: [Makefile mac80211 v25.12.5](https://github.com/openwrt/openwrt/blob/v25.12.5/package/kernel/mac80211/Makefile); [commit upstream](https://github.com/gregkh/linux/commit/099aadb2012d7490bc584cc5075ef11cbc33f2c3); [advisory CVE-2026-90344](https://lists.openwall.net/linux-cve-announce/2026/09/17/99).
+
+**Próximo trabalho:** obter/verificar o conteúdo e hash do tarball mac80211 fixado, concluir diff semântico dos cinco fixes contra patches genéricos, e verificar patches por target depois de conhecido o hardware. A pesquisa por nomes, isoladamente, não prova ausência de backport.
