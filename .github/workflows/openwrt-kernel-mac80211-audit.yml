@@ -1,0 +1,63 @@
+name: XFI — Auditoria diferencial kernel/mac80211 OpenWrt
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "OPENWRT_SEGURANCA/scripts/audit_kernel_mac80211_patches.py"
+      - ".github/workflows/openwrt-kernel-mac80211-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout XFI
+        uses: actions/checkout@v4
+
+      - name: Checkout OpenWrt release tag
+        run: |
+          git clone --depth 1 --filter=blob:none --sparse --branch v25.12.5 https://github.com/openwrt/openwrt.git /tmp/openwrt
+          git -C /tmp/openwrt sparse-checkout set target/linux package/kernel/mac80211
+          git -C /tmp/openwrt rev-parse HEAD | tee /tmp/openwrt-commit.txt
+
+      - name: Download and verify pinned mac80211 backports archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          makefile=/tmp/openwrt/package/kernel/mac80211/Makefile
+          source_url="$(sed -n 's/^PKG_SOURCE_URL:=//p' "$makefile" | head -n1)"
+          filename="$(sed -n 's/^PKG_SOURCE:=//p' "$makefile" | head -n1)"
+          expected="$(sed -n 's/^PKG_HASH:=//p' "$makefile" | head -n1)"
+          test -n "$source_url" && test -n "$filename" && test -n "$expected"
+          echo "Pinned source: $source_url/$filename"
+          echo "Expected SHA-256: $expected"
+          sudo apt-get update
+          sudo apt-get install -y zstd
+          curl --fail --location --retry 3 --retry-delay 2 "$source_url/$filename" -o "/tmp/$filename"
+          actual="$(sha256sum "/tmp/$filename" | awk '{print $1}')"
+          echo "Actual SHA-256: $actual"
+          if [[ "$actual" != "$expected" ]]; then
+            echo "::error::SHA-256 mismatch for pinned mac80211 backports archive"
+            exit 1
+          fi
+          echo "BACKPORTS_TARBALL=/tmp/$filename" >> "$GITHUB_ENV"
+
+      - name: Run patch path and mac80211 marker audit
+        env:
+          OPENWRT_TREE: /tmp/openwrt
+          AUDIT_OUT: audit-output
+        run: |
+          python3 OPENWRT_SEGURANCA/scripts/audit_kernel_mac80211_patches.py
+          echo "OpenWrt commit: $(cat /tmp/openwrt-commit.txt)" >> audit-output/kernel-mac80211-audit.md
+
+      - name: Upload audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: xfi-openwrt-kernel-mac80211-audit
+          path: audit-output/
+          if-no-files-found: error
+          retention-days: 30
