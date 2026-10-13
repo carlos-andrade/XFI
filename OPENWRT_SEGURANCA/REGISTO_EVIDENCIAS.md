@@ -206,3 +206,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Estado CSV:** `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`; pacote/configuração de dispositivo continuam por validar.
 - **Relatório:** [VALIDACAO_TRAVELMATE_2026-10-13.md](VALIDACAO_TRAVELMATE_2026-10-13.md).
 - Sem PoC, build ou teste físico; routers inalterados; Zabbix em pausa.
+
+
+## 2026-10-13 — Revisão parcial de XSS LuCI UPnP
+
+- **Advisory:** GHSA-8v49-6387-7f89, High, descrição de mapa UPnP controlável por cliente LAN.
+- **Código na feed pinada:** vista de estado `80_upnp.js` (blob `3d6b88d065ed8ad6890a2d269bd3703454f206fc`) e vista principal ativa `upnp.js` (blob `04c870a45e3cfd693a04bd12ebdef2598b9970a3`) escapam a descrição com `%h`.
+- **Achado de revisão:** a vista principal também apresenta `rule.descr` sem escaping na linha 118, noutra tabela. A origem e a controlabilidade desse valor ainda precisam de ser estabelecidas.
+- **Estado:** `SOURCE_PIN_REVIEW_PARTIAL_PENDING_CONTEXT`; não declarar a correção integralmente fechada.
+- **Relatório:** [REVISAO_LUCI_UPNP_XSS_2026-10-13.md](REVISAO_LUCI_UPNP_XSS_2026-10-13.md).
+- Sem PoC, tráfego de teste, build ou teste físico; routers inalterados; Zabbix em pausa.
