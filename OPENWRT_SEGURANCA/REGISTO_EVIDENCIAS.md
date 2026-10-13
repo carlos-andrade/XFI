@@ -134,3 +134,15 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Pin observado:** `PKG_SOURCE_DATE=2026-06-29`; `PKG_SOURCE_VERSION=5d7be43f8b9dec0eb47e245cfab81108bb131273`.
 - **Interpretação:** as notas da release declaram as cinco correções; o Makefile fornece a revisão do pacote usada pela tag. Não equivale a comprovar o pacote instalado em qualquer router XFI nem a certificar a imagem de cada alvo.
 - **Estado:** evidência da release e do pin do pacote registada; validação por modelo/revisão/imagem instalada continua pendente. Zabbix permanece em pausa.
+
+
+## 2026-10-13 — Revisão complementar dos fixes OpenWrt 25.12.5
+
+- **Fonte consultada:** [notas oficiais OpenWrt 25.12.5](https://openwrt.org/releases/25.12/notes-25.12.5), consultadas para ampliar a revisão além dos cinco advisories odhcpd já registados.
+- **Relatório criado:** `OPENWRT_SEGURANCA/REVISAO_FIXES_ADICIONAIS_25.12.5_2026-10-13.md`.
+- **CSV atualizado:** oito registos adicionais (NDP relay, stored XSS DHCPv6/LuCI, três CVEs uhttpd, cgi-io, ead e umdns). Commit CSV: `238592647efeb4dc8fd5e9d1516bf0473cb1d315`.
+- **Commit do relatório:** `2816c459827ad4e1991efd3aae28d76485645d0b`.
+- **Qualificação de evidência:** os registos novos estão marcados `RELEASE_NOTE_RECORDED_PIN_PENDING`; ainda não foram normalizados intervalos afetados nem confirmados os pins individuais dos pacotes na tag `v25.12.5`.
+- **Outros grupos identificados:** apps LuCI, kernel, OpenSSL, musl, Dropbear e serviços de rede/hardening. O relatório separa estes itens e condiciona a aplicabilidade à presença do pacote, configuração e versão da imagem.
+- **Validação:** leitura posterior do CSV e do relatório confirmou a persistência dos oito registos e do documento. Esta validação é documental; não houve teste físico, alteração de router, PoC contra produção ou mudança no Zabbix.
+- **Estado:** revisão ampliada iniciada e documentada; validação por advisory/pin e mapeamento para hardware real continuam pendentes. Zabbix permanece em pausa.
