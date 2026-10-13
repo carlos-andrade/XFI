@@ -83,3 +83,14 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Fontes oficiais:** https://www.zabbix.com/download_sources ; https://www.zabbix.com/release_notes ; https://www.zabbix.com/roadmap.
 - **Controlos:** verificar compatibilidade e notas de atualização, realizar backup verificável, preparar rollback e testar antes de alterar produção.
 - **Estado:** política documental registada. A versão atualmente instalada na infraestrutura XFI continua por confirmar; nenhuma atualização ou alteração da instância foi executada.
+
+## 2026-10-13 — Ingestão ampliada de fontes OpenWrt
+
+- **Alterações:** catálogo ampliado com fontes de advisories, releases, downloads, histórico de versões e repositório Git upstream; verificador passou a produzir metadados normalizados por URL e a separar HTTP 429 (rate_limited) de outros erros HTTP.
+- **Correção operacional:** a página de commits do GitHub devolveu HTTP 429. A fonte de commits foi substituída pelo histórico oficial em git.openwrt.org.
+- **Validação automática:** execução [GitHub Actions #9](https://github.com/carlos-andrade/XFI/actions/runs/38384970277), resultado sucesso; 26/26 URLs acessíveis, 0 erros HTTP, 0 rate limits, 0 erros de rede. Artefacto: [relatório JSON](https://github.com/carlos-andrade/XFI/actions/runs/38384970277/artifacts/11805091538).
+- **Revisão semântica:** consulta às fontes oficiais identificou OpenWrt 25.12.5 como release estável mais recente na página inicial e 24.10 como série antiga, com fim de suporte previsto para setembro de 2026. Advisories e notas de release são fluxos complementares e devem ser acompanhados em paralelo.
+- **Ficheiro de análise:** [REVISAO_FONTES_OFICIAIS_2026-10-13.md](REVISAO_FONTES_OFICIAIS_2026-10-13.md).
+- **Limites:** o teste verifica acessibilidade no instante da execução; não constitui validação de conteúdo, avaliação de exposição de um router ou homologação.
+- **Pendente:** a expansão recente do catálogo com notas específicas de releases requer uma nova execução automática; a revisão humana das vulnerabilidades por modelo/release continua por fazer.
+- **Estado:** INGESTÃO DE METADADOS IMPLEMENTADA E EXECUTADA; REVISÃO SEMÂNTICA INICIAL DOCUMENTADA; HOMOLOGAÇÃO NÃO REALIZADA.
