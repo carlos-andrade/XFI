@@ -41,10 +41,10 @@ Não expor LuCI, SSH, SNMP ou outros serviços de gestão à Internet pública p
 - [Registo de evidências](REGISTO_EVIDENCIAS.md)
 
 ## Automação criada
-O workflow [XFI — Verificar fontes oficiais OpenWrt](../.github/workflows/openwrt-source-link-check.yml) pode ser executado manualmente ou semanalmente. Verifica se o catálogo contém URLs HTTPS dentro do domínio oficial OpenWrt e produz um relatório de acessibilidade como artefacto. A acessibilidade HTTP **não** comprova que o conteúdo está correto, atualizado ou seguro. A primeira execução do workflow ainda precisa ser observada.
+O workflow [XFI — Verificar fontes oficiais OpenWrt](../.github/workflows/openwrt-source-link-check.yml) pode ser executado manualmente ou semanalmente. Verifica URLs HTTPS do catálogo numa allowlist que inclui OpenWrt e caminhos do repositório upstream em GitHub, e produz um relatório JSON normalizado como artefacto. A primeira execução da versão inicial confirmou 20/20 URLs acessíveis; a versão ampliada do catálogo/verificador requer confirmação de execução própria. A acessibilidade HTTP **não** comprova que o conteúdo está correto, atualizado ou seguro.
 
 ## Escopo da primeira versão
-Inclui levantamento documental, desenho de controlos, ficha de inventário, shortlist preliminar de hardware e uma rotina inicial de verificação de links. Ainda não inclui crawler abrangente de releases/advisories, perfil UCI pronto para produção, deployment automático, teste em equipamento físico, varredura externa nem homologação de modelos específicos. A monitorização Zabbix está especificada documentalmente, mas ainda não implementada na instância.
+Inclui levantamento documental, desenho de controlos, ficha de inventário, shortlist preliminar de hardware e uma rotina inicial de verificação de links. Ainda não inclui ingestão semântica abrangente de releases/advisories, deteção de mudanças de conteúdo, perfil UCI pronto para produção, deployment automático, teste em equipamento físico, varredura externa nem homologação de modelos específicos. A monitorização Zabbix está especificada documentalmente, mas ainda não implementada na instância.
 
 ## Gate mínimo para produção
 Nenhum perfil pode ser chamado de homologado sem modelos/revisões suportados identificados, versão OpenWrt fixada, revisão por pares, backup protegido, teste de firewall e isolamento, verificação de administração remota, teste DNS/conectividade, atualização/recuperação ensaiadas, monitorização Zabbix funcional, alertas testados e aprovação documentada.
