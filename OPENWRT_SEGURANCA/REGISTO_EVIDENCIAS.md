@@ -196,3 +196,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Estado CSV:** ambos `RELEASE_NOTES_AND_FEED_PIN_CONFIRMED`; a confirmação por dispositivo permanece pendente.
 - **Relatório:** [VALIDACAO_LUCI_SAMBA4_DHCPV6_XSS_2026-10-13.md](VALIDACAO_LUCI_SAMBA4_DHCPV6_XSS_2026-10-13.md).
 - Nenhum PoC, build ou teste físico; nenhum router alterado; Zabbix em pausa.
+
+
+## 2026-10-13 — Validação Travelmate
+
+- **Advisory:** GHSA-p35r-3323-6g7g, High (CVSS 7.5).
+- **Pin:** feed packages `5caa62e0bc9f7fb9b0c12a23267bceb7724214dd`; Makefile `net/travelmate/Makefile` (blob `71ca99568bc5377365350ad28d7b6feca0ee95ff`) declara `2.4.6-r2`.
+- **Código:** `travelmate-functions.sh` (blob `b72e891632c7cbd0cf6f179f7b4c296eb700f157`) canonicaliza o caminho e só aceita `/etc/travelmate/*.login` antes de executar o script.
+- **Estado CSV:** `RELEASE_NOTES_AND_PACKAGE_PIN_CONFIRMED`; pacote/configuração de dispositivo continuam por validar.
+- **Relatório:** [VALIDACAO_TRAVELMATE_2026-10-13.md](VALIDACAO_TRAVELMATE_2026-10-13.md).
+- Sem PoC, build ou teste físico; routers inalterados; Zabbix em pausa.
