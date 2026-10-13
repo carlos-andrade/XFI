@@ -4,9 +4,9 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 
 ## 2026-10-12 — Baseline documental criada
 - **Escopo:** espaço no XFI para segurança de routers OpenWrt.
-- **Referência normativa:** https://github.com/carlos-andrade/GOVERNANCA e `GOVERNANCA/REGRAS_DO_PROJETO.md`.
+- **Referência normativa:** https://github.com/carlos-andrade/GOVERNANCA e GOVERNANCA/REGRAS_DO_PROJETO.md.
 - **Alterações:** índice, governança, arquitetura, baseline, catálogo de fontes, plano de validação/rollback, roadmap, registo e ingestão.
-- **Validação realizada:** verificação da branch `main`, árvore inicial e leitura dos documentos de governança.
+- **Validação realizada:** verificação da branch main, árvore inicial e leitura dos documentos de governança.
 - **Validação não realizada:** sem configuração aplicada em router, laboratório, varredura, homologação de hardware ou prova de segurança em produção.
 - **Decisão:** tratar o conteúdo como baseline documental, nunca como garantia absoluta ou perfil de produção.
 
@@ -20,23 +20,28 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 
 ## 2026-10-13 — Pesquisa inicial de fabricantes e modelos
 - **Objetivo:** começar a estruturar uma frota OpenWrt para clientes com diferentes capacidades económicas, sem presumir uma marca/modelo previamente escolhido.
-- **Nova pasta:** `OPENWRT_SEGURANCA/SELECAO_HARDWARE/`.
+- **Nova pasta:** OPENWRT_SEGURANCA/SELECAO_HARDWARE/.
 - **Documentos criados:** índice, critérios e pesos de seleção, triagem de fabricantes, shortlist de modelos, matriz de perfis, catálogo de fontes/evidências e plano de homologação.
 - **Candidatos iniciais:** GL.iNet GL-MT6000; Cudy WR3000 e variantes; TP-Link Archer AX23 v1/v1.20 apenas com cautela e testes adicionais.
-- **Fontes consultadas:** OpenWrt Table of Hardware; página GL-MT6000; índices OpenWrt GL.iNet e Cudy; páginas e dados técnicos OpenWrt do Archer AX23; documentação oficial de hardening, segurança, backup e sysupgrade.
-- **Validação realizada:** ficheiros novos criados por commit e leitura posterior confirmada no GitHub.
 - **Decisão:** lista preliminar de investigação; nenhum fabricante ou modelo está aprovado/homologado para implantação em clientes.
 
 ## 2026-10-13 — Pesquisa comercial Portugal/UE
 - **Objetivo:** obter referências públicas de preço e separar custo de aquisição de compatibilidade e segurança.
-- **Novo ficheiro:** `OPENWRT_SEGURANCA/SELECAO_HARDWARE/PESQUISA_COMERCIAL_PT.md`.
+- **Novo ficheiro:** OPENWRT_SEGURANCA/SELECAO_HARDWARE/PESQUISA_COMERCIAL_PT.md.
 - **Preços observados:** Cudy WR3000 ~43,21 € com envio numa oferta comparadora e 55,65 € noutra oferta; Cudy WR3000S 58,66 €; TP-Link Archer AX23 ~67,76 €; GL.iNet GL-MT6000 165,37 €; GL.iNet GL-MT3000 102,85 €; OpenWrt One 174,24 € com IVA numa loja europeia.
 - **Fontes:** KuantoKusta, Leroy Merlin, Worten, loja oficial GL.iNet UE, Banana Pi EU, documentação OpenWrt e suporte TP-Link Portugal. Preços são fotografia temporal, alguns via marketplace e não cotações vinculativas.
-- **Achado material:** a matriz GL.iNet consultada distingue o firmware estável GL-MT6000 4.9.1 baseado em OpenWrt 21.02 da linha “op24” baseada em 24.10 e do OpenWrt upstream 25.12.5 disponível para o hardware. O XFI deve escolher e testar a linha de firmware explicitamente.
-- **Candidatos para comparação em laboratório:** GL-MT6000 e OpenWrt One para capacidade/arquitetura; Cudy WR3000 como opção de orçamento após confirmação de revisão. GL-MT3000 é categoria portátil. Archer AX23 permanece condicionado à revisão e aos avisos técnicos.
-- **Validação realizada:** pesquisa pública consultada; novo ficheiro criado e documentação técnica/comercial atualizada por commits. A leitura posterior dos ficheiros deve ser concluída para fechar a validação de persistência.
+- **Achado material:** a matriz GL.iNet consultada distingue firmware estável GL-MT6000 4.9.1 baseado em OpenWrt 21.02, linha op24 baseada em 24.10 e OpenWrt upstream 25.12.5 disponível para o hardware. O XFI deve escolher e testar a linha de firmware explicitamente.
 - **Validação pendente:** preço final/stock/envio/garantia para Portugal, revisão física, testes de Wi-Fi/VPN/SQM/firewall, atualização e recuperação. Nenhum produto foi comprado, testado ou homologado.
-- **Risco residual:** preços e suporte podem mudar; os vendedores marketplace podem não garantir a revisão correta. Confirmar a documentação e SKU na data de compra.
+
+## 2026-10-13 — Zabbix obrigatório para a frota OpenWrt
+- **Decisão:** todos os routers fornecidos/geridos pela XFI devem ser inventariados e monitorizados pelo Zabbix; o Zabbix é o centro operacional para métricas, alertas e acionamento de operações predefinidas.
+- **Pasta criada:** MONITORAMENTO_ZABBIX/.
+- **Documentos criados:** README, arquitetura, métricas e alertas, controlo operacional, segurança/acessos e plano de implementação.
+- **Fontes oficiais consultadas:** documentação Zabbix sobre SNMP e descoberta de rede; wiki OpenWrt sobre Zabbix monitoring.
+- **Regra de segurança:** não expor serviços administrativos na WAN; preferir SNMPv3 authPriv quando suportado, canal privado/proxy e runner restrito para mudanças complexas. Mudanças de alto impacto exigem aprovação, auditoria e rollback.
+- **Validação realizada:** seis documentos criados por commits; integração com README raiz e documentação OpenWrt preparada para atualização.
+- **Validação pendente:** ler de volta todos os ficheiros alterados, confirmar versão/topologia Zabbix existente, criar templates/hosts reais e testar em laboratório.
+- **Estado:** DOCUMENTADO, NÃO IMPLEMENTADO. Nenhum host, template, proxy, ação ou credencial foi alterado na instância Zabbix.
 
 ## Modelo para registos futuros
 ### AAAA-MM-DD — Título
