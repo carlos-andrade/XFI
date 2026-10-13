@@ -206,3 +206,13 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - O estado do CSV foi elevado para **`FIX_INCOMPLETE_SOURCE_PATH_REMAINS`**. As notas de release dizem que a correção existe, mas o pin de fonte revisto parece manter um caminho vulnerável.
 - Relatório atualizado: [REVISAO_LUCI_UPNP_XSS_2026-10-13.md](REVISAO_LUCI_UPNP_XSS_2026-10-13.md).
 - Ação proposta: corrigir a vista inicial com escaping HTML ou nó de texto e criar teste de regressão para render inicial e atualização periódica. Não alterar upstream nem router sem processo de aprovação e teste.
+
+
+## Atualização — bibliotecas centrais (2026-10-13)
+
+- **Prioridade alta: OpenSSL 3.5.7-r1.** O OpenSSL upstream publicou 3.5.8 (25-08-2026) e 3.5.9 (29-09-2026) com correções de segurança. A tag OpenWrt v25.12.5 continua a fixar 3.5.7-r1 e não foi encontrado backport local correspondente aos CVEs de 3.5.8/3.5.9 na árvore de patches. CSV recebeu nove registos de advisories; avaliar update/backports e dependências de DTLS, QUIC, CMS, CMP e EVP.
+- **musl 1.2.5:** patches 004/005/006 de qsort estão presentes na release-base; CVE-2026-40200 fica como provável mitigação por backport pendente de diff e arquitetura.
+- **Dropbear 2025.89-r3:** CVE-2025-14282 está corrigido pela versão; CVE-2026-3706 é advisory não revisto e o commit upstream afirma que a maleabilidade Ed25519 não tem impacto no uso no protocolo SSH. Manter em triagem, sem declarar vulnerabilidade remota confirmada.
+- **Kernel 6.12.94:** pin de versão/hash confirmado; correlação de advisories por target ainda pendente.
+- Relatório: [REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md](REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md).
+- Não alterar routers; Zabbix continua em pausa.
