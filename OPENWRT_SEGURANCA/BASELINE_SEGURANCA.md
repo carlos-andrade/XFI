@@ -55,12 +55,16 @@
 - [ ] Não atualizar kernel/módulos isoladamente sem compatibilidade suportada.
 - [ ] Definir SLA interno por severidade/exposição, distinto dos compromissos oficiais.
 
-## G. Logs, monitorização e resposta
+## G. Zabbix, logs, monitorização e resposta
+- [ ] Registar cada router no Zabbix antes da aceitação operacional.
+- [ ] Confirmar host, inventário, template, tags, proxy/canal privado e método cifrado de recolha.
+- [ ] Alertar para router offline, falha WAN, flash baixo, falhas de autenticação observáveis, alteração inesperada e atualização pendente.
+- [ ] Testar alertas, eventos de recuperação e distinção entre falha do router, proxy, túnel e servidor.
+- [ ] Separar credenciais read-only de monitorização das credenciais de operação.
 - [ ] Definir eventos, severidade, destino e retenção.
 - [ ] Minimizar dados pessoais e mascarar identificadores antes de exportar logs.
-- [ ] Alertar para router offline, falha WAN, flash baixo, falhas de autenticação observáveis, alteração inesperada e atualização pendente.
 - [ ] Definir runbook para credenciais comprometidas, router comprometido, perda de acesso e rollback.
 - [ ] Guardar evidências fora do router, com acesso controlado e sincronização temporal.
 
 ## H. Critério de aprovação
-Classificar cada item como N/A justificado, aprovado com evidência, falhado ou pendente. Um teste deve indicar origem/destino, protocolo/porta, família IP, ferramenta, resultado esperado/observado e data. Aprovação exige revisão de risco residual.
+Classificar cada item como N/A justificado, aprovado com evidência, falhado ou pendente. Um teste deve indicar origem/destino, protocolo/porta, família IP, ferramenta, resultado esperado/observado e data. Aprovação exige revisão de risco residual e monitorização Zabbix funcional.
