@@ -323,3 +323,11 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Próximo passo:** verificar o tarball mac80211 exato e continuar a comparação semântica dos cinco fixes kernel.
 - **Sem build, sem alteração/teste físico de router. Zabbix continua em pausa.**
 - **Relatório:** `OPENWRT_SEGURANCA/REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md`.
+
+
+## 2026-10-13 — Subfase kernel: spot-check dirigido de patches genéricos
+- **Escopo consultado:** 19 patches genéricos relacionados por nome a block/MMC, core, DMA, skb e rede, além de 10 candidatos block/MMC inspecionados anteriormente.
+- **Resultado do spot-check:** nenhum dos patches consultados altera diretamente `block/bdev.c`, `net/core/dev.c`, `kernel/dma/direct.c` ou `drivers/mmc/host/mmci.c`.
+- **Limitação:** não foram lidos os 414 patches genéricos na íntegra; também não foram revistos patches de todos os targets. O resultado não permite afirmar ausência global de backports.
+- **Estado:** EM_REVISAO. Continuar varredura de conteúdo e manter os estados CVE sem conclusão prematura.
+- **Sem alterações em routers, sem firmware build/testes físicos; Zabbix em pausa.**
