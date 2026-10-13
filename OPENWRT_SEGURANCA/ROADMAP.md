@@ -274,3 +274,14 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - Relatório de fecho: [FECHO_REVISAO_DOCUMENTAL_2026-10-13.md](FECHO_REVISAO_DOCUMENTAL_2026-10-13.md).
 
 **Próximo marco:** diff semântico dos cinco fixes do kernel contra patches genéricos e específicos por target; validação do feed mac80211; depois inventário de hardware real. Zabbix continua em pausa. Sem alterações em routers, sem builds e sem testes físicos.
+
+
+## Atualização de fase — revisão diferencial kernel/mac80211 (2026-10-13)
+
+- **Estado:** `EM_REVISAO`; ainda não é fase concluída.
+- Foram consultados os diffs upstream para cinco CVEs e confirmado o pin `mac80211 6.18.26` no OpenWrt `v25.12.5`.
+- CVE-2026-90344: a versão pinada é anterior à versão corrigida upstream 6.18.52; ainda falta excluir patch equivalente local por comparação de conteúdo.
+- Para os cinco CVEs do kernel, a comparação integral dos hunks com patches genéricos e específicos de todos os targets permanece pendente. A pesquisa por nomes não demonstra ausência de backports.
+- **Próxima ação:** completar comparação de conteúdo, começar pelo mac80211 e depois pelos cinco hunks de kernel; confirmar targets específicos quando o inventário de hardware existir.
+- **Sem implantação:** nenhuma imagem construída, nenhum router alterado/testado; Zabbix continua em pausa.
+- Relatório da fase: [REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md](REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md).
