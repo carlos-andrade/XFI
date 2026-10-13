@@ -127,3 +127,10 @@ Inspeção direta dos patches no tag v25.12.5:
 1. Completar a matriz OpenSSL com todos os CVEs listados nas releases 3.5.8/3.5.9, condicionando a aplicabilidade a feature/build/uso.
 2. Comparar changelogs Linux 6.12.95–6.12.112 com backport/pending e patches específicos por target.
 3. Concluir a triagem Dropbear CVE-2026-3706 sem classificar o advisory como explorável enquanto o impacto SSH não estiver demonstrado.
+
+
+### Cobertura adicional — advisories OpenSSL 3.5.8/3.5.9 (2026-10-13)
+
+A matriz CSV foi expandida para incluir os restantes CVEs anunciados nas notas oficiais de 3.5.8 e 3.5.9, além dos que já estavam registados. Novos registos incluem: CVE-2026-18798, CVE-2026-63076, CVE-2026-14456, CVE-2026-14457 e CVE-2026-54874 (3.5.8); CVE-2026-54872, CVE-2026-54873, CVE-2026-54875, CVE-2026-72897, CVE-2026-75804, CVE-2026-75805, CVE-2026-75806, CVE-2026-77696 e CVE-2026-84784 (3.5.9). A severidade individual não foi inferida a partir da severidade máxima da release: o CSV usa “See upstream advisory” quando não foi validada individualmente. A aplicabilidade depende de funcionalidades, arquitetura, configuração e uso efetivo; o pin OpenSSL v25.12.5 permanece 3.5.7-r1.
+
+Fonte principal: https://github.com/openssl/openssl/releases/tag/openssl-3.5.8 e https://github.com/openssl/openssl/releases/tag/openssl-3.5.9.
