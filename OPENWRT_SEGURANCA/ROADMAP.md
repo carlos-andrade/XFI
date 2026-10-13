@@ -285,3 +285,14 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - **Próxima ação:** completar comparação de conteúdo, começar pelo mac80211 e depois pelos cinco hunks de kernel; confirmar targets específicos quando o inventário de hardware existir.
 - **Sem implantação:** nenhuma imagem construída, nenhum router alterado/testado; Zabbix continua em pausa.
 - Relatório da fase: [REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md](REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md).
+
+
+### Subfase concluída — inspeção do overlay mac80211 (2026-10-13)
+
+- **Subfase:** CONCLUIDO para a inspeção dos 13 patches do diretório `package/kernel/mac80211/patches/subsys`.
+- **Achado:** OpenWrt v25.12.5 fixa mac80211 6.18.26; não foi encontrado nos 13 patches um hunk equivalente ao fix CVE-2026-90344 em `net/mac80211/spectmgmt.c`.
+- **Classificação:** provável ausência de correção na árvore examinada; não declarar ausência global confirmada até verificar o tarball upstream exato e a aplicação por target.
+- **Fase técnica global:** EM_REVISAO. Permanecem pendentes o diff semântico dos cinco fixes do kernel e os patches específicos do target.
+- **Próxima ação:** verificar hash/conteúdo do tarball mac80211 e continuar com os cinco hunks do kernel.
+- **Relatório:** [REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md](REVISAO_DIFERENCIAL_KERNEL_MAC80211_2026-10-13.md).
+- Nenhuma imagem construída ou router alterado/testado; Zabbix permanece em pausa.
