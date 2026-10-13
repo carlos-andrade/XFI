@@ -30,6 +30,7 @@ Não expor LuCI, SSH, SNMP ou outros serviços de gestão à Internet pública p
 - [Arquitetura de referência](ARQUITETURA.md)
 - [Baseline de segurança](BASELINE_SEGURANCA.md)
 - [Inventário de fontes oficiais](FONTES_OFICIAIS.md)
+- [Revisão documental de releases e advisories (13/10/2026)](REVISAO_FONTES_OFICIAIS_2026-10-13.md)
 - [Inventário de routers](INVENTARIO_ROUTERS.md)
 - [Requisitos por perfil de cliente](PERFIL_CLIENTE.md)
 - [Seleção de hardware — fabricantes, modelos, critérios e homologação](SELECAO_HARDWARE/README.md)
