@@ -22,14 +22,21 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Objetivo:** começar a estruturar uma frota OpenWrt para clientes com diferentes capacidades económicas, sem presumir uma marca/modelo previamente escolhido.
 - **Nova pasta:** `OPENWRT_SEGURANCA/SELECAO_HARDWARE/`.
 - **Documentos criados:** índice, critérios e pesos de seleção, triagem de fabricantes, shortlist de modelos, matriz de perfis, catálogo de fontes/evidências e plano de homologação.
-- **Candidatos prioritários para diligência:** GL.iNet GL-MT6000 (Flint 2); Cudy WR3000 e variantes; TP-Link Archer AX23 v1/v1.20 apenas com cautela e testes adicionais.
+- **Candidatos iniciais:** GL.iNet GL-MT6000; Cudy WR3000 e variantes; TP-Link Archer AX23 v1/v1.20 apenas com cautela e testes adicionais.
 - **Fontes consultadas:** OpenWrt Table of Hardware; página GL-MT6000; índices OpenWrt GL.iNet e Cudy; páginas e dados técnicos OpenWrt do Archer AX23; documentação oficial de hardening, segurança, backup e sysupgrade.
-- **Achado material:** nomes comerciais podem abranger revisões de hardware incompatíveis; não comprar em lote nem instalar firmware sem identificar modelo e revisão exatos.
 - **Validação realizada:** ficheiros novos criados por commit e leitura posterior confirmada no GitHub.
-- **Validação pendente:** conferência de preços/garantia Portugal-UE, disponibilidade, revisão física das unidades, teste físico, throughput, Wi-Fi, VPN/SQM, atualização e recuperação.
 - **Decisão:** lista preliminar de investigação; nenhum fabricante ou modelo está aprovado/homologado para implantação em clientes.
-- **Risco residual:** os estados de release e compatibilidade podem mudar; confirmar a documentação oficial novamente na data da aquisição.
-- **Commits principais:** índice `9c4525f33a18abf57dc6119f1f13e34ccf84c861`; critérios `4d9e4caaa0fbf197d72ef5665877a7900ffd167e`; fabricantes `c09197ee961de98f7dbddf7f5232e3742943d05b`; modelos `69d33bb393050420f131186731cce73c9c460981`; matriz `97a1370744ac89c23cb0ded11c044096ed1e0b92`; fontes `29c8d1f6be605489eabf4f8c1d825c3f6f21f13b`; plano `2a248f682fb8f171c8ce2db5809e2392c8ede080`.
+
+## 2026-10-13 — Pesquisa comercial Portugal/UE
+- **Objetivo:** obter referências públicas de preço e separar custo de aquisição de compatibilidade e segurança.
+- **Novo ficheiro:** `OPENWRT_SEGURANCA/SELECAO_HARDWARE/PESQUISA_COMERCIAL_PT.md`.
+- **Preços observados:** Cudy WR3000 ~43,21 € com envio numa oferta comparadora e 55,65 € noutra oferta; Cudy WR3000S 58,66 €; TP-Link Archer AX23 ~67,76 €; GL.iNet GL-MT6000 165,37 €; GL.iNet GL-MT3000 102,85 €; OpenWrt One 174,24 € com IVA numa loja europeia.
+- **Fontes:** KuantoKusta, Leroy Merlin, Worten, loja oficial GL.iNet UE, Banana Pi EU, documentação OpenWrt e suporte TP-Link Portugal. Preços são fotografia temporal, alguns via marketplace e não cotações vinculativas.
+- **Achado material:** a matriz GL.iNet consultada distingue o firmware estável GL-MT6000 4.9.1 baseado em OpenWrt 21.02 da linha “op24” baseada em 24.10 e do OpenWrt upstream 25.12.5 disponível para o hardware. O XFI deve escolher e testar a linha de firmware explicitamente.
+- **Candidatos para comparação em laboratório:** GL-MT6000 e OpenWrt One para capacidade/arquitetura; Cudy WR3000 como opção de orçamento após confirmação de revisão. GL-MT3000 é categoria portátil. Archer AX23 permanece condicionado à revisão e aos avisos técnicos.
+- **Validação realizada:** pesquisa pública consultada; novo ficheiro criado e documentação técnica/comercial atualizada por commits. A leitura posterior dos ficheiros deve ser concluída para fechar a validação de persistência.
+- **Validação pendente:** preço final/stock/envio/garantia para Portugal, revisão física, testes de Wi-Fi/VPN/SQM/firewall, atualização e recuperação. Nenhum produto foi comprado, testado ou homologado.
+- **Risco residual:** preços e suporte podem mudar; os vendedores marketplace podem não garantir a revisão correta. Confirmar a documentação e SKU na data de compra.
 
 ## Modelo para registos futuros
 ### AAAA-MM-DD — Título
