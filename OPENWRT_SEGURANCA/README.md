@@ -26,6 +26,7 @@ Criar uma base rastreável para recolher, classificar, versionar e aplicar conhe
 - [Inventário de fontes oficiais](FONTES_OFICIAIS.md)
 - [Inventário de routers](INVENTARIO_ROUTERS.md)
 - [Requisitos por perfil de cliente](PERFIL_CLIENTE.md)
+- [Seleção de hardware — fabricantes, modelos, critérios e homologação](SELECAO_HARDWARE/README.md)
 - [Ingestão de fontes](INGESTAO_FONTES.md)
 - [Verificador de links e workflow agendado](scripts/check_openwrt_sources.py)
 - [Validação, testes e rollback](VALIDACAO_E_ROLLBACK.md)
@@ -36,7 +37,7 @@ Criar uma base rastreável para recolher, classificar, versionar e aplicar conhe
 O workflow [XFI — Verificar fontes oficiais OpenWrt](../.github/workflows/openwrt-source-link-check.yml) pode ser executado manualmente ou semanalmente. Verifica se o catálogo contém URLs HTTPS dentro do domínio oficial OpenWrt e produz um relatório de acessibilidade como artefacto. A acessibilidade HTTP **não** comprova que o conteúdo está correto, atualizado ou seguro. A primeira execução do workflow ainda precisa ser observada.
 
 ## Escopo da primeira versão
-Inclui levantamento documental, desenho de controlos, ficha de inventário e uma rotina inicial de verificação de links. Ainda não inclui crawler abrangente de releases/advisories, perfil UCI pronto para produção, deployment automático, teste em equipamento físico, varredura externa nem homologação de modelos específicos.
+Inclui levantamento documental, desenho de controlos, ficha de inventário, shortlist preliminar de hardware e uma rotina inicial de verificação de links. Ainda não inclui crawler abrangente de releases/advisories, perfil UCI pronto para produção, deployment automático, teste em equipamento físico, varredura externa nem homologação de modelos específicos.
 
 ## Gate mínimo para produção
 Nenhum perfil pode ser chamado de homologado sem modelos/revisões suportados identificados, versão OpenWrt fixada, revisão por pares, backup protegido, teste de firewall e isolamento, verificação de administração remota, teste DNS/conectividade, atualização/recuperação ensaiadas, monitorização e aprovação documentada.
