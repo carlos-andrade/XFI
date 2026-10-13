@@ -115,3 +115,12 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Não realizado:** não houve testes em routers, PoC contra produção, alteração de configuração nem modificação da instância Zabbix.
 - **Estado:** revisão documental dos advisories concluída; validação por tag de release e aplicabilidade a hardware real pendentes.
 - **Próxima ação:** inspecionar tags oficiais e `PKG_SOURCE_VERSION` do pacote odhcpd nas releases relevantes, com evidência por release. Zabbix permanece em pausa.
+
+## 2026-10-13 — Cruzamento com notas oficiais OpenWrt 25.12.5
+
+- **Fonte:** [releases oficiais OpenWrt](https://github.com/openwrt/openwrt/releases) e anúncio 25.12.5.
+- **Confirmado nas notas de 25.12.5:** CVE-2026-53921 (Critical), CVE-2026-53918 (High), CVE-2026-53920 (High) e CVE-2026-53922 (Moderate) aparecem explicitamente na lista de correções de odhcpd.
+- **Não confirmado na lista consultada:** CVE-2026-55606. A página do advisory lista o commit de correção `6907f28` no ramo 25.12, mas isso, isoladamente, não prova a inclusão na tag v25.12.5.
+- **Alterações:** CSV, relatório de advisories e roadmap atualizados para distinguir as quatro correções explicitamente listadas da quinta pendente.
+- **Limitação:** ainda falta verificar a tag/build concreta e o pin `PKG_SOURCE_VERSION` de odhcpd para fechar a CVE-2026-55606; nenhuma conclusão sobre router XFI sem inventário real.
+- **Estado:** quatro CVEs confirmadas nas notas da release; uma pendente de validação por tag/pacote. Zabbix continua em pausa.
