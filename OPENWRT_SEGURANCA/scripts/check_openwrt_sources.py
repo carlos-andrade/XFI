@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Validate the OpenWrt source catalog and check official links.
+"""Validate the XFI OpenWrt source catalog and check approved official URLs.
 
-Network failures and HTTP error responses are reported but do not fail the job:
-wiki pages can rate-limit automated clients. Invalid catalog entries do fail.
-Only URLs on openwrt.org and its subdomains are accepted by this first version.
+The report records source metadata and HTTP reachability. Reachability is not a
+content, freshness, applicability, or security assessment.
 """
 from __future__ import annotations
 
@@ -20,8 +19,8 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG = ROOT / "OPENWRT_SEGURANCA" / "FONTES_OFICIAIS.md"
 REPORT = ROOT / "openwrt-source-check-report.json"
-URL_RE = re.compile(r"https://(?:[a-z0-9-]+\.)*openwrt\.org[^\s|)]+", re.IGNORECASE)
-USER_AGENT = "XFI-OpenWrt-SourceCatalogCheck/1.0 (+https://github.com/carlos-andrade/XFI)"
+URL_RE = re.compile(r"https://[^\s|)<>]+", re.IGNORECASE)
+USER_AGENT = "XFI-OpenWrt-SourceCatalogCheck/1.1 (+https://github.com/carlos-andrade/XFI)"
 TIMEOUT_SECONDS = 15
 PAUSE_SECONDS = 0.5
 
@@ -29,18 +28,51 @@ PAUSE_SECONDS = 0.5
 def official_url(url: str) -> bool:
     parsed = urlparse(url)
     host = (parsed.hostname or "").lower()
-    return parsed.scheme == "https" and (host == "openwrt.org" or host.endswith(".openwrt.org"))
+    if parsed.scheme != "https":
+        return False
+    if host == "openwrt.org" or host.endswith(".openwrt.org"):
+        return True
+    # Limit GitHub checks to the upstream OpenWrt organization/repository.
+    return host == "github.com" and parsed.path.lower().startswith("/openwrt/")
+
+
+def parse_catalog(content: str) -> list[dict[str, str]]:
+    records: list[dict[str, str]] = []
+    for line_number, line in enumerate(content.splitlines(), start=1):
+        if not line.lstrip().startswith("|"):
+            continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) < 3 or cells[0].lower() in {"tema", "---"}:
+            continue
+        if set(cells[0]) <= {"-", ":"}:
+            continue
+        match = URL_RE.search(cells[1])
+        if not match:
+            continue
+        url = match.group(0).rstrip(".,;")
+        records.append({
+            "category": cells[0],
+            "url": url,
+            "purpose": cells[2],
+            "catalog_line": str(line_number),
+        })
+    # De-duplicate by canonical URL while retaining the first catalog record.
+    unique: dict[str, dict[str, str]] = {}
+    for record in records:
+        unique.setdefault(record["url"], record)
+    return list(unique.values())
 
 
 def check_url(url: str) -> dict[str, object]:
     request = Request(url, headers={"User-Agent": USER_AGENT}, method="GET")
     try:
         with urlopen(request, timeout=TIMEOUT_SECONDS) as response:
+            status = int(response.status)
             return {
                 "url": url,
-                "status": int(response.status),
+                "status": status,
                 "final_url": response.geturl(),
-                "result": "reachable" if 200 <= response.status < 400 else "http_error",
+                "result": "reachable" if 200 <= status < 400 else "http_error",
                 "detail": "",
             }
     except HTTPError as exc:
@@ -67,37 +99,48 @@ def main() -> int:
         return 2
 
     content = CATALOG.read_text(encoding="utf-8")
-    urls = sorted(set(URL_RE.findall(content)))
-    if not urls:
-        print("ERROR: no official OpenWrt URLs found in catalog", file=sys.stderr)
+    sources = parse_catalog(content)
+    if not sources:
+        print("ERROR: no source-table URLs found in catalog", file=sys.stderr)
         return 2
 
-    invalid = [url for url in urls if not official_url(url)]
+    invalid = [source["url"] for source in sources if not official_url(source["url"])]
     if invalid:
         print("ERROR: non-allowlisted URL(s): " + ", ".join(invalid), file=sys.stderr)
         return 2
 
-    results = []
-    for index, url in enumerate(urls):
-        results.append(check_url(url))
-        if index + 1 < len(urls):
+    results_by_url: dict[str, dict[str, object]] = {}
+    for index, source in enumerate(sources):
+        results_by_url[source["url"]] = check_url(source["url"])
+        if index + 1 < len(sources):
             time.sleep(PAUSE_SECONDS)
+
+    results = []
+    for source in sources:
+        result = results_by_url[source["url"]]
+        results.append({
+            **source,
+            **result,
+            "checked_at_utc": datetime.now(timezone.utc).isoformat(),
+            "review_status": "reachability_checked_content_review_pending",
+        })
 
     reachable = sum(1 for item in results if item["result"] == "reachable")
     report = {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "catalog": str(CATALOG.relative_to(ROOT)),
-        "total_unique_urls": len(urls),
+        "schema_version": "1.0",
+        "total_unique_urls": len(results),
         "reachable": reachable,
         "http_errors": sum(1 for item in results if item["result"] == "http_error"),
         "network_errors": sum(1 for item in results if item["result"] == "network_error"),
-        "note": "Reachability is not a content/security validation. HTTP/network errors may reflect rate limiting; review manually.",
-        "results": results,
+        "note": "HTTP reachability is not content/security validation. Review each source for freshness, relevance, affected versions, and remediation.",
+        "sources": results,
     }
     REPORT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps({key: report[key] for key in (
-        "generated_at_utc", "catalog", "total_unique_urls", "reachable",
-        "http_errors", "network_errors"
+        "generated_at_utc", "catalog", "schema_version", "total_unique_urls",
+        "reachable", "http_errors", "network_errors"
     )}, indent=2, ensure_ascii=False))
     return 0
 
