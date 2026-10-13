@@ -236,3 +236,12 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Kernel:** `6.12.94`, hash `e998a232b9418db3301cb58468e291a4f41d6ab8306029b30d991f56251dc8d2`; pin confirmado, análise de CVEs por target pendente.
 - **Relatório:** [REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md](REVISAO_BIBLIOTECAS_CENTRAIS_2026-10-13.md).
 - Sem build, testes físicos ou alterações em routers; Zabbix em pausa.
+
+
+## 2026-10-13 — Kernel 6.12.94 vs upstream 6.12.112
+
+- A tag OpenWrt `v25.12.5` fixa Linux `6.12.94` (SHA-256 `e998a232b9418db3301cb58468e291a4f41d6ab8306029b30d991f56251dc8d2`).
+- A listagem oficial kernel.org mostra `ChangeLog-6.12.112` publicado em 2026-10-03. A diferença é de 18 releases de manutenção.
+- **Estado:** `UPSTREAM_STABLE_LAG_REQUIRES_PATCH_DIFF`; não é prova de CVE específico, pois ainda é necessário mapear patches backportadas no OpenWrt e configuração por target.
+- Próximo: comparar changelogs 6.12.95–6.12.112 com backport/pending e patches de target.
+- Fonte: https://www.kernel.org/pub/linux/kernel/v6.x/
