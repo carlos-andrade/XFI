@@ -172,3 +172,12 @@ A conclusão anterior de que CVE-2026-55606 não constava nas notas de v25.12.5 
 - **CVE-2026-55159 / GHSA-ggpf-xrph-wg5v — adblock-fast, High:** o backend no feed fixado usa `syncCron` em vez de `setCronEntry` e valida os campos de agenda antes de escrever o crontab root.
 - CSV atualizado com ambos os advisories; relatório: [VALIDACAO_LUCI_ADVANCED_REBOOT_ADBLOCK_FAST_2026-10-13.md](VALIDACAO_LUCI_ADVANCED_REBOOT_ADBLOCK_FAST_2026-10-13.md).
 - Confirmação documental/source-pin, não validação de binário ou equipamento. Continuar com Samba4, Travelmate e XSS no estado DHCPv6 do LuCI.
+
+
+## Atualização — Samba4 e XSS de leases DHCPv6 no LuCI (2026-10-13)
+
+- **GHSA-vx64-mmp7-h36c — Samba4, High:** a ACL na feed LuCI fixada por `v25.12.5` restringe `exec` a `/usr/sbin/smbd -V`, não ao daemon genérico `/usr/sbin/smbd`.
+- **GHSA-686p-p8p9-x6fh — DHCPv6/LuCI, High:** a vista de leases na feed pinada usa `%h` para escapar o hostname antes da apresentação; o fecho completo também depende da correção do `odhcpd`.
+- CSV atualizado; relatório: [VALIDACAO_LUCI_SAMBA4_DHCPV6_XSS_2026-10-13.md](VALIDACAO_LUCI_SAMBA4_DHCPV6_XSS_2026-10-13.md).
+- **Limite:** feed de código-fonte confirmada, mas imagem, pacotes, ACLs e exposição reais não verificados.
+- Próximo: Travelmate e restantes correções de aplicação; depois bibliotecas centrais (kernel, OpenSSL, musl, Dropbear).
