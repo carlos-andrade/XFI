@@ -216,3 +216,13 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 - **Estado:** `SOURCE_PIN_REVIEW_PARTIAL_PENDING_CONTEXT`; não declarar a correção integralmente fechada.
 - **Relatório:** [REVISAO_LUCI_UPNP_XSS_2026-10-13.md](REVISAO_LUCI_UPNP_XSS_2026-10-13.md).
 - Sem PoC, tráfego de teste, build ou teste físico; routers inalterados; Zabbix em pausa.
+
+
+## 2026-10-13 — Achado reforçado: possível caminho XSS residual no LuCI UPnP
+
+- **Origem:** backend `luci.upnp` lê a descrição do ficheiro `upnp_lease_file` (blob `f72b57b7ba84188b9b78854bf7ad0711394a0045`, linhas 24–38) e associa-a às regras ativas (linhas 89–111).
+- **Sink:** render inicial em `luci-app-upnp/.../view/upnp/upnp.js:118` passa `rule.descr` sem escaping para `cbi_update_table`. A implementação `L.ui.Table.update` passa a string como filho de `E`; a primitiva DOM coloca strings não-Node em `innerHTML`.
+- **Diferença:** o caminho de atualização periódica aplica `%h`, mas o render inicial não.
+- **Estado:** `FIX_INCOMPLETE_SOURCE_PATH_REMAINS`; source pin parece deixar um caminho de XSS residual apesar da nota de release.
+- **Correção proposta:** aplicar escaping à linha 118 ou passar nó de texto; adicionar teste de regressão para ambos os caminhos. Não foi alterado código upstream nem router.
+- **Relatório:** [REVISAO_LUCI_UPNP_XSS_2026-10-13.md](REVISAO_LUCI_UPNP_XSS_2026-10-13.md).
