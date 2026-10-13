@@ -138,10 +138,15 @@ def main() -> int:
         "sources": results,
     }
     REPORT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(json.dumps({key: report[key] for key in (
+    summary = {key: report[key] for key in (
         "generated_at_utc", "catalog", "schema_version", "total_unique_urls",
         "reachable", "http_errors", "network_errors"
-    )}, indent=2, ensure_ascii=False))
+    )}
+    summary["failures"] = [
+        {"url": item["url"], "status": item["status"], "result": item["result"], "detail": item["detail"]}
+        for item in results if item["result"] != "reachable"
+    ]
+    print(json.dumps(summary, indent=2, ensure_ascii=False))
     return 0
 
 
