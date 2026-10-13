@@ -6,6 +6,9 @@
 ## Política de compatibilidade
 A versão-alvo é sempre a versão estável mais recente disponível na data da implementação. O template deve ser testado nessa versão e não deve declarar compatibilidade com versões não testadas. Versões pré-lançamento não são alvo de produção.
 
+## Política de compatibilidade
+A versão-alvo é sempre a versão estável mais recente disponível na data da implementação. O template só pode declarar compatibilidade com versões nas quais foi efetivamente importado e testado. Versões pré-lançamento não são alvo de produção.
+
 ## 1. Objetivo
 Definir um conjunto mínimo consistente de itens, triggers, tags e macros para cada router OpenWrt gerido pela XFI.
 
