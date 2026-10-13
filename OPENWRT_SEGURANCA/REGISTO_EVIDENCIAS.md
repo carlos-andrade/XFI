@@ -326,7 +326,7 @@ Guardar apenas evidências não sensíveis. Dados de clientes e backups devem fi
 
 
 ## 2026-10-13 — Subfase kernel: spot-check dirigido de patches genéricos
-- **Escopo consultado:** 19 patches genéricos relacionados por nome a block/MMC, core, DMA, skb e rede, além de 10 candidatos block/MMC inspecionados anteriormente.
+- **Escopo consultado:** 18 patches genéricos distintos relacionados por nome a block/MMC, core, DMA, skb e rede (19 leituras, com um candidato repetido), incluindo candidatos block/MMC.
 - **Resultado do spot-check:** nenhum dos patches consultados altera diretamente `block/bdev.c`, `net/core/dev.c`, `kernel/dma/direct.c` ou `drivers/mmc/host/mmci.c`.
 - **Limitação:** não foram lidos os 414 patches genéricos na íntegra; também não foram revistos patches de todos os targets. O resultado não permite afirmar ausência global de backports.
 - **Estado:** EM_REVISAO. Continuar varredura de conteúdo e manter os estados CVE sem conclusão prematura.
