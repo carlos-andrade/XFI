@@ -117,3 +117,11 @@ Foram adicionados ao repositório:
 4. A execução do workflow e o artefacto ainda têm de ser verificados antes de incorporar resultados de cobertura nesta revisão ou alterar qualquer estado CVE.
 
 **Estado CVE:** os cinco casos mantêm-se inconclusivos quanto à presença global de backports. Não se altera o CSV nesta subfase. Sem hardware/target conhecido, a aplicabilidade por equipamento continua bloqueada. Não houve build, instalação, alteração de router ou teste físico; Zabbix continua em pausa.
+
+
+### Correção de qualidade do scanner — 2026-10-13
+
+- Revisto o parser de cabeçalhos unified diff para normalizar os caminhos `--- a/...`, mantendo também os caminhos `diff --git a/... b/...`.
+- O ajuste foi persistido no script; ainda não existe resultado de execução confirmado para validar empiricamente a cobertura.
+- A pesquisa de execução disponível nesta sessão não devolveu um run verificável. Não declarar o workflow aprovado nem inferir o resultado do tarball a partir do código da automação.
+- Próxima validação: abrir a página Actions do repositório e confirmar o run disparado pela alteração do script; inspecionar o log e artefacto. Se não houver run, executar manualmente `XFI — Auditoria diferencial kernel/mac80211 OpenWrt`.
