@@ -47,7 +47,7 @@ for patch in patch_files:
     except OSError:
         continue
     paths = set(re.findall(r"^diff --git a/(.*?) b/.*$", text, re.M))
-    paths.update(re.findall(r"^--- a/([^\\t\\n]+)", text, re.M))
+    paths.update(re.findall(r"^--- a/(\\S+)", text, re.M))
     for cve, target in TARGETS.items():
         if target in paths:
             target_hits[cve].append({
